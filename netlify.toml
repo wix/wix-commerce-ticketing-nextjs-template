@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[template]
+  incoming-hooks = ["WixEvents"]
+
+[template.environment]
+  NEXT_PUBLIC_WIX_CLIENT_ID = "Wix headless client id"
