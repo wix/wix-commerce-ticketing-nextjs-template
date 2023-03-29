@@ -1,6 +1,9 @@
 import { CartItem } from '../components/CartItem/CartItem';
 import { getWixClient } from '../hooks/useWixClientServer';
 
+// opt out static rendering because of https://github.com/vercel/next.js/issues/43077
+export const dynamic = 'force-dynamic';
+
 export default async function Success({ searchParams }: any) {
   const wixClient = await getWixClient();
 

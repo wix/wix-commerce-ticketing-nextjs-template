@@ -4,6 +4,12 @@ import Header from './components/Layout/Header';
 import { ClientProvider } from './components/Provider/ClientProvider';
 import { SidebarUI } from './components/Sidebar/SidebarUI';
 
+/**
+ * Using force dynamic so changes in business assets (e.g. services) are immediately reflected.
+ * If you prefer having it reflected only after redeploy (not recommended) please remove it
+ * **/
+export const revalidate = 0;
+
 export default function RootLayout({
   children,
 }: {
