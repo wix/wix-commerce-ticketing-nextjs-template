@@ -838,6 +838,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wix/redirects-api@npm:^1.0.21":
+  version: 1.0.21
+  resolution: "@wix/redirects-api@npm:1.0.21"
+  dependencies:
+    "@wix/metro-runtime": ^1.0.0
+    "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
+    "@wix/sdk-types": ^1.0.0
+  checksum: ed765440aba142e8729d6c61b81173f566cf2d478d66e6205c3c7e307004d5740e6bf501c96a6942daee8932ab9d2d6f53731637cdad2ce54e60b0e4ee2196ce
+  languageName: node
+  linkType: hard
+
 "@wix/sdk-types@npm:^1.0.0":
   version: 1.1.15
   resolution: "@wix/sdk-types@npm:1.1.15"
@@ -5244,7 +5255,7 @@ __metadata:
     "@wix/api-client": ^1.1.37
     "@wix/ecom": ^1.0.78
     "@wix/events": ^1.0.35
-    "@wix/redirects-api": ^1.0.17
+    "@wix/redirects-api": ^1.0.21
     "@wix/stores": ^1.0.16
     autoprefixer: ^10.4.13
     body-scroll-lock: ^4.0.0-beta.0
