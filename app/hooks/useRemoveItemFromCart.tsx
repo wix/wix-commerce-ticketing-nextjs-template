@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useWixClient } from './useWixClient';
 import { WixClient } from '../components/Provider/ClientProvider';
-import { currentCart } from '@wix/ecom';
 
 export const useRemoveItemFromCart = () => {
   const wixClient = useWixClient();
@@ -18,7 +17,4 @@ export const useRemoveItemFromCart = () => {
 
 async function removeItemFromCart(wixClient: WixClient, itemId: string) {
   await wixClient.currentCart.removeLineItemsFromCurrentCart([itemId]);
-  await wixClient.currentCart.createCheckoutFromCurrentCart({
-    channelType: currentCart.ChannelType.OTHER_PLATFORM,
-  });
 }

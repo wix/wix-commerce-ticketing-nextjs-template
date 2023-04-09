@@ -22,7 +22,4 @@ async function updateLineItemQuantity(
   item: currentCart.LineItemQuantityUpdate
 ) {
   await wixClient.currentCart.updateCurrentCartLineItemQuantity([item]);
-  await wixClient.currentCart.createCheckoutFromCurrentCart({
-    channelType: currentCart.ChannelType.OTHER_PLATFORM,
-  });
 }

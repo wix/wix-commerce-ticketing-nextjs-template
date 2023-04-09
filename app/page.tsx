@@ -154,65 +154,71 @@ export default async function Home() {
             >
               Get Merch
             </a>
-            <div className="mt-10 sm:mt-[300px]">
-              <a href="/shop">
-                <Image
-                  src={
-                    productsForCategories[1]?.product!.media!.mainMedia!.image!
-                      .url!
-                  }
-                  width={800}
-                  height={0}
-                  alt={
-                    productsForCategories[1]?.product!.media!.mainMedia!.image!
-                      .altText!
-                  }
-                />
-              </a>
-              <span className="font-bold text-2xl sm:text-5xl block text-center mt-[-15px] sm:mt-[-30px] text-black">
-                <a href="/shop">{productsForCategories[1]?.category}</a>
-              </span>
-            </div>
+            {productsForCategories[1].product?.media?.mainMedia ? (
+              <div className="mt-10 sm:mt-[300px]">
+                <a href="/shop">
+                  <Image
+                    src={
+                      productsForCategories[1]?.product!.media!.mainMedia!
+                        .image!.url!
+                    }
+                    width={800}
+                    height={0}
+                    alt={
+                      productsForCategories[1]?.product!.media!.mainMedia!
+                        .image!.altText!
+                    }
+                  />
+                </a>
+                <span className="font-bold text-2xl sm:text-5xl block text-center mt-[-15px] sm:mt-[-30px] text-black">
+                  <a href="/shop">{productsForCategories[1]?.category}</a>
+                </span>
+              </div>
+            ) : null}
           </div>
           <div>
-            <div className="mt-10 sm:mt-[220px]">
-              <a href="/shop">
-                <Image
-                  src={
-                    productsForCategories[0]?.product!.media!.mainMedia!.image!
-                      .url!
-                  }
-                  width={800}
-                  height={0}
-                  alt={
-                    productsForCategories[0]?.product!.media!.mainMedia!.image!
-                      .altText!
-                  }
-                />
-              </a>
-              <span className="font-bold text-2xl sm:text-5xl block text-center mt-[-15px] sm:mt-[-30px]">
-                <a href="/shop">{productsForCategories[0]?.category}</a>
-              </span>
-            </div>
-            <div className="mt-10 sm:mt-40">
-              <a href="/shop">
-                <Image
-                  src={
-                    productsForCategories[2]?.product!.media!.mainMedia!.image!
-                      .url!
-                  }
-                  width={800}
-                  height={0}
-                  alt={
-                    productsForCategories[2]?.product!.media!.mainMedia!.image!
-                      .altText!
-                  }
-                />
-              </a>
-              <span className="font-bold text-2xl sm:text-5xl block text-center mt-[-15px] sm:mt-[-30px]">
-                <a href="/shop">{productsForCategories[2]?.category}</a>
-              </span>
-            </div>
+            {productsForCategories[0].product?.media?.mainMedia ? (
+              <div className="mt-10 sm:mt-[220px]">
+                <a href="/shop">
+                  <Image
+                    src={
+                      productsForCategories[0]?.product!.media!.mainMedia!
+                        .image!.url!
+                    }
+                    width={800}
+                    height={0}
+                    alt={
+                      productsForCategories[0]?.product!.media!.mainMedia!
+                        .image!.altText!
+                    }
+                  />
+                </a>
+                <span className="font-bold text-2xl sm:text-5xl block text-center mt-[-15px] sm:mt-[-30px]">
+                  <a href="/shop">{productsForCategories[0]?.category}</a>
+                </span>
+              </div>
+            ) : null}
+            {productsForCategories[2].product?.media?.mainMedia ? (
+              <div className="mt-10 sm:mt-40">
+                <a href="/shop">
+                  <Image
+                    src={
+                      productsForCategories[2]?.product?.media!.mainMedia!
+                        .image!.url!
+                    }
+                    width={800}
+                    height={0}
+                    alt={
+                      productsForCategories[2]?.product!.media!.mainMedia!
+                        .image!.altText!
+                    }
+                  />
+                </a>
+                <span className="font-bold text-2xl sm:text-5xl block text-center mt-[-15px] sm:mt-[-30px]">
+                  <a href="/shop">{productsForCategories[2]?.category}</a>
+                </span>
+              </div>
+            ) : null}
           </div>
         </div>
       ) : null}

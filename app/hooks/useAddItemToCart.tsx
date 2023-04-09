@@ -22,7 +22,4 @@ async function addItemFromCart(
   item: currentCart.LineItem
 ) {
   await wixClient.currentCart.addToCurrentCart({ lineItems: [item] });
-  await wixClient.currentCart.createCheckoutFromCurrentCart({
-    channelType: currentCart.ChannelType.OTHER_PLATFORM,
-  });
 }

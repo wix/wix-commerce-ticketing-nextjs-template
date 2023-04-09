@@ -1,16 +1,16 @@
 'use client';
 import React, { FC, useCallback, useState } from 'react';
-import { usePrice } from '../../hooks/use-price';
+import { usePrice } from '@app/hooks/use-price';
 import { CartItem } from '../CartItem/CartItem';
-import { useCart } from '../../hooks/useCart';
+import { useCart } from '@app/hooks/useCart';
 import { useUI } from '../Provider/context';
-import { useWixClient } from '../../hooks/useWixClient';
+import { useWixClient } from '@app/hooks/useWixClient';
 import { Spinner } from 'flowbite-react';
-import { cart } from '@wix/ecom';
+import { cart, currentCart } from '@wix/ecom';
 
 export const CartSidebarView: FC = () => {
   const wixClient = useWixClient();
-  const { closeSidebar } = useUI();
+  const { closeSidebar, openModalNotPremium } = useUI();
   const { data, isLoading } = useCart();
   const [redirecting, setRedirecting] = useState<boolean>(false);
   const subTotal = usePrice(
@@ -26,16 +26,23 @@ export const CartSidebarView: FC = () => {
     closeSidebar();
     setRedirecting(true);
     try {
+      const checkout =
+        await wixClient.currentCart.createCheckoutFromCurrentCart({
+          channelType: currentCart.ChannelType.OTHER_PLATFORM,
+        });
       const { redirectSession } =
         await wixClient.redirects.createRedirectSession({
-          ecomCheckout: { checkoutId: data!.checkoutId! },
+          ecomCheckout: { checkoutId: checkout!.checkoutId! },
           callbacks: {
             postFlowUrl: window.location.origin,
             thankYouPageUrl: `${window.location.origin}/stores-success`,
           },
         });
       window.location.href = redirectSession!.fullUrl!;
-    } catch (e) {
+    } catch (e: any) {
+      if (e.details.applicationError.code === 428) {
+        openModalNotPremium();
+      }
       setRedirecting(false);
     }
   }, [cart]);

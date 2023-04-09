@@ -2,11 +2,13 @@ import React, { useCallback, useMemo } from 'react';
 
 export interface State {
   displaySidebar: boolean;
+  displayNotPremiumModal: boolean;
   sidebarView: string;
 }
 
 const initialState = {
   displaySidebar: false,
+  displayNotPremiumModal: false,
   sidebarView: 'CART_VIEW',
 };
 
@@ -20,7 +22,9 @@ type Action =
   | {
       type: 'SET_SIDEBAR_VIEW';
       view: SIDEBAR_VIEWS;
-    };
+    }
+  | { type: 'OPEN_NOT_PREMIUM_MODAL' }
+  | { type: 'CLOSE_NOT_PREMIUM_MODAL' };
 
 type SIDEBAR_VIEWS = 'CART_VIEW';
 
@@ -46,6 +50,18 @@ function uiReducer(state: State, action: Action) {
       return {
         ...state,
         sidebarView: action.view,
+      };
+    }
+    case 'OPEN_NOT_PREMIUM_MODAL': {
+      return {
+        ...state,
+        displayNotPremiumModal: true,
+      };
+    }
+    case 'CLOSE_NOT_PREMIUM_MODAL': {
+      return {
+        ...state,
+        displayNotPremiumModal: false,
       };
     }
   }
@@ -79,6 +95,15 @@ export const UIProvider = (props: any) => {
     [dispatch]
   );
 
+  const openModalNotPremium = useCallback(
+    () => dispatch({ type: 'OPEN_NOT_PREMIUM_MODAL' }),
+    [dispatch]
+  );
+  const closeModalNotPremium = useCallback(
+    () => dispatch({ type: 'CLOSE_NOT_PREMIUM_MODAL' }),
+    [dispatch]
+  );
+
   const value = useMemo(
     () => ({
       ...state,
@@ -87,6 +112,8 @@ export const UIProvider = (props: any) => {
       toggleSidebar,
       closeSidebarIfPresent,
       setSidebarView,
+      openModalNotPremium,
+      closeModalNotPremium,
     }),
     [state]
   );
