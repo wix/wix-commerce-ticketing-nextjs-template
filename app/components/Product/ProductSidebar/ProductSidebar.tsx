@@ -122,9 +122,10 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
           {isButtonEnabled() ? 'Add to Cart' : 'Out of Stock'}
         </button>
       </div>
-      <p className="pb-4 break-words w-full max-w-xl mt-6">
-        {product.description}
-      </p>
+      <p
+        className="pb-4 break-words w-full max-w-xl mt-6"
+        dangerouslySetInnerHTML={{ __html: product.description ?? '' }}
+      />
       <div className="mt-6">
         <Accordion flush={true} arrowIcon={HiArrowDown}>
           {product.additionalInfoSections!.map((info) => (
@@ -133,7 +134,10 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
                 <span className="text-sm">{info.title}</span>
               </Accordion.Title>
               <Accordion.Content>
-                <span className="text-sm">{info.description}</span>
+                <span
+                  className="text-sm"
+                  dangerouslySetInnerHTML={{ __html: info.description ?? '' }}
+                />
               </Accordion.Content>
             </Accordion.Panel>
           ))}
