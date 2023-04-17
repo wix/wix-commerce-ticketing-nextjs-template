@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { usePrice } from '@app/hooks/use-price';
 import { CartItem } from '../CartItem/CartItem';
 import { useCart } from '@app/hooks/useCart';
@@ -7,8 +7,7 @@ import { useUI } from '../Provider/context';
 import { useWixClient } from '@app/hooks/useWixClient';
 import { Spinner } from 'flowbite-react';
 import { cart, currentCart } from '@wix/ecom';
-
-export const CartSidebarView: FC = () => {
+export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
   const wixClient = useWixClient();
   const { closeSidebar, openModalNotPremium } = useUI();
   const { data, isLoading } = useCart();
@@ -36,6 +35,7 @@ export const CartSidebarView: FC = () => {
           callbacks: {
             postFlowUrl: window.location.origin,
             thankYouPageUrl: `${window.location.origin}/stores-success`,
+            cartPageUrl: `${window.location.origin}/cart`,
           },
         });
       window.location.href = redirectSession!.fullUrl!;
@@ -46,6 +46,8 @@ export const CartSidebarView: FC = () => {
       setRedirecting(false);
     }
   }, [cart]);
+
+  const isMini = layout === 'mini';
   return (
     <>
       {isLoading ? (
@@ -54,31 +56,37 @@ export const CartSidebarView: FC = () => {
         </div>
       ) : null}
       {!isLoading && data?.lineItems?.length! > 0 ? (
-        <>
+        <div className={`${!isMini ? 'max-w-6xl mx-auto' : ''}`}>
           <div className="flex-1">
             <div className="relative">
-              <button
-                onClick={handleClose}
-                aria-label="Close"
-                className="hover:text-accent-5 absolute transition ease-in-out duration-150 focus:outline-none mr-6 top-[32px]"
-              >
-                <svg
-                  className="w-6 h-6 text-site ml-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
+              {isMini ? (
+                <button
+                  onClick={handleClose}
+                  aria-label="Close"
+                  className="hover:text-accent-5 absolute transition ease-in-out duration-150 focus:outline-none mr-6 top-[32px]"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                  ></path>
-                </svg>
-              </button>
-              <span className="font-bold text-2xl text-center block bg-black text-white p-6">
+                  <svg
+                    className="w-6 h-6 text-site ml-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    ></path>
+                  </svg>
+                </button>
+              ) : null}
+              <span
+                className={`font-bold text-2xl text-center block p-6 ${
+                  isMini ? 'bg-black text-white' : ''
+                }`}
+              >
                 Cart
               </span>
             </div>
@@ -110,7 +118,7 @@ export const CartSidebarView: FC = () => {
               </button>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
           <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 text-secondary">
