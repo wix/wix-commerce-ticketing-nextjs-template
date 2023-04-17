@@ -194,7 +194,7 @@ export function TicketsTable({
       <div className="flex full-w flex-col" id="tickets">
         {tickets.map((ticket: TicketDefinitionExtended) => (
           <div
-            className="dark:bg-gray-800 flex flex-col sm:flex-row mt-6 border p-4 sm:p-6"
+            className="flex flex-col sm:flex-row mt-6 border p-4 sm:p-6"
             key={ticket._id}
           >
             <div className="basis-1/2 sm:border-r-2">
@@ -305,7 +305,7 @@ export function TicketsTable({
                 )
                 .map((option) => (
                   <div
-                    className="dark:bg-gray-800 flex flex-col sm:flex-row mt-4 border-t-2 pt-4"
+                    className="flex flex-col sm:flex-row mt-4 border-t-2 pt-4"
                     key={option._id}
                   >
                     <div className="basis-1/2">
@@ -379,10 +379,7 @@ export function TicketsTable({
       </div>
       <div className="sm:w-[35%] ml-auto mt-4 sm:mt-10">
         {Object.keys(selectedTickets).length && subTotals ? (
-          <div
-            className="dark:border-gray-700 dark:bg-gray-800 flex"
-            key="subtotal"
-          >
+          <div className="flex" key="subtotal">
             <span>Subtotal</span>
             <span className="text-right ml-auto">
               {formatCurrency(subTotals, tickets[0]!.price!.currency)}
@@ -390,10 +387,7 @@ export function TicketsTable({
           </div>
         ) : null}
         {tax ? (
-          <div
-            className="dark:border-gray-700 dark:bg-gray-800 flex mt-2"
-            key="tax"
-          >
+          <div className="flex mt-2" key="tax">
             <div>{event.registration?.ticketing?.config?.taxConfig?.name}</div>
             <div className="text-right ml-auto">
               {formatCurrency(tax, tickets[0]!.price!.currency)}
@@ -401,10 +395,7 @@ export function TicketsTable({
           </div>
         ) : null}
         {serviceFee ? (
-          <div
-            className="dark:border-gray-700 dark:bg-gray-800 flex mt-2"
-            key="fee"
-          >
+          <div className="flex mt-2" key="fee">
             <span>Service fee</span>
             <span className="text-right ml-auto">
               {formatCurrency(
@@ -414,10 +405,7 @@ export function TicketsTable({
             </span>
           </div>
         ) : null}
-        <div
-          className="dark:border-gray-700 dark:bg-gray-800 border-t flex mt-2 pt-2 text-lg"
-          key="total"
-        >
+        <div className="border-t flex mt-2 pt-2 text-lg" key="total">
           <span>Total</span>
           <span className="text-right ml-auto">
             {formatCurrency(
@@ -433,10 +421,7 @@ export function TicketsTable({
             )}
           </span>
         </div>
-        <div
-          className="dark:border-gray-700 dark:bg-gray-800 mt-6"
-          key="checkout"
-        >
+        <div className="mt-6" key="checkout">
           <div className="whitespace-nowrap font-medium">
             <button
               onClick={createReservation}
