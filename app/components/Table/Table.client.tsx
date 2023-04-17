@@ -191,7 +191,7 @@ export function TicketsTable({
 
   return (
     <>
-      <div className="flex full-w flex-col">
+      <div className="flex full-w flex-col" id="tickets">
         {tickets.map((ticket: TicketDefinitionExtended) => (
           <div
             className="dark:bg-gray-800 flex flex-col sm:flex-row mt-6 border p-4 sm:p-6"

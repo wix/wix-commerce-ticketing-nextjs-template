@@ -73,7 +73,7 @@ export default async function EventPage({ params }: any) {
                 wixEvents.RegistrationStatus.OPEN_TICKETS && (
                 <a
                   className="btn-main inline-block w-full sm:w-auto text-center"
-                  href="app/events/[slug]#tickets"
+                  href={`/events/${event.slug}#tickets`}
                 >
                   Buy Tickets
                 </a>
