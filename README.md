@@ -44,6 +44,7 @@ Click the quick start deployment link below to automatically authorize your temp
 Authentication credentials are automatically incorporated into the template, making it easy to get started coding and customizing.
 
 ##### Netlify
+[![Netlify Status](https://api.netlify.com/api/v1/badges/77dd7904-ed54-4adf-bd08-023b3f9287d7/deploy-status)](https://app.netlify.com/sites/wix-commerce-ticketing-nextjs-templat/deploys)
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://manage.wix.com/headless-funnel-nextjs/netlify?repository=https://github.com/wix/wix-commerce-ticketing-nextjs-template)
 
