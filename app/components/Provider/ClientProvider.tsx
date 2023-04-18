@@ -6,7 +6,7 @@ import { createClient, OAuthStrategy } from '@wix/api-client';
 import { collections, products } from '@wix/stores';
 import { currentCart } from '@wix/ecom';
 import { wixEvents, checkout } from '@wix/events';
-import { redirects } from '@wix/redirects-api';
+import { redirects } from '@wix/redirects';
 import Cookies from 'js-cookie';
 import { WIX_REFRESH_TOKEN } from '@app/constants';
 const queryClient = new QueryClient();
