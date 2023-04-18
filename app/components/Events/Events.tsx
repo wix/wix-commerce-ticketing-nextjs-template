@@ -22,7 +22,7 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
           >
             <div className="flex flex-1 sm:items-center gap-4 sm:gap-8 flex-col sm:flex-row sm:py-3">
               <div
-                className={`flex flex-col sm:flex-row overflow-hidden gap-8 relative sm:group-hover/event:max-w-0 max-w-4xl transition-[max-width] duration-300 ease-out ${
+                className={`flex flex-col min-w-fit sm:flex-row overflow-hidden gap-8 relative sm:group-hover/event:min-w-0 sm:group-hover/event:max-w-0 max-w-4xl transition-[max-width] duration-300 ease-out ${
                   expendEventDescription[event._id!] ? 'sm:m-w-0' : ''
                 }`}
               >
