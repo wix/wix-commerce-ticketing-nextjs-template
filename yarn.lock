@@ -671,25 +671,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/ecom@npm:^1.0.78":
-  version: 1.0.78
-  resolution: "@wix/ecom@npm:1.0.78"
+"@wix/ecom@npm:^1.0.148":
+  version: 1.0.148
+  resolution: "@wix/ecom@npm:1.0.148"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: 31c861f324ad38c90bcbe7e6bef1ad819635d96389710feefb3e4c3c42c85e5c611ec96128738b466dda7f05ed3a50144a92436456037cad6fb877add0478bbc
+  checksum: 7714f0564fd948d1d736e9dff7a01c4c64ea7a7613df47f350964056ea8c51204aaa92ee663420899698ca80df28ef3fb92343647de43398632fb44a7fa5b5ed
   languageName: node
   linkType: hard
 
-"@wix/events@npm:^1.0.35":
-  version: 1.0.35
-  resolution: "@wix/events@npm:1.0.35"
+"@wix/events@npm:^1.0.75":
+  version: 1.0.75
+  resolution: "@wix/events@npm:1.0.75"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: c7d20be23368c524769c22b5732ed2a85173cc8ddc49c6fd7045c9fdcc3f22ff3379b8bd1cc02f2452240870d7de9b6eeeaeada97a7c8fd875500335be9e0e31
+  checksum: e1273298a3d207e01cc4b4f697b5be6d4278070184c4c87ad5318039a89d6037ac41ecf13a8d576622a5cee78439c1d768bc2f261105b2c1ccc1238c3285218e
   languageName: node
   linkType: hard
 
@@ -827,7 +827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/redirects@npm:^1.0.0":
+"@wix/redirects@npm:^1.0.0, @wix/redirects@npm:^1.0.1":
   version: 1.0.1
   resolution: "@wix/redirects@npm:1.0.1"
   dependencies:
@@ -856,14 +856,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/stores@npm:^1.0.16":
-  version: 1.0.16
-  resolution: "@wix/stores@npm:1.0.16"
+"@wix/stores@npm:^1.0.57":
+  version: 1.0.57
+  resolution: "@wix/stores@npm:1.0.57"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: 8bfd1133a25db1604831bbe4d0728ea63e9992c0e82a72b37026c183f6553f9a7837803295b0291c537a61f19084ef3122629f568dc998da383de943f9cd8dc5
+  checksum: 99b48bd54314d7dacfbcba578bf4f96bc4fee054db2918857b6fadb5eb504e51ed8326dedfbd265a6a7b748f6ee1ad40eea0255cfb0514d7b86685f5821c7f5a
   languageName: node
   linkType: hard
 
@@ -5251,10 +5251,10 @@ __metadata:
     "@types/react": 18.0.24
     "@types/react-dom": 18.0.8
     "@wix/api-client": ^1.1.55
-    "@wix/ecom": ^1.0.78
-    "@wix/events": ^1.0.35
-    "@wix/redirects": ^1.0.0
-    "@wix/stores": ^1.0.16
+    "@wix/ecom": ^1.0.148
+    "@wix/events": ^1.0.75
+    "@wix/redirects": ^1.0.1
+    "@wix/stores": ^1.0.57
     autoprefixer: ^10.4.13
     body-scroll-lock: ^4.0.0-beta.0
     cookie: ^0.5.0
