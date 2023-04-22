@@ -2,7 +2,7 @@
 import React from 'react';
 import { Sidebar } from './Sidebar';
 import { useUI } from '../Provider/context';
-import { CartView } from '@app/components/CartSidebar/CartView';
+import { CartView } from '@app/components/Cart/CartView';
 
 export const SidebarUI: React.FC = () => {
   const { displaySidebar, closeSidebar } = useUI();
