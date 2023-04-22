@@ -8,7 +8,7 @@ export default async function StoresCategoryPage({ params }: any) {
   const wixClient = await getWixClient();
   const { items } = await wixClient.products
     .queryProducts()
-    .eq('slug', params.slug)
+    .eq('slug', decodeURIComponent(params.slug))
     .limit(1)
     .find();
   const product = items[0];

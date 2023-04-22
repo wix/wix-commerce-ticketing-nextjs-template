@@ -18,7 +18,10 @@ export default async function EventPage({ params }: any) {
       wixEvents.EventFieldset.TEXTS,
       wixEvents.EventFieldset.REGISTRATION,
     ],
-    query: { filter: { slug: params.slug }, paging: { limit: 1, offset: 0 } },
+    query: {
+      filter: { slug: decodeURIComponent(params.slug) },
+      paging: { limit: 1, offset: 0 },
+    },
   });
   const event = events?.length ? events![0] : null;
 
