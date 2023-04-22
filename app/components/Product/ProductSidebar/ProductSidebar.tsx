@@ -68,7 +68,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
           catalogItemId: product._id!,
           appId: '1380b703-ce81-ff05-f115-39571d94dfcd',
           ...(Object.keys(selectedOptions).length && {
-            options: selectedVariant
+            options: selectedVariant._id
               ? { variantId: selectedVariant._id }
               : { options: selectedOptions },
           }),
