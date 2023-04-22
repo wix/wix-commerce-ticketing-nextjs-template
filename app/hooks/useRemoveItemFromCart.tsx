@@ -8,13 +8,13 @@ export const useRemoveItemFromCart = () => {
 
   const mutation = useMutation({
     mutationFn: (itemId: string) => removeItemFromCart(wixClient, itemId),
-    onSuccess: () => {
-      return queryClient.invalidateQueries({ queryKey: ['cart'] });
+    onSuccess: (data) => {
+      queryClient.setQueryData(['cart'], data.cart);
     },
   });
   return mutation.mutate;
 };
 
 async function removeItemFromCart(wixClient: WixClient, itemId: string) {
-  await wixClient.currentCart.removeLineItemsFromCurrentCart([itemId]);
+  return wixClient.currentCart.removeLineItemsFromCurrentCart([itemId]);
 }

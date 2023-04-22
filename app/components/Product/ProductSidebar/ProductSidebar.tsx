@@ -74,8 +74,8 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
           }),
         },
       });
-      openSidebar();
       setLoading(false);
+      openSidebar();
     } catch (err) {
       setLoading(false);
     }

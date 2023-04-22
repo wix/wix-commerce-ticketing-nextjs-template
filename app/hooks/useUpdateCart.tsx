@@ -10,8 +10,8 @@ export const useUpdateCart = () => {
   const mutation = useMutation({
     mutationFn: (item: currentCart.LineItemQuantityUpdate) =>
       updateLineItemQuantity(wixClient, item),
-    onSuccess: () => {
-      return queryClient.invalidateQueries({ queryKey: ['cart'] });
+    onSuccess: (data) => {
+      queryClient.setQueryData(['cart'], data.cart);
     },
   });
   return mutation.mutate;
@@ -21,5 +21,5 @@ async function updateLineItemQuantity(
   wixClient: WixClient,
   item: currentCart.LineItemQuantityUpdate
 ) {
-  await wixClient.currentCart.updateCurrentCartLineItemQuantity([item]);
+  return wixClient.currentCart.updateCurrentCartLineItemQuantity([item]);
 }
