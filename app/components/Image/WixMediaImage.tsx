@@ -22,7 +22,7 @@ export function WixMediaImage({
     : PLACEHOLDER_IMAGE;
   return (
     <div className={`flex items-center justify-center`}>
-      <div className="overflow-hidden  cursor-pointer relative group w-full h-full">
+      <div className="overflow-hidden relative group w-full h-full">
         <Image
           className={`object-cover w-full group-hover:scale-110 transition duration-300 ease-in-out ${className}`}
           src={imageUrl}

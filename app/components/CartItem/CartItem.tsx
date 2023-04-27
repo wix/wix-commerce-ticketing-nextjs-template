@@ -65,20 +65,30 @@ export const CartItem = ({
   return (
     <li className="flex flex-col py-4" {...rest}>
       <div className="flex flex-row gap-4 py-4">
-        <div className="w-20 h-20 bg-violet relative overflow-hidden cursor-pointer z-0">
-          <Link href={`/product-page/${slug}`}>
-            <div onClick={() => closeSidebarIfPresent()}>
-              <WixMediaImage width={150} height={150} media={item.image!} />
-            </div>
-          </Link>
+        <div className="w-20 h-20 bg-violet relative overflow-hidden z-0">
+          {slug ? (
+            <Link href={`/product-page/${slug}`}>
+              <div onClick={() => closeSidebarIfPresent()}>
+                <WixMediaImage width={150} height={150} media={item.image!} />
+              </div>
+            </Link>
+          ) : (
+            <WixMediaImage width={150} height={150} media={item.image!} />
+          )}
         </div>
         <div className="flex-1">
           <div className="flex-1 flex flex-col text-base">
-            <Link href={`/product-page/${slug}`}>
-              <span className="cursor-pointer pb-1 text-gray-500">
+            {slug ? (
+              <Link href={`/product-page/${slug}`}>
+                <span className="cursor-pointer pb-1 text-gray-500">
+                  {item.productName?.translated}
+                </span>
+              </Link>
+            ) : (
+              <span className="pb-1 text-gray-500">
                 {item.productName?.translated}
               </span>
-            </Link>
+            )}
           </div>
           <span>{price}</span>
           {item.descriptionLines?.length ? (
