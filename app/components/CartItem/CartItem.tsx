@@ -1,14 +1,13 @@
 'use client';
 import { ChangeEvent, useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePrice } from '../../hooks/use-price';
 import { cart } from '@wix/ecom';
-import { media } from '@wix/api-client';
 import { useUI } from '../Provider/context';
 import { Quantity } from '../Quantity/Quantity';
 import { useUpdateCart } from '../../hooks/useUpdateCart';
 import { useRemoveItemFromCart } from '../../hooks/useRemoveItemFromCart';
+import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 
 export const CartItem = ({
   item,
@@ -68,15 +67,9 @@ export const CartItem = ({
       <div className="flex flex-row gap-4 py-4">
         <div className="w-20 h-20 bg-violet relative overflow-hidden cursor-pointer z-0">
           <Link href={`/product-page/${slug}`}>
-            <Image
-              onClick={() => closeSidebarIfPresent()}
-              className="absolute w-full h-full"
-              width={150}
-              height={150}
-              src={media.getImageUrl(item.image!).url}
-              alt="Product Image"
-              unoptimized
-            />
+            <div onClick={() => closeSidebarIfPresent()}>
+              <WixMediaImage width={150} height={150} media={item.image!} />
+            </div>
           </Link>
         </div>
         <div className="flex-1">
