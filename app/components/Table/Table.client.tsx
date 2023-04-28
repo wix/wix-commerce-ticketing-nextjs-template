@@ -176,6 +176,7 @@ export function TicketsTable({
         await wixClient.redirects.createRedirectSession({
           eventsCheckout: { reservationId: id, eventSlug: event.slug! },
           callbacks: {
+            bookingsServiceListUrl: window.location.origin,
             postFlowUrl: window.location.origin,
             thankYouPageUrl: `${window.location.origin}/events-success`,
           },

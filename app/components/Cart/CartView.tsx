@@ -33,6 +33,7 @@ export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
         await wixClient.redirects.createRedirectSession({
           ecomCheckout: { checkoutId: checkout!.checkoutId! },
           callbacks: {
+            bookingsServiceListUrl: window.location.origin,
             postFlowUrl: window.location.origin,
             thankYouPageUrl: `${window.location.origin}/stores-success`,
             cartPageUrl: `${window.location.origin}/cart`,
