@@ -27,7 +27,7 @@ export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
     try {
       const checkout =
         await wixClient.currentCart.createCheckoutFromCurrentCart({
-          channelType: currentCart.ChannelType.OTHER_PLATFORM,
+          channelType: currentCart.ChannelType.WEB,
         });
       const { redirectSession } =
         await wixClient.redirects.createRedirectSession({
