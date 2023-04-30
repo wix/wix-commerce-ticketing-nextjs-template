@@ -1,14 +1,7 @@
-// opt out static rendering because of https://github.com/vercel/next.js/issues/43077
-export const dynamic = 'force-dynamic';
-
-export default function Success({ searchParams }: any) {
-  if (!searchParams.reservationId) {
-    return null;
-  }
-
+export default function Success() {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      reservationId: {searchParams.reservationId}
+      <h1 className="mt-10">Thank you for your purchase!</h1>
     </div>
   );
 }
