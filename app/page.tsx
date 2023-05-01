@@ -154,7 +154,7 @@ export default async function Home() {
             >
               Get Merch
             </a>
-            {productsForCategories[1].product?.media?.mainMedia ? (
+            {productsForCategories[1]?.product?.media?.mainMedia ? (
               <div className="mt-10 sm:mt-[300px]">
                 <a href="/shop">
                   <Image
@@ -177,7 +177,7 @@ export default async function Home() {
             ) : null}
           </div>
           <div>
-            {productsForCategories[0].product?.media?.mainMedia ? (
+            {productsForCategories[0]?.product?.media?.mainMedia ? (
               <div className="mt-10 sm:mt-[220px]">
                 <a href="/shop">
                   <Image
@@ -198,7 +198,7 @@ export default async function Home() {
                 </span>
               </div>
             ) : null}
-            {productsForCategories[2].product?.media?.mainMedia ? (
+            {productsForCategories[2]?.product?.media?.mainMedia ? (
               <div className="mt-10 sm:mt-40">
                 <a href="/shop">
                   <Image
