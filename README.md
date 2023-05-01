@@ -1,32 +1,26 @@
-### A Wix Events/Ecommerce Next.js Concert Template
+### A Wix Events and Wix eCommerce Next.js Music Tour Template
 
 ![](docs/media/template-showcase.gif)
 
-
-This template is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It uses [Wix Headless](https://dev.wix.com/api/sdk/about-wix-headless/overview) to leverage the Wix Events and Wix Stores business solutions for managing events and a store.
+This template is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It uses [Wix Headless](https://dev.wix.com/api/sdk/about-wix-headless/overview) to leverage the Wix Events and Wix Stores business solutions for managing event ticketing and a store.
 
 ## Part I: Get started
 
-To integrate the Wix Events/Wix Stores business solutions with the template, first create a project or site on Wix:
+To integrate the Wix Stores and Wix Events business solutions with the template, first create a project on Wix:
 
 ### Step 1: Create a project on Wix
 
-> ***Note:*** Currently, to create a new project on Wix, it's necessary to [create a new site](http://wix.com/intro/main). It will soon be possible to create a project without creating a site.
+Create a [new Wix Headless project](https://www.wix.com/intro/headless). For instructions on creating a Wix project, see [Create a Wix Headless Project](https://dev.wix.com/api/sdk/sdk-setup:-wix-headless/create-a-project) in the documentation.
 
-When prompted to add functionalities to your new project, select Events and Online Store:
+When prompted to add functionalities to your new project, select eCommerce and Events:
 
-![Apps Menu - select Events and Online Store](docs/media/business-first-funnel.png)
+![Apps Menu - select Bookings and Pricing Plans](docs/media/project-business-solutions.png)
 
-You can also add these business solutions to your project later, as follows:
-
-1. Open the [Wix App Market](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2Fapp-market) in your project dashboard.
-2. Search for `Wix Stores` and `Wix Events`
-3. Select `Wix Stores` and click `Add to site`
-4. Select `Wix Events` and click `Add to site`
+You can also add business solutions to your project later. See [Add Apps to a Project](https://dev.wix.com/api/sdk/guides/add-apps-to-a-project).
 
 ### Step 2: Set up the Wix business solutions you need
 
-See [Wix Stores Support article](https://support.wix.com/en/wix-stroes) and [Wix Events Support article](https://support.wix.com/en/wix-events) for information on configuring the events and products your business needs.
+See [Wix Stores](https://support.wix.com/en/wix-stores) and [Wix Events](https://support.wix.com/en/wix-events) for information on configuring the events and products your business needs.
 
 > ***Note:*** You can add Wix Events and Wix Stores functionality to your project for free, but you must [upgrade to a Business Premium Plan](https://support.wix.com/en/article/wix-stores-upgrading-your-stores-premium-plan) to accept orders and payments.
 
@@ -48,11 +42,13 @@ Authentication credentials are automatically incorporated into the template, mak
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://manage.wix.com/headless-funnel-nextjs/netlify?repository=https://github.com/wix/wix-commerce-ticketing-nextjs-template)
 
-For more information, see [How to Deploy Next.js Sites to Netlify](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/) or view the demo [here](https://netlify.commerce-ticketing-demo.wix.dev/).
+For more information, see [How to Deploy Next.js Sites to Netlify](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/).
 
-**Note** - In order to view the full flow in the demo site, use the coupon code `FREE` to order products or `FREETICKET` to buy tickets
+You can also view our [live demo site](https://netlify.commerce-ticketing-demo.wix.dev/). In order to view the full flow in the demo site, use the coupon code `FREE` to order products, and use the coupon code `FREETICKET` to "purchase" tickets.
 
 #### Option B: Create an OAuth client ID in the Wix dashboard
+
+If you don't want to use quick-start deployment, begin by forking this repo to your git account.
 
 Read [Set Up Authorization](https://dev.wix.com/api/sdk/sdk-setup:-wix-headless/authorization) in the Wix SDK documentation for instructions on how to manually create an OAuth app and generate a client ID in the [Headless Settings](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2Foauth-apps-settings) menu of the Wix dashboard.
 
@@ -99,32 +95,18 @@ The template implements checkout by redirecting visitors to a Wix-managed page. 
 
 To enable online checkout for the template, follow these steps:
 
-### Step 1: Publish the Wix site
-
-> ***Note:*** Currently, in order to create a new project on Wix, it's necessary to [create a new site](http://wix.com/intro/main) and publish it. You don't need to use this site, but publishing it enables the checkout page to go live on the web. It will soon be possible to create a project without creating a site.
-
-To publish a 'dummy' site, follow these steps:
-
-
-1. In your project [dashboard](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2F) click **Design Site**.
-2. Select **Let Wix create a site for you**.
-3. Select any template.
-4. Click **Edit My Site Design**.
-5. Click **Publish**.
-6. In the **Publish** popup you can set the site’s address or connect a domain. This is the URL that appears as your checkout redirect base URL. If you don't change the base URL now, you can change it later.
-
-### Step 2: Upgrade to a Business Premium Plan
+### Step 1: Upgrade to a Business Premium Plan
 
 To enable the checkout page and accept payments using Wix business solutions, you need to [upgrade to a Business Premium Plan](https://support.wix.com/en/article/wix-stores-upgrading-your-stores-premium-plan).
 
-### Step 3: Change the checkout redirect base URL (optional)
+### Step 2: Change the checkout redirect base URL (optional)
 
-To change the redirect base URL, follow these steps in the project [dashboard](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2F):
-1. Click **Site Actions** (the ellipsis next to **Edit Site**).
-2. Click **Rename Site**.
+To change the base URL for Wix-managed checkout pages, follow these steps in the :
+1. In the project [dashboard](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2Fhome), click **More Actions**.
+2. Click **Rename Project**.
 3. Change the editable part of the URL in **Site Address (URL)** and click **Save**.
 
-Alternatively, you can [connect a custom domain](https://support.wix.com/en/article/about-domains).
+Alternatively, you can [connect a custom domain](https://dev.wix.com/api/sdk/sdk-setup:-wix-headless/customize-domains).
 
 ## Part IV: Learn more about the tech stack
 
