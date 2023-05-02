@@ -32,18 +32,27 @@ export default async function Success({ searchParams }: any) {
             ))}
           </ul>
           <br />
-          We will ship to{' '}
-          {
-            data.shippingInfo!.logistics!.shippingDestination!.address!
-              .addressLine1
-          }
-          , {data.shippingInfo!.logistics!.shippingDestination!.address!.city},{' '}
-          {
-            data.shippingInfo!.logistics!.shippingDestination!.address!
-              .subdivision
-          }
-          ,{' '}
-          {data.shippingInfo!.logistics!.shippingDestination!.address!.country}
+          {data.shippingInfo ? (
+            <p>
+              We will ship to{' '}
+              {
+                data.shippingInfo!.logistics!.shippingDestination!.address!
+                  .addressLine1
+              }
+              ,{' '}
+              {data.shippingInfo!.logistics!.shippingDestination!.address!.city}
+              ,{' '}
+              {
+                data.shippingInfo!.logistics!.shippingDestination!.address!
+                  .subdivision
+              }
+              ,{' '}
+              {
+                data.shippingInfo!.logistics!.shippingDestination!.address!
+                  .country
+              }
+            </p>
+          ) : null}
         </div>
       </div>
     )
