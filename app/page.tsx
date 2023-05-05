@@ -136,7 +136,11 @@ export default async function Home() {
         <div className="bg-zinc-900 text-site pt-16 sm:p-20">
           <Events events={events} />
         </div>
-      ) : null}
+      ) : (
+        <div className="text-3xl w-full text-center p-9 box-border">
+          No Events found
+        </div>
+      )}
       {productsForCategories.length ? (
         <div className="flex gap-2 sm:gap-14 px-14 flex-col sm:flex-row">
           <div className="text-custom-1 text-center sm:text-left pt-10 sm:py-20 basis-1/2 bg-site">
@@ -221,7 +225,11 @@ export default async function Home() {
             ) : null}
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="text-3xl w-full text-center p-9 box-border">
+          No collections found
+        </div>
+      )}
     </div>
   );
 }

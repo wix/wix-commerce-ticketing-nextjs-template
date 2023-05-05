@@ -60,12 +60,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.21.0":
-  version: 7.21.0
-  resolution: "@babel/runtime@npm:7.21.0"
+"@babel/runtime@npm:^7.21.5":
+  version: 7.21.5
+  resolution: "@babel/runtime@npm:7.21.5"
   dependencies:
     regenerator-runtime: ^0.13.11
-  checksum: 7b33e25bfa9e0e1b9e8828bb61b2d32bdd46b41b07ba7cb43319ad08efc6fda8eb89445193e67d6541814627df0ca59122c0ea795e412b99c5183a0540d338ab
+  checksum: 358f2779d3187f5c67ad302e8f8d435412925d0b991d133c7d4a7b1ddd5a3fda1b6f34537cb64628dfd96a27ae46df105bed3895b8d754b88cacdded8d1129dd
   languageName: node
   linkType: hard
 
@@ -485,6 +485,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/grecaptcha@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "@types/grecaptcha@npm:3.0.4"
+  checksum: 5413df122f73a0bfc9304860c42f8e78549557fc03d9e3f97d4241c607103c575503024f3f67ac66700474f1d673e5fbffa466679844e1e0383a8d3239912343
+  languageName: node
+  linkType: hard
+
 "@types/js-cookie@npm:^3.0.3":
   version: 3.0.3
   resolution: "@types/js-cookie@npm:3.0.3"
@@ -627,19 +634,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/api-client@npm:^1.1.55":
-  version: 1.1.55
-  resolution: "@wix/api-client@npm:1.1.55"
+"@wix/api-client@npm:^1.1.67":
+  version: 1.1.67
+  resolution: "@wix/api-client@npm:1.1.67"
   dependencies:
-    "@babel/runtime": ^7.21.0
-    "@wix/identity": ^1.0.25
+    "@babel/runtime": ^7.21.5
+    "@types/grecaptcha": ^3.0.4
+    "@wix/identity": ^1.0.34
     "@wix/image-kit": ^1.31.0
-    "@wix/redirects": ^1.0.0
-    "@wix/sdk-types": 1.1.55
+    "@wix/redirects": ^1.0.13
+    "@wix/sdk-types": 1.1.67
     pkce-challenge: ^3.1.0
     querystring: ^0.2.1
     type-fest: ^2.19.0
-  checksum: 13d519d50072e6179de139d80509b512c877c40af578578bead19198fe1b60e126783857be293fd231ff1c478b2f6ae4e607471b3f8f5e9b24a7314a9a7eac78
+  checksum: c1c89d2b1cb27d0d367d7d027b59ae3a1db588f442e0c3feb023d12a418a519e4e880f3e18e8a0604eed341aa77ea179492fe2edc9e38ba6b3ebff7a09165830
   languageName: node
   linkType: hard
 
@@ -676,14 +684,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/identity@npm:^1.0.25":
-  version: 1.0.25
-  resolution: "@wix/identity@npm:1.0.25"
+"@wix/identity@npm:^1.0.34":
+  version: 1.0.36
+  resolution: "@wix/identity@npm:1.0.36"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: 07d53a5a44d80b749ded1e9cde5c558e6d2374dd0f4fdfc09086585179977a33ee1d829eb76376664ba2af1d4beb14b566db8986bafc97b6b61db0c39a9367e5
+  checksum: d37cb10f92713f7e6d1d732bc1bab7a56f75778545ee10ed5e5901396cf132d6bcf26ec59f8bd3e44c92838c796561321b75d762df21049d9adceb4c761efc4b
   languageName: node
   linkType: hard
 
@@ -799,17 +807,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/redirects@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "@wix/redirects@npm:1.0.1"
-  dependencies:
-    "@wix/metro-runtime": ^1.0.0
-    "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
-    "@wix/sdk-types": ^1.0.0
-  checksum: b515fcf79604068e05ab7e58b7f6c9decfc0da6f769f92343bc998849c150617b52b1a27e83644cbac3260b48a2a78fe4cbef8a8db2e2b13dd900203be147b63
-  languageName: node
-  linkType: hard
-
 "@wix/redirects@npm:^1.0.13":
   version: 1.0.13
   resolution: "@wix/redirects@npm:1.0.13"
@@ -821,12 +818,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/sdk-types@npm:1.1.55":
-  version: 1.1.55
-  resolution: "@wix/sdk-types@npm:1.1.55"
+"@wix/sdk-types@npm:1.1.67":
+  version: 1.1.67
+  resolution: "@wix/sdk-types@npm:1.1.67"
   dependencies:
-    "@babel/runtime": ^7.21.0
-  checksum: 4ab6bc8e7067afcf189feb58db6358c140b2caabc8033d3683d72f0181280b76ac16d53836dc07c5b16a0b4641c8ff1a91a303f167f7f2df5b7bedcc810491f9
+    "@babel/runtime": ^7.21.5
+  checksum: 6b1786210e0a925601ce59563ba7f428aeb40107b75c04d0d73cfbf60284e7f13533cd42d2ab8ea885d1bd8bdd9f9ea2b2c85a4f93c3db1087dfdba3104cf8e4
   languageName: node
   linkType: hard
 
@@ -5229,7 +5226,7 @@ __metadata:
     "@types/node": 18.11.8
     "@types/react": 18.0.24
     "@types/react-dom": 18.0.8
-    "@wix/api-client": ^1.1.55
+    "@wix/api-client": ^1.1.67
     "@wix/ecom": ^1.0.78
     "@wix/events": ^1.0.35
     "@wix/redirects": ^1.0.13

@@ -35,6 +35,7 @@ export function TicketsTable({
     {} as Record<string, boolean>
   );
   const [redirecting, setRedirecting] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const setExpendPricingOptionsForTicket = (ticketId: string) => {
     setExpendPricingOptions({
@@ -60,6 +61,7 @@ export function TicketsTable({
       return;
     }
     setSelectedTickets({ ...selectedTickets, ...ticket });
+    setError('');
   };
 
   const findTicketAndMaybeOption = (key: string) => {
@@ -166,27 +168,41 @@ export function TicketsTable({
             }),
         };
       });
-    const { _id: id } = await wixClient.checkout.createReservation(event._id!, {
-      ticketQuantities,
-    });
-
     try {
-      setRedirecting(true);
-      const { redirectSession } =
-        await wixClient.redirects.createRedirectSession({
-          eventsCheckout: { reservationId: id, eventSlug: event.slug! },
-          callbacks: {
-            bookingsServiceListUrl: window.location.origin,
-            postFlowUrl: window.location.origin,
-            thankYouPageUrl: `${window.location.origin}/events-success`,
-          },
-        });
-      if (id) {
-        window.location.href = redirectSession!.fullUrl!;
+      const { _id: id } = await wixClient.checkout.createReservation(
+        event._id!,
+        {
+          ticketQuantities,
+        }
+      );
+      try {
+        setRedirecting(true);
+        const { redirectSession } =
+          await wixClient.redirects.createRedirectSession({
+            eventsCheckout: { reservationId: id, eventSlug: event.slug! },
+            callbacks: {
+              bookingsServiceListUrl: window.location.origin,
+              postFlowUrl: window.location.origin,
+              thankYouPageUrl: `${window.location.origin}/events-success`,
+            },
+          });
+        if (id) {
+          window.location.href = redirectSession!.fullUrl!;
+        }
+      } catch (e) {
+        console.error(e);
+        setRedirecting(false);
       }
-    } catch (e) {
-      console.error(e);
-      setRedirecting(false);
+    } catch (e: any) {
+      if (
+        e.details.applicationError.data.details.details.error_key ===
+        'NO_PAYMENT_METHOD_CONFIGURED'
+      ) {
+        setError('No payment method configured');
+      } else {
+        setError('Something went wrong');
+      }
+      throw e;
     }
   };
 
@@ -435,6 +451,13 @@ export function TicketsTable({
             </button>
           </div>
         </div>
+        {error ? (
+          <div className="mt-6" key="error">
+            <div className="whitespace-nowrap font-medium">
+              <span className="text-red-500">{error}</span>
+            </div>
+          </div>
+        ) : null}
       </div>
     </>
   );
