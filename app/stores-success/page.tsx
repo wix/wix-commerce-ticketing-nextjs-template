@@ -32,7 +32,7 @@ export default async function Success({ searchParams }: any) {
             ))}
           </ul>
           <br />
-          {data.shippingInfo ? (
+          {data.shippingInfo?.logistics?.shippingDestination ? (
             <p>
               We will ship to{' '}
               {
@@ -51,6 +51,21 @@ export default async function Success({ searchParams }: any) {
                 data.shippingInfo!.logistics!.shippingDestination!.address!
                   .country
               }
+            </p>
+          ) : null}
+          {data.shippingInfo?.logistics?.pickupDetails ? (
+            <p>
+              Pickup at:{' '}
+              {
+                data.shippingInfo?.logistics?.pickupDetails!.address!
+                  .addressLine1
+              }
+              , {data.shippingInfo?.logistics?.pickupDetails!.address!.city},{' '}
+              {
+                data.shippingInfo?.logistics?.pickupDetails!.address!
+                  .subdivision
+              }
+              , {data.shippingInfo?.logistics?.pickupDetails!.address!.country}
             </p>
           ) : null}
         </div>
