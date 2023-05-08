@@ -9,7 +9,7 @@ async function main() {
   }
   const provider = process.env.VERCEL ? 'vercel' : 'netlify';
 
-  await fetch(
+  const res = await fetch(
     `https://manage.wix.com/headless-funnel-nextjs/api/captcha/disable?refreshToken=${process.env.WIX_REFRESH_TOKEN}&state={"provider":"${provider}"}&clientId=${process.env.NEXT_PUBLIC_WIX_CLIENT_ID}`,
     {
       method: 'POST',
@@ -18,6 +18,8 @@ async function main() {
       },
     }
   );
+  const json = await res.json();
+  console.log(`Captcha disabled: ${JSON.stringify(json)}`);
 }
 
 main();
