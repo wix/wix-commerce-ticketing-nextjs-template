@@ -11,14 +11,16 @@ export default async function Home() {
   try {
     const { items: collectionsItems } = await wixClient.collections
       .queryCollections()
-      .ne('id', '00000000-000000-000000-000000000001')
+      // till eq is fixed
+      .ne('id' as any, '00000000-000000-000000-000000000001')
       .limit(3)
       .find();
     productsForCategories = await Promise.all(
       collectionsItems.map((collection) =>
         wixClient.products
           .queryProducts()
-          .eq('collections.id', collection._id)
+          // till eq is fixed
+          .eq('collections.id' as any, collection._id)
           .limit(1)
           .find()
           .then((products) => ({
