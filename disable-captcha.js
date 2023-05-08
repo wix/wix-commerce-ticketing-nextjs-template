@@ -3,7 +3,8 @@ async function main() {
     !process.env.VERCEL &&
     !process.env.DEBUG &&
     !process.env.NETLIFY &&
-    !process.env.NEXT_PUBLIC_WIX_CLIENT_ID
+    !process.env.NEXT_PUBLIC_WIX_CLIENT_ID &&
+    !process.env.WIX_REFRESH_TOKEN
   ) {
     return;
   }
