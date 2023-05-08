@@ -138,7 +138,8 @@ export default async function Home() {
         </div>
       ) : (
         <div className="text-3xl w-full text-center p-9 box-border">
-          No Events found
+          No events found. Go to the business dashboard to add events. Once
+          added, they will appear here.
         </div>
       )}
       {productsForCategories.length ? (
@@ -227,7 +228,8 @@ export default async function Home() {
         </div>
       ) : (
         <div className="text-3xl w-full text-center p-9 box-border">
-          No collections found
+          No collections found. Go to the business dashboard to create event
+          collections. Once added, they will appear here.
         </div>
       )}
     </div>

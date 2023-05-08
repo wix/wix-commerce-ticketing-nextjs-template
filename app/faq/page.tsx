@@ -2,7 +2,7 @@ export default function FAQPage() {
   return (
     <div className="mx-auto text-center">
       <div className="bg-black text-white py-12">
-        <h1 className="text-5xl uppercase">FAQ&apos;S</h1>
+        <h1 className="text-5xl uppercase">FAQ</h1>
       </div>
       <div className="py-10 max-w-4xl mx-auto leading-7">
         <h2 className="text-3xl py-5">
