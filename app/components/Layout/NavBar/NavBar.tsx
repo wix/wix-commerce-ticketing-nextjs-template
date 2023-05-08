@@ -13,7 +13,7 @@ const navbarMainItems = [
 const navbarSecondrayItems = [
   { ref: '/terms', label: 'TERMS & CONDITIONS' },
   { ref: '/shipping', label: 'SHIPPING & RETURNS' },
-  { ref: '/faq', label: "FAQ'S" },
+  { ref: '/faq', label: 'FAQ' },
 ];
 
 const StyledNavLink = ({

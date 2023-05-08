@@ -28,8 +28,8 @@ export default async function StoresCategoryPage({ params }: any) {
           </div>
         </div>
       ) : (
-        <div className="text-3xl w-full text-center p-9 box-border">
-          No product found
+        <div className="text-3xl w-full text-center p-9 box-border max-w-4xl mx-auto">
+          Product Not Found
         </div>
       )}
     </div>

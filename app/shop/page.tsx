@@ -46,8 +46,18 @@ export default async function StoresCategoryPage() {
           </ul>
         </div>
       ) : (
-        <div className="text-3xl w-full text-center p-9 box-border">
-          No products found
+        <div className="text-3xl w-full text-center p-9 box-borderbox-border max-w-4xl mx-auto">
+          No products found. Click{' '}
+          <a
+            href="https://manage.wix.com/account/site-selector?actionUrl=+https%3A%2F%2Fmanage.wix.com%2Fdashboard%2F%7BmetaSiteId%7D%2Fstore%2Fproducts%3FreferralInfo%3DHeadless"
+            target="_blank"
+            rel="noreferrer"
+            className="text-purple-500"
+          >
+            here
+          </a>{' '}
+          to go to the business dashboard to add products. Once added, they will
+          appear here.
         </div>
       )}
     </div>

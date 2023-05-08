@@ -137,9 +137,18 @@ export default async function Home() {
           <Events events={events} />
         </div>
       ) : (
-        <div className="text-3xl w-full text-center p-9 box-border">
-          No events found. Go to the business dashboard to add events. Once
-          added, they will appear here.
+        <div className="text-3xl w-full text-center p-9 box-border max-w-4xl mx-auto">
+          No events found. Click{' '}
+          <a
+            href="https://manage.wix.com/account/site-selector?actionUrl=https%3A%2F%2Fmanage.wix.com%2Fdashboard%2F%7BmetaSiteId%7D%2Fevents%3FreferralInfo%3DHeadless"
+            target="_blank"
+            rel="noreferrer"
+            className="text-purple-500"
+          >
+            here
+          </a>{' '}
+          to go to the business dashboard to add events. Once added, they will
+          appear here.
         </div>
       )}
       {productsForCategories.length ? (
@@ -227,9 +236,18 @@ export default async function Home() {
           </div>
         </div>
       ) : (
-        <div className="text-3xl w-full text-center p-9 box-border">
-          No collections found. Go to the business dashboard to create event
-          collections. Once added, they will appear here.
+        <div className="text-3xl w-full text-center p-9 box-border max-w-4xl mx-auto">
+          No categories found. Click{' '}
+          <a
+            href="https://manage.wix.com/account/site-selector?actionUrl=+https%3A%2F%2Fmanage.wix.com%2Fdashboard%2F%7BmetaSiteId%7D%2Fstore%2Fcategories%2Flist%3FreferralInfo%3DHeadless"
+            target="_blank"
+            rel="noreferrer"
+            className="text-purple-500"
+          >
+            here
+          </a>{' '}
+          to go to the business dashboard to create event categories. Once
+          added, they will appear here.
         </div>
       )}
     </div>
