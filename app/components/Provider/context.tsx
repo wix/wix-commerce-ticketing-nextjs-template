@@ -3,12 +3,14 @@ import React, { useCallback, useMemo } from 'react';
 export interface State {
   displaySidebar: boolean;
   displayNotPremiumModal: boolean;
+  displayLoginModal: boolean;
   sidebarView: string;
 }
 
 const initialState = {
   displaySidebar: false,
   displayNotPremiumModal: false,
+  displayLoginModal: false,
   sidebarView: 'CART_VIEW',
 };
 
@@ -24,7 +26,9 @@ type Action =
       view: SIDEBAR_VIEWS;
     }
   | { type: 'OPEN_NOT_PREMIUM_MODAL' }
-  | { type: 'CLOSE_NOT_PREMIUM_MODAL' };
+  | { type: 'CLOSE_NOT_PREMIUM_MODAL' }
+  | { type: 'OPEN_LOGIN_MODAL' }
+  | { type: 'CLOSE_LOGIN_MODAL' };
 
 type SIDEBAR_VIEWS = 'CART_VIEW';
 
@@ -62,6 +66,18 @@ function uiReducer(state: State, action: Action) {
       return {
         ...state,
         displayNotPremiumModal: false,
+      };
+    }
+    case 'OPEN_LOGIN_MODAL': {
+      return {
+        ...state,
+        displayLoginModal: true,
+      };
+    }
+    case 'CLOSE_LOGIN_MODAL': {
+      return {
+        ...state,
+        displayLoginModal: false,
       };
     }
   }
@@ -104,6 +120,15 @@ export const UIProvider = (props: any) => {
     [dispatch]
   );
 
+  const openModalLogin = useCallback(
+    () => dispatch({ type: 'OPEN_LOGIN_MODAL' }),
+    [dispatch]
+  );
+  const closeModalLogin = useCallback(
+    () => dispatch({ type: 'CLOSE_LOGIN_MODAL' }),
+    [dispatch]
+  );
+
   const value = useMemo(
     () => ({
       ...state,
@@ -114,6 +139,8 @@ export const UIProvider = (props: any) => {
       setSidebarView,
       openModalNotPremium,
       closeModalNotPremium,
+      openModalLogin,
+      closeModalLogin,
     }),
     [state]
   );

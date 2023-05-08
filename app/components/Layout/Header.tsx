@@ -1,5 +1,6 @@
 import { CartBag } from '../CartBag/CartBag';
 import { NavBar } from './NavBar/NavBar';
+import { Login } from '@app/components/Login/Login';
 
 const Header = () => (
   <>
@@ -8,6 +9,9 @@ const Header = () => (
         <h2 className="flex-1">
           <a href="/">TALI$A KIDD</a>
         </h2>
+        <div>
+          <Login />
+        </div>
         <div>
           <CartBag />
         </div>
