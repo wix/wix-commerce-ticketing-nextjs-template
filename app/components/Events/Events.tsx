@@ -10,60 +10,60 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
   );
 
   return (
-    <div className="px-8 sm:px-14">
+    <div className="px-8 sm:px-0 max-w-4xl mx-auto">
       <h1 className="uppercase text-4xl sm:text-7xl text-center sm:text-left">
         SHOWS
       </h1>
-      <div className="py-10 sm:px-44">
+      <div className="py-10">
         {events!.map((event) => (
           <div
             className="group/event flex border-b last:border-0 hover:border-purple-500 gap-4 sm:gap-8 flex-col sm:flex-row py-4 sm:py-0 transition-colors duration-300"
             key={event._id}
           >
             <div className="flex flex-1 sm:items-center gap-4 sm:gap-8 flex-col sm:flex-row sm:py-3">
-              <div
-                className={`flex flex-col min-w-fit sm:flex-row overflow-hidden gap-8 relative sm:group-hover/event:min-w-0 sm:group-hover/event:max-w-0 max-w-4xl transition-[max-width] duration-300 ease-out ${
-                  expendEventDescription[event._id!] ? 'sm:m-w-0' : ''
-                }`}
-              >
-                <div className="w-[310px] h-[171px] sm:w-[80px] sm:h-[80px] overflow-hidden">
-                  <WixMediaImage
-                    media={event.mainImage}
-                    width={300}
-                    height={300}
-                  />
-                </div>
-                <div className="flex gap-4 items-center absolute bottom-2 left-2 sm:bottom-auto sm:left-auto sm:relative">
-                  <span className="text-4xl">
-                    {getDatePart(
-                      new Date(event.scheduling?.config?.startDate!),
-                      'day',
-                      event!.scheduling!.config!.timeZoneId!
-                    )}
-                  </span>
-                  <div className="flex flex-col text-xs">
-                    <span className="text-white sm:text-gray-600">
+              <div className="w-full sm:group-hover/event:overflow-hidden sm:group-hover/event:w-0 transition-[width] duration-300 ease-out">
+                <div
+                  className={`flex flex-col min-w-fit sm:flex-row overflow-hidden gap-8 relative max-w-4xl ${
+                    expendEventDescription[event._id!] ? 'sm:m-w-0' : ''
+                  }`}
+                >
+                  <div className="w-[310px] h-[171px] sm:w-[80px] sm:h-[80px] overflow-hidden sm:group-hover/event:opacity-0 transition-opacity duration-300">
+                    <WixMediaImage
+                      media={event.mainImage}
+                      width={300}
+                      height={300}
+                    />
+                  </div>
+                  <div className="flex gap-4 items-center absolute bottom-2 left-2 sm:bottom-auto sm:left-auto sm:relative">
+                    <span className="text-4xl">
                       {getDatePart(
                         new Date(event.scheduling?.config?.startDate!),
-                        'weekday',
+                        'day',
                         event!.scheduling!.config!.timeZoneId!
                       )}
                     </span>
-                    <span>
-                      {getDatePart(
-                        new Date(event.scheduling?.config?.startDate!),
-                        'month',
-                        event!.scheduling!.config!.timeZoneId!
-                      )}
-                    </span>
+                    <div className="flex flex-col text-xs">
+                      <span className="text-white sm:text-gray-600">
+                        {getDatePart(
+                          new Date(event.scheduling?.config?.startDate!),
+                          'weekday',
+                          event!.scheduling!.config!.timeZoneId!
+                        )}
+                      </span>
+                      <span>
+                        {getDatePart(
+                          new Date(event.scheduling?.config?.startDate!),
+                          'month',
+                          event!.scheduling!.config!.timeZoneId!
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="grow flex flex-col group/button hover:text-purple-500">
+              <div className="grow flex flex-col hover:text-purple-500">
                 <button
-                  className={`text-2xl text-left ${
-                    expendEventDescription[event._id!] ? 'text-purple-500' : ''
-                  }`}
+                  className="text-left w-full h-full group/button text-2xl text-left"
                   onClick={(e) => {
                     setExpendEventDescription({
                       [event._id!]: !expendEventDescription[event._id!],
@@ -92,7 +92,7 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
                   </svg>
                 </button>
                 <div
-                  className={`text-sm text-site transition-all ease-in ${
+                  className={`text-sm text-site transition-all ease-in pointer-events-none ${
                     expendEventDescription[event._id!]
                       ? 'opacity-100 h-auto py-3'
                       : 'opacity-0 h-0'
@@ -107,7 +107,7 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
               </div>
             </div>
             <a
-              className="btn-main my-2 sm:my-10 rounded-2xl w-full text-center sm:w-auto h-fit"
+              className="btn-main my-2 sm:my-10 rounded-2xl w-full text-center sm:w-auto h-fit min-w-fit"
               href={`/events/${event.slug}`}
             >
               Buy Tickets
