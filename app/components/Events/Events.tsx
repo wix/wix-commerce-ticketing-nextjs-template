@@ -1,6 +1,6 @@
 'use client';
-import { WixMediaImage } from '../Image/WixMediaImage';
-import { getDatePart } from '../../utils/date-formatter';
+import { WixMediaImage } from '@app/components/Image/WixMediaImage';
+import { getDatePart } from '@app/utils/date-formatter';
 import { wixEvents } from '@wix/events';
 import { useState } from 'react';
 
@@ -20,13 +20,15 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
             className="group/event flex border-b last:border-0 hover:border-purple-500 gap-4 sm:gap-8 flex-col sm:flex-row py-4 sm:py-0 transition-colors duration-300"
             key={event._id}
           >
-            <div className="flex flex-1 sm:items-center gap-4 sm:gap-8 flex-col sm:flex-row sm:py-3">
-              <div className="w-full sm:group-hover/event:overflow-hidden sm:group-hover/event:w-0 transition-[width] duration-300 ease-out">
-                <div
-                  className={`flex flex-col min-w-fit sm:flex-row overflow-hidden gap-8 relative max-w-4xl ${
-                    expendEventDescription[event._id!] ? 'sm:m-w-0' : ''
-                  }`}
-                >
+            <div className="flex flex-1 sm:items-center gap-4 sm:gap-4 md:gap-8 flex-col sm:flex-row sm:py-3">
+              <div
+                className={`sm:group-hover/event:overflow-hidden transition-all duration-300 ease-out ${
+                  expendEventDescription[event._id!]
+                    ? 'w-0 overflow-hidden'
+                    : 'w-full max-w-fit sm:group-hover/event:w-0'
+                }`}
+              >
+                <div className="flex flex-col min-w-fit sm:flex-row overflow-hidden sm:gap-4 md:gap-8 relative">
                   <div className="w-[310px] h-[171px] sm:w-[80px] sm:h-[80px] overflow-hidden sm:group-hover/event:opacity-0 transition-opacity duration-300">
                     <WixMediaImage
                       media={event.mainImage}
