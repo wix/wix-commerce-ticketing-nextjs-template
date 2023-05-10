@@ -40,7 +40,10 @@ export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
         });
       window.location.href = redirectSession!.fullUrl!;
     } catch (e: any) {
-      if (e.details.applicationError.code === 428) {
+      if (
+        e.details.applicationError.code ===
+        'SITE_MUST_ACCEPT_PAYMENTS_TO_CREATE_CHECKOUT'
+      ) {
         openModalNotPremium();
       }
       setRedirecting(false);
