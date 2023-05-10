@@ -2,7 +2,7 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { products } from '@wix/stores';
 import { ProductOptions } from '../ProductOptions/ProductOptions';
-import { Accordion } from 'flowbite-react';
+import { Accordion, Flowbite } from 'flowbite-react';
 import { selectDefaultOptionFromProduct } from '../ProductOptions/helpers';
 import { useUI } from '../../Provider/context';
 import { useAddItemToCart } from '../../../hooks/useAddItemToCart';
@@ -127,21 +127,37 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
         dangerouslySetInnerHTML={{ __html: product.description ?? '' }}
       />
       <div className="mt-6">
-        <Accordion flush={true} arrowIcon={HiArrowDown}>
-          {product.additionalInfoSections!.map((info) => (
-            <Accordion.Panel key={info.title}>
-              <Accordion.Title>
-                <span className="text-sm">{info.title}</span>
-              </Accordion.Title>
-              <Accordion.Content>
-                <span
-                  className="text-sm"
-                  dangerouslySetInnerHTML={{ __html: info.description ?? '' }}
-                />
-              </Accordion.Content>
-            </Accordion.Panel>
-          ))}
-        </Accordion>
+        <Flowbite
+          theme={{
+            theme: {
+              accordion: {
+                content: { base: 'bg-transparent p-5' },
+                title: {
+                  heading: 'text-black',
+                  arrow: {
+                    base: 'text-black',
+                  },
+                },
+              },
+            },
+          }}
+        >
+          <Accordion flush={true} arrowIcon={HiArrowDown}>
+            {product.additionalInfoSections!.map((info) => (
+              <Accordion.Panel key={info.title}>
+                <Accordion.Title>
+                  <span className="text-sm">{info.title}</span>
+                </Accordion.Title>
+                <Accordion.Content>
+                  <span
+                    className="text-sm"
+                    dangerouslySetInnerHTML={{ __html: info.description ?? '' }}
+                  />
+                </Accordion.Content>
+              </Accordion.Panel>
+            ))}
+          </Accordion>
+        </Flowbite>
       </div>
     </>
   );
