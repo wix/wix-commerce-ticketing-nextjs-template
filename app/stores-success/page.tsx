@@ -49,6 +49,11 @@ export default async function Success({ searchParams }: any) {
               ,{' '}
               {
                 data.shippingInfo!.logistics!.shippingDestination!.address!
+                  .postalCode
+              }
+              ,{' '}
+              {
+                data.shippingInfo!.logistics!.shippingDestination!.address!
                   .country
               }
             </p>
