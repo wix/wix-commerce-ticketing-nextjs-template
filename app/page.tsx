@@ -11,8 +11,7 @@ export default async function Home() {
   try {
     const { items: collectionsItems } = await wixClient.collections
       .queryCollections()
-      // till eq is fixed
-      .ne('id' as any, '00000000-000000-000000-000000000001')
+      .ne('_id', '00000000-000000-000000-000000000001')
       .limit(3)
       .find();
     productsForCategories = await Promise.all(
