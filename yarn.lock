@@ -1020,14 +1020,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/stores@npm:^1.0.69":
-  version: 1.0.69
-  resolution: "@wix/stores@npm:1.0.69"
+"@wix/stores@npm:^1.0.70":
+  version: 1.0.70
+  resolution: "@wix/stores@npm:1.0.70"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: e7d7daf33df69cd4c9cb540f9686efea789f51bf36b049363092c8b06a90508816ec0e1ecd69238336f83f1c188f00f46cdea9615b44acb36d632c87f630ecd3
+  checksum: f43cc52c6590e2c69e79f197cfa2fcf6cd893aa1138e77edb70a103104ccfedeb926920df9730dda8b52bc8e30309f742971a7f097033da6cb398aadc6a03214
   languageName: node
   linkType: hard
 
@@ -5966,7 +5966,7 @@ __metadata:
     "@wix/ecom": ^1.0.78
     "@wix/events": ^1.0.35
     "@wix/redirects": ^1.0.13
-    "@wix/stores": ^1.0.69
+    "@wix/stores": ^1.0.70
     autoprefixer: ^10.4.13
     body-scroll-lock: ^4.0.0-beta.0
     cookie: ^0.5.0
