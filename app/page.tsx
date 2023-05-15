@@ -18,8 +18,7 @@ export default async function Home() {
       collectionsItems.map((collection) =>
         wixClient.products
           .queryProducts()
-          // till eq is fixed
-          .eq('collections.id' as any, collection._id)
+          .eq('collectionIds', collection._id)
           .limit(1)
           .find()
           .then((products) => ({
