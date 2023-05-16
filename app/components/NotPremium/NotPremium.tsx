@@ -9,7 +9,11 @@ export const NotPremium = () => {
 
   return (
     <React.Fragment>
-      <Modal show={displayNotPremiumModal} onClose={closeModalNotPremium}>
+      <Modal
+        show={displayNotPremiumModal}
+        onClose={closeModalNotPremium}
+        root={globalThis.document?.body}
+      >
         <Modal.Body>
           <div className="text-center">
             <h2 className="mb-6">We can not accept online orders right now</h2>

@@ -126,7 +126,11 @@ export const LoginModal = () => {
 
   return (
     <React.Fragment>
-      <Modal show={displayLoginModal} onClose={closeModal}>
+      <Modal
+        show={displayLoginModal}
+        onClose={closeModal}
+        root={globalThis.document?.body}
+      >
         <Modal.Body>
           <form onSubmit={(e) => submit(e)}>
             <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
@@ -149,8 +153,8 @@ export const LoginModal = () => {
                     aria-hidden="true"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     ></path>
                   </svg>
