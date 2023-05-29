@@ -6,6 +6,7 @@ import { useUI } from '@app/components/Provider/context';
 import { useWixClient } from '@app/hooks/useWixClient';
 import Cookies from 'js-cookie';
 import { WIX_REFRESH_TOKEN } from '@app/constants';
+import { LoginState } from '@wix/api-client';
 
 enum State {
   LOGIN = 'LOGIN',
@@ -54,13 +55,18 @@ export const LoginModal = () => {
     let response;
 
     if (state === State.RESET_PASSWORD) {
-      await wixClient.auth.sendResetPasswordMail(email, window.location.origin);
+      await wixClient.auth.sendPasswordResetEmail(
+        email,
+        window.location.origin
+      );
       setPending({ message: 'Password reset email sent', state: true });
       return;
     }
 
     if (state === State.EMAIL_VERIFICATION) {
-      response = await wixClient.auth.proceed({ code });
+      response = await wixClient.auth.processVerification({
+        verificationCode: code,
+      });
     } else if (state === State.LOGIN) {
       response = await wixClient.auth.login({
         email,
@@ -74,8 +80,10 @@ export const LoginModal = () => {
       });
     }
 
-    if (response.stateKind === 'success') {
-      const tokens = await wixClient.auth.complete(response.data.sessionToken!);
+    if (response.loginState === LoginState.SUCCESS) {
+      const tokens = await wixClient.auth.getMemberTokensForDirectLogin(
+        response.data.sessionToken!
+      );
       Cookies.set(WIX_REFRESH_TOKEN, JSON.stringify(tokens.refreshToken), {
         expires: 2,
       });
@@ -84,11 +92,11 @@ export const LoginModal = () => {
       return;
     }
 
-    if (response.stateKind === 'ownerApprovalRequired') {
+    if (response.loginState === LoginState.OWNER_APPROVAL_REQUIRED) {
       setPending({ message: 'Your account is pending approval', state: true });
-    } else if (response.stateKind === 'emailVerificationRequired') {
+    } else if (response.loginState === LoginState.EMAIL_VERIFICATION_REQUIRED) {
       setState(State.EMAIL_VERIFICATION);
-    } else if (response.stateKind === 'failure') {
+    } else if (response.loginState === LoginState.FAILURE) {
       if (response.errorCode === 'invalidPassword') {
         setPasswordInvalid(true);
       } else if (
