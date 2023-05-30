@@ -16,7 +16,7 @@
     "@types/js-cookie": "^3.0.3",
     "@wix/api-client": "^1.1.74",
     "@wix/ecom": "^1.0.78",
-    "@wix/events": "^1.0.35",
+    "@wix/events": "^1.0.87",
     "@wix/redirects": "^1.0.13",
     "@wix/stores": "^1.0.71",
     "body-scroll-lock": "^4.0.0-beta.0",
