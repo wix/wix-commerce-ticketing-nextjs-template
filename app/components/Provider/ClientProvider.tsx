@@ -5,6 +5,7 @@ import { ManagedUIContext } from './context';
 import { createClient, OAuthStrategy } from '@wix/api-client';
 import { collections, products } from '@wix/stores';
 import { currentCart } from '@wix/ecom';
+import { cart } from '@wix/ecom';
 import { wixEvents, checkout } from '@wix/events';
 import { redirects } from '@wix/redirects';
 import Cookies from 'js-cookie';
@@ -18,6 +19,7 @@ const wixClient = createClient({
     products,
     collections,
     currentCart,
+    cart,
     wixEvents,
     checkout,
     redirects,

@@ -1,0 +1,53 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { getRequestUrl } from '@app/utils/server-utils';
+import { getWixClient } from '@app/hooks/useWixClientServer';
+import { cart as cartTypes } from '@wix/ecom';
+
+export async function GET(
+  request: NextRequest,
+  {
+    params: { productId },
+  }: {
+    params: { productId: string };
+  }
+) {
+  const requestUrl = getRequestUrl(request);
+  const baseUrl = new URL('/', requestUrl).toString();
+  const { searchParams } = new URL(requestUrl);
+  const quantity = parseInt(searchParams.get('quantity') || '1', 10);
+  const wixClient = await getWixClient();
+  const { product } = await wixClient.products.getProduct(productId);
+  if (!product) {
+    return new Response('Product not found', {
+      status: 404,
+    });
+  }
+  const selectedOptions =
+    product?.productOptions?.reduce((acc, option) => {
+      acc[option.name!] = option.choices![0].description!;
+      return acc;
+    }, {} as Record<string, any>) ?? {};
+  const item = {
+    quantity,
+    catalogReference: {
+      catalogItemId: product._id!,
+      appId: '1380b703-ce81-ff05-f115-39571d94dfcd',
+      ...(Object.keys(selectedOptions).length && {
+        options: { options: selectedOptions },
+      }),
+    },
+  };
+  const cart = await wixClient.cart.createCart({ lineItems: [item] });
+  const checkout = await wixClient.cart.createCheckout(cart!._id!, {
+    channelType: cartTypes.ChannelType.WEB,
+  });
+  const { redirectSession } = await wixClient.redirects.createRedirectSession({
+    ecomCheckout: { checkoutId: checkout!.checkoutId! },
+    callbacks: {
+      postFlowUrl: baseUrl,
+      thankYouPageUrl: `${baseUrl}/stores-success`,
+      cartPageUrl: `${baseUrl}/cart`,
+    },
+  });
+  return NextResponse.redirect(redirectSession!.fullUrl!);
+}
