@@ -15,6 +15,9 @@ export async function GET(
   const baseUrl = new URL('/', requestUrl).toString();
   const { searchParams } = new URL(requestUrl);
   const quantity = parseInt(searchParams.get('quantity') || '1', 10);
+  const productOptions = JSON.parse(
+    searchParams.get('productOptions') || 'null'
+  );
   const wixClient = await getWixClient();
   const { product } = await wixClient.products.getProduct(productId);
   if (!product) {
@@ -23,18 +26,24 @@ export async function GET(
     });
   }
   const selectedOptions =
-    product?.productOptions?.reduce((acc, option) => {
-      acc[option.name!] = option.choices![0].description!;
-      return acc;
-    }, {} as Record<string, any>) ?? {};
+    productOptions ??
+    (product.manageVariants
+      ? { variantId: product.variants![0]._id }
+      : product?.productOptions?.length
+      ? {
+          options:
+            product?.productOptions?.reduce((acc, option) => {
+              acc[option.name!] = option.choices![0].description!;
+              return acc;
+            }, {} as Record<string, any>) ?? {},
+        }
+      : undefined);
   const item = {
     quantity,
     catalogReference: {
       catalogItemId: product._id!,
       appId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-      ...(Object.keys(selectedOptions).length && {
-        options: { options: selectedOptions },
-      }),
+      options: selectedOptions,
     },
   };
   const cart = await wixClient.cart.createCart({ lineItems: [item] });
