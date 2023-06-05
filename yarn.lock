@@ -853,14 +853,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/events@npm:^1.0.87":
-  version: 1.0.92
-  resolution: "@wix/events@npm:1.0.92"
+"@wix/events@npm:^1.0.93":
+  version: 1.0.93
+  resolution: "@wix/events@npm:1.0.93"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: f0aafa4b7b17756732554b0d1e4dc048b2f1528a4e86dac44f7fa8ff3a810ccb5c7f319e01fb1d0d9dafa3d39f6b944b3ee95da3b2775d1885f781f7b3a4db60
+  checksum: 17f124c6cc4275def8dbc3ce76f4a879b850669ddb9d16ecee4a441cb4a91e6a381173cb3acb984276835318f01952753b95e2edbbbdd005db6b34e6c014a9f3
   languageName: node
   linkType: hard
 
@@ -5963,7 +5963,7 @@ __metadata:
     "@types/react-dom": 18.0.8
     "@wix/api-client": ^1.1.74
     "@wix/ecom": ^1.0.78
-    "@wix/events": ^1.0.87
+    "@wix/events": ^1.0.93
     "@wix/redirects": ^1.0.13
     "@wix/stores": ^1.0.71
     autoprefixer: ^10.4.13
