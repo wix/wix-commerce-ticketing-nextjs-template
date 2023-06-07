@@ -11,6 +11,7 @@ export default async function StoresCategoryPage() {
   } catch (err) {
     console.error(err);
   }
+
   return (
     <div className="mx-auto">
       <div className="bg-black text-custom-1 text-center py-4 sm:py-10 sm:py-20 h-[450px] sm:h-[520px]">
@@ -25,7 +26,7 @@ export default async function StoresCategoryPage() {
         <div className="full-w overflow-hidden mx-auto text-center mt-[-200px] sm:mt-[-130px] px-10">
           <ul className="grid sm:grid-cols-3 gap-4 grid-flow-row">
             {items.map((item) => (
-              <li key={item._id} className="">
+              <li key={item._id} className="relative">
                 <a href={`/product-page/${item.slug}`}>
                   <Image
                     src={item.media?.mainMedia?.image?.url || PLACEHOLDER_IMAGE}
@@ -33,6 +34,21 @@ export default async function StoresCategoryPage() {
                     height={0}
                     alt={item.media?.mainMedia?.image?.altText || 'main image'}
                   />
+                  {!item.manageVariants && item.stock?.inStock ? (
+                    <a
+                      className="btn-main absolute -mt-10 left-0 cursor-pointer"
+                      href={`/api/quick-buy/${item._id}?quantity=1`}
+                    >
+                      Buy Now
+                    </a>
+                  ) : (
+                    <button
+                      className="btn-main absolute -mt-10 left-0 cursor-pointer"
+                      disabled
+                    >
+                      Out of Stock
+                    </button>
+                  )}
                   <div className="p-2 text-left">
                     <span>{item.name}</span>
                     <br />

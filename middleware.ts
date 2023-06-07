@@ -4,11 +4,18 @@ import { cart } from '@wix/ecom';
 import { WIX_REFRESH_TOKEN } from '@app/constants';
 
 export async function middleware(request: NextRequest) {
+  const requestHeaders = new Headers(request.headers);
+  const requestUrl = request.url;
+  requestHeaders.set('x-middleware-request-url', requestUrl);
   const cookies = request.cookies;
   if (cookies.get(WIX_REFRESH_TOKEN)) {
     return NextResponse.next();
   }
-  const res = NextResponse.next();
+  const res = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
   const wixClient = createClient({
     modules: { cart },
     auth: OAuthStrategy({ clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID! }),
