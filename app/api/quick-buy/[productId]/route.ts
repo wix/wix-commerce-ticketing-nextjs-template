@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getRequestUrl } from '@app/utils/server-utils';
 import { getWixClient } from '@app/hooks/useWixClientServer';
-import { cart as cartTypes } from '@wix/ecom';
+import { checkout as checkoutTypes } from '@wix/ecom';
 
 export async function GET(
   request: NextRequest,
@@ -46,12 +46,13 @@ export async function GET(
       options: selectedOptions,
     },
   };
-  const cart = await wixClient.cart.createCart({ lineItems: [item] });
-  const checkout = await wixClient.cart.createCheckout(cart!._id!, {
-    channelType: cartTypes.ChannelType.WEB,
+  const checkout = await wixClient.ecomCheckout.createCheckout({
+    lineItems: [item],
+    channelType: checkoutTypes.ChannelType.WEB,
   });
+
   const { redirectSession } = await wixClient.redirects.createRedirectSession({
-    ecomCheckout: { checkoutId: checkout!.checkoutId! },
+    ecomCheckout: { checkoutId: checkout!._id! },
     callbacks: {
       postFlowUrl: baseUrl,
       thankYouPageUrl: `${baseUrl}/stores-success`,
