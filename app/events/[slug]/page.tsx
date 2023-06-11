@@ -5,6 +5,7 @@ import { getWixClient } from '../../hooks/useWixClientServer';
 import { wixEvents } from '@wix/events';
 import { Schedule } from '../../components/Schedule/Schedule';
 import { TicketDefinitionExtended } from '../../types/ticket';
+import testIds from '@app/utils/test-ids';
 
 export default async function EventPage({ params }: any) {
   if (!params.slug) {
@@ -70,7 +71,12 @@ export default async function EventPage({ params }: any) {
                 ) || event.scheduling?.formatted}{' '}
                 | {event.location?.name}
               </span>
-              <h1 className="text-3xl sm:text-5xl my-2">{event.title}</h1>
+              <h1
+                data-testid={testIds.TICKET_DETAILS_PAGE.HEADER}
+                className="text-3xl sm:text-5xl my-2"
+              >
+                {event.title}
+              </h1>
               <h3 className="my-4 sm:my-6">{event.description}</h3>
               {event.registration?.status ===
                 wixEvents.RegistrationStatus.OPEN_TICKETS && (

@@ -3,6 +3,7 @@ import { getWixClient } from './hooks/useWixClientServer';
 import { wixEvents } from '@wix/events';
 import { products } from '@wix/stores';
 import { Events } from './components/Events/Events';
+import testIds from '@app/utils/test-ids';
 
 export default async function Home() {
   const wixClient = await getWixClient();
@@ -49,7 +50,10 @@ export default async function Home() {
       <div className="relative">
         <div className="flex sm:flex-row flex-col bg-zinc-900">
           <div className="basis-1/2 text-center sm:text-left relative">
-            <div className="px-10 sm:px-14 py-6 bg-site">
+            <div
+              className="px-10 sm:px-14 py-6 bg-site"
+              data-testid={testIds.HOME_PAGE.HEADER}
+            >
               <h1 className="text-5xl sm:text-[120px] leading-none animate-fade-in">
                 USA
                 <br /> SUMMER
