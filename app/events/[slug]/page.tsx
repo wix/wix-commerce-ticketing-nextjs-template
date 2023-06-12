@@ -53,7 +53,10 @@ export default async function EventPage({ params }: any) {
   return (
     <div className="mx-auto px-4 sm:px-14">
       {event ? (
-        <div className="full-w overflow-hidden max-w-6xl mx-auto">
+        <div
+          className="full-w overflow-hidden max-w-6xl mx-auto"
+          data-testid={testIds.TICKET_DETAILS_PAGE.CONTAINER}
+        >
           <div className="flex flex-col sm:flex-row gap-4 bg-zinc-900 text-white max-w-6xl sm:max-w-5xl items-lef sm:items-center mx-auto">
             <div className="basis-1/2">
               <WixMediaImage

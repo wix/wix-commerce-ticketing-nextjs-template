@@ -14,7 +14,28 @@ const ids = {
     SELECT_CTA: 'ticket-item.select.cta',
   },
   TICKET_DETAILS_PAGE: {
+    CONTAINER: 'ticket-details.container',
     HEADER: 'ticket-details.header',
+    TICKETS_NUMBER_PICKER: 'flowbite-tooltip-target',
+    TICKETS_NUMBER_OPTIONS: 'flowbite-tooltip',
+    CHECKOUT_CTA: 'ticket-details.checkout.cta',
+  },
+  SHOP_PAGE: {
+    HEADER: 'shop.header',
+  },
+  PRODUCT_LIST: {
+    CONTAINER: 'product-list.container',
+  },
+  PRODUCT_ITEM: {
+    CONTAINER: 'product-item.container',
+    PRODUCT_DETAILS_CTA: 'product-item.product-details.cta',
+    BUY_NOW_CTA: 'product-item.add-to-cart.cta',
+  },
+  PRODUCT_DETAILS: {
+    CONTAINER: 'product-details.container',
+    HEADER: 'product-details.header',
+    ADD_TO_CART_CTA: 'product-details.add-to-cart.cta',
+    BUY_NOW_CTA: 'product-details.buy-now.cta',
   },
 };
 
