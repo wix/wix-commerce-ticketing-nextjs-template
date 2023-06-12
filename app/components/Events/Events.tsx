@@ -3,6 +3,7 @@ import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import { getDatePart } from '@app/utils/date-formatter';
 import { wixEvents } from '@wix/events';
 import { useState } from 'react';
+import testIds from '@app/utils/test-ids';
 
 export const Events = ({ events }: { events: wixEvents.Event[] }) => {
   const [expendEventDescription, setExpendEventDescription] = useState(
@@ -10,13 +11,17 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
   );
 
   return (
-    <div className="px-8 sm:px-0 max-w-4xl mx-auto">
+    <div
+      className="px-8 sm:px-0 max-w-4xl mx-auto"
+      data-testid={testIds.TICKET_LIST.CONTAINER}
+    >
       <h1 className="uppercase text-4xl sm:text-7xl text-center sm:text-left">
         SHOWS
       </h1>
       <div className="py-10">
         {events!.map((event) => (
           <div
+            data-testid={testIds.TICKET_ITEM.CONTAINER}
             className="group/event flex border-b last:border-0 hover:border-purple-500 gap-4 sm:gap-8 flex-col sm:flex-row py-4 sm:py-0 transition-colors duration-300"
             key={event._id}
           >
@@ -109,6 +114,7 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
               </div>
             </div>
             <a
+              data-testid={testIds.TICKET_ITEM.SELECT_CTA}
               className="btn-main my-2 sm:my-10 rounded-2xl w-full text-center sm:w-auto h-fit min-w-fit"
               href={`/events/${event.slug}`}
             >

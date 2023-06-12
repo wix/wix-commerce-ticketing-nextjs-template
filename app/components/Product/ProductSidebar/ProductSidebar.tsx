@@ -10,6 +10,7 @@ import { HiArrowDown } from 'react-icons/hi';
 import { Quantity } from '../../Quantity/Quantity';
 import { ProductTag } from '../ProductTag/ProductTag';
 import { usePrice } from '../../../hooks/use-price';
+import testIds from '@app/utils/test-ids';
 
 interface ProductSidebarProps {
   product: products.Product;
@@ -132,6 +133,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
       </div>
       <div>
         <button
+          data-testid={testIds.PRODUCT_DETAILS.ADD_TO_CART_CTA}
           aria-label="Add to Cart"
           className="btn-main w-full my-1 rounded-2xl"
           type="button"
@@ -143,6 +145,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
         {isAvailableForPurchase ? (
           <div className="w-full pt-2">
             <a
+              data-testid={testIds.PRODUCT_DETAILS.BUY_NOW_CTA}
               className="btn-main w-full my-1 rounded-2xl block text-center"
               href={buyNowLink}
             >

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getWixClient } from '../hooks/useWixClientServer';
 import { products } from '@wix/stores';
 import { PLACEHOLDER_IMAGE } from '@app/constants';
+import testIds from '@app/utils/test-ids';
 
 export default async function StoresCategoryPage() {
   const wixClient = await getWixClient();
@@ -14,7 +15,10 @@ export default async function StoresCategoryPage() {
 
   return (
     <div className="mx-auto">
-      <div className="bg-black text-custom-1 text-center py-4 sm:py-10 sm:py-20 h-[450px] sm:h-[520px]">
+      <div
+        className="bg-black text-custom-1 text-center py-4 sm:py-10 sm:py-20 h-[450px] sm:h-[520px]"
+        data-testid={testIds.SHOP_PAGE.HEADER}
+      >
         <h1 className="uppercase text-3xl sm:text-6xl">Merch</h1>
         <p className="text-sm sm:text-base mx-auto px-8 sm:max-w-[50%] my-10">
           I’m a paragraph. I’m a great space to write about what makes the
@@ -23,11 +27,21 @@ export default async function StoresCategoryPage() {
         </p>
       </div>
       {items.length ? (
-        <div className="full-w overflow-hidden mx-auto text-center mt-[-200px] sm:mt-[-130px] px-10">
+        <div
+          className="full-w overflow-hidden mx-auto text-center mt-[-200px] sm:mt-[-130px] px-10"
+          data-testid={testIds.PRODUCT_LIST.CONTAINER}
+        >
           <ul className="grid sm:grid-cols-3 gap-4 grid-flow-row">
             {items.map((item) => (
-              <li key={item._id} className="relative">
-                <a href={`/product-page/${item.slug}`}>
+              <li
+                key={item._id}
+                className="relative"
+                data-testid={testIds.PRODUCT_ITEM.CONTAINER}
+              >
+                <a
+                  href={`/product-page/${item.slug}`}
+                  data-testid={testIds.PRODUCT_ITEM.PRODUCT_DETAILS_CTA}
+                >
                   <Image
                     src={item.media?.mainMedia?.image?.url || PLACEHOLDER_IMAGE}
                     width={566}
@@ -36,6 +50,7 @@ export default async function StoresCategoryPage() {
                   />
                   {!item.manageVariants && item.stock?.inStock ? (
                     <a
+                      data-testid={testIds.PRODUCT_ITEM.BUY_NOW_CTA}
                       className="btn-main absolute -mt-10 left-0 cursor-pointer"
                       href={`/api/quick-buy/${item._id}?quantity=1`}
                     >

@@ -1,8 +1,12 @@
 import './footer.css';
 import ScrollIntoView from '../ScrollIntoView/ScrollIntoView';
+import testIds from '@app/utils/test-ids';
 
 const Footer = () => (
-  <footer className="w-full m-h-56 bg-turquoise-100 leading-7">
+  <footer
+    className="w-full m-h-56 bg-turquoise-100 leading-7"
+    data-testid={testIds.LAYOUT.FOOTER}
+  >
     <ScrollIntoView hashName="#contact" />
     <div className="bg-black text-white text-center py-6">
       <h2 className="text-2xl sm:text-4xl font-bold">
