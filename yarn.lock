@@ -1051,13 +1051,13 @@ __metadata:
   linkType: hard
 
 "@wix/stores@npm:^1.0.71":
-  version: 1.0.71
-  resolution: "@wix/stores@npm:1.0.71"
+  version: 1.0.74
+  resolution: "@wix/stores@npm:1.0.74"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: 990fefb1cd53970893b5a2290c871926f6aaafb4ea04fef28791ca8c1a28d2f416c74d8cc4ea5eedaf3cc26f1b68f3390f56e0fb44bb45cc01488389d9390ede
+  checksum: 6df9774a60de060ea181c2159517f3a750c25fa37a620988225e3822ea575cb7b4c0313a6ce166bf3679385c690a7506df13cb98eb2b5b01d53a8128e969f962
   languageName: node
   linkType: hard
 
