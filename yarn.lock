@@ -659,18 +659,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.29.14":
-  version: 4.29.14
-  resolution: "@tanstack/query-core@npm:4.29.14"
-  checksum: 3f74b2a02a7ac3b5d5f01507dc5ed15af539257005fc299ae4e4ef578feb347ab737ed5beb542c809c8f2838ae4d8626f6bf5d7d134173e0b8504c0900d0d9f6
+"@tanstack/query-core@npm:4.29.15":
+  version: 4.29.15
+  resolution: "@tanstack/query-core@npm:4.29.15"
+  checksum: dc99d59a14acf47abdea9c80b038a1ad18531d309b98a91e89f7717f395f5b2ff54f73f6b6dcb3ac66f70f8b410827be5b06eb6f2bceff261287753829e606af
   languageName: node
   linkType: hard
 
 "@tanstack/react-query@npm:^4.18.0":
-  version: 4.29.14
-  resolution: "@tanstack/react-query@npm:4.29.14"
+  version: 4.29.15
+  resolution: "@tanstack/react-query@npm:4.29.15"
   dependencies:
-    "@tanstack/query-core": 4.29.14
+    "@tanstack/query-core": 4.29.15
     use-sync-external-store: ^1.2.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -681,7 +681,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 2444cd11dbbb9e6811e845505bd55d0f4b63f39f6067f5b3a65b18ed66d945128d84988df3b7aaae7adc5636fd0909af86bbc184b6101d395136f8bd14509593
+  checksum: de703806af4efd124f89f03f25d917c7f74329c1df82d2f293ff6fbd6bb259f656f9634203fcef5d2da3920c09dc35046aa9f1e84de3ed2ba84b44bb822b4784
   languageName: node
   linkType: hard
 
@@ -866,13 +866,13 @@ __metadata:
   linkType: hard
 
 "@wix/ecom@npm:^1.0.78":
-  version: 1.0.205
-  resolution: "@wix/ecom@npm:1.0.205"
+  version: 1.0.209
+  resolution: "@wix/ecom@npm:1.0.209"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: 9793988979b6592b806ccdf3fadf9aaaae7766f3fce19ac60f4fa0f09c5d011bf6795e6935266d7973e0a78fb23e57927453884d4b6bfab24ec374e1fc117233
+  checksum: ccb61d97f55b6b642ba320d84f72462258434a77ad403d4c12410243eb17bbf7bb7b060b02a2393c1ef9c803e02bb5a19adc8360d81fd728b0a952957c1cdd68
   languageName: node
   linkType: hard
 
@@ -1051,13 +1051,13 @@ __metadata:
   linkType: hard
 
 "@wix/stores@npm:^1.0.71":
-  version: 1.0.74
-  resolution: "@wix/stores@npm:1.0.74"
+  version: 1.0.75
+  resolution: "@wix/stores@npm:1.0.75"
   dependencies:
     "@wix/metro-runtime": ^1.0.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.0
     "@wix/sdk-types": ^1.0.0
-  checksum: 6df9774a60de060ea181c2159517f3a750c25fa37a620988225e3822ea575cb7b4c0313a6ce166bf3679385c690a7506df13cb98eb2b5b01d53a8128e969f962
+  checksum: aa7a1b7b10cadb8b3f821720a05a0f88caa9d219f42bb00ce61a6321e1f42533b52f9162eda9c39cdceca108d309f92a826a9716407f8b958b97d72d322d9392
   languageName: node
   linkType: hard
 
@@ -1557,7 +1557,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.6, classnames@npm:^2.3.2":
+"classnames@npm:^2.2.6":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
@@ -2583,19 +2583,19 @@ __metadata:
   linkType: hard
 
 "flowbite-react@npm:^0.4.4":
-  version: 0.4.7
-  resolution: "flowbite-react@npm:0.4.7"
+  version: 0.4.8
+  resolution: "flowbite-react@npm:0.4.8"
   dependencies:
     "@floating-ui/react": ^0.24.1
-    classnames: ^2.3.2
     flowbite: ^1.6.5
     react-icons: ^4.8.0
     react-indiana-drag-scroll: ^2.2.0
+    tailwind-merge: ^1.13.1
   peerDependencies:
     react: ^18
     react-dom: ^18
     tailwindcss: ^3
-  checksum: 8c598b180043d5f7e74a719654a8c2c3448ee2358e852707d36d23c06846b83cc012e50ebda0cd358d5924a86c89d37806b5b82df8bebfc3158991e4735a7afd
+  checksum: 998a9a3fde1372c7d51daeee072f4e0f9d154360e7b52ef75346244bff9c2bd94fdb916cae994a26c81203eadd5decb853af51a9d20bcec10a4153bf3052b572
   languageName: node
   linkType: hard
 
@@ -5488,6 +5488,13 @@ __metadata:
   version: 6.1.2
   resolution: "tabbable@npm:6.1.2"
   checksum: 1e2d9af4f172a3793f491bab10263c26903c2be6a5c4ab723d69d1ba2054828d22a50add9ba7fc42735468871d40054d906fa4f0a9dc2fbd4feff875e84c1a89
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^1.13.1":
+  version: 1.13.2
+  resolution: "tailwind-merge@npm:1.13.2"
+  checksum: 8f9de3bd1e6271f5980f863ab85e0103f062bf84d814d3188bf6870af7eb43725ea40493ef0693dedd652b668cbdfcd6544235b16b70d438ed20bca6118a9066
   languageName: node
   linkType: hard
 
