@@ -7,7 +7,7 @@ export const CartBag = () => {
   const { setSidebarView, toggleSidebar } = useUI();
   const { data, isLoading } = useCart();
   const itemsCount = !isLoading
-    ? data?.lineItems!.reduce(
+    ? data?.lineItems?.reduce(
         (count: number, item: cart.LineItem) => count + item.quantity!,
         0
       )
