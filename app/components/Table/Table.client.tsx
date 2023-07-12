@@ -375,7 +375,7 @@ export function TicketsTable({
                     </div>
                   </div>
                 ))}
-              {ticket.pricing?.pricingOptions?.options!.length! > 3 && (
+              {ticket.pricing?.pricingOptions?.options?.length! > 3 && (
                 <div className="whitespace-nowrap mt-6">
                   <div className="flex justify-between">
                     <button
