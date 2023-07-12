@@ -55,8 +55,8 @@ export async function GET(
     ecomCheckout: { checkoutId: checkout!._id! },
     callbacks: {
       postFlowUrl: baseUrl,
-      thankYouPageUrl: `${baseUrl}/stores-success`,
-      cartPageUrl: `${baseUrl}/cart`,
+      thankYouPageUrl: `${baseUrl}stores-success`,
+      cartPageUrl: `${baseUrl}cart`,
     },
   });
   return NextResponse.redirect(redirectSession!.fullUrl!);
