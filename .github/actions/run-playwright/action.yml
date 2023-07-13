@@ -51,11 +51,6 @@ runs:
             const repo = context.repo.repo;
             console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion});
             const jobName = context.job;
-            const artifacts = await github.rest.actions.listArtifactsForRepo({
-              owner,
-              repo,
-            });
-            console.log('artifacts', artifacts);
             const pullRequest = await github.rest.pulls.get({
               owner,
               repo,
@@ -91,6 +86,13 @@ runs:
               };
               github.rest.checks.update(checkInput);
             }
+          
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner,
+              repo,
+              run_id: runId,
+            });
+            console.log('artifacts', artifacts);
           
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
