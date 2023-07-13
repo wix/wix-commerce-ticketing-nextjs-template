@@ -40,7 +40,7 @@ runs:
         github-token: ${{ inputs.githubToken }}
         script: |
           // const conclusion = '${{ steps.playwright-e2e.outcome }}';
-          const conclusion = 'success';
+          const conclusion = 'failure';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
           console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion}); 
