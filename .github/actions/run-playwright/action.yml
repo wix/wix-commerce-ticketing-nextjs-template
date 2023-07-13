@@ -41,8 +41,8 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          console.log('Upload 1:', '${{ steps.playwright-report-artifact.outputs.artifact_download_url }}');
-          console.log('Upload 2:', '${{ steps.playwright-screenshots-artifact.outputs.artifact_url }}');
+          console.log('Upload 1:', '${{ steps.playwright-report-artifact }}');
+          console.log('Upload 2:', '${{ steps.playwright-screenshots-artifact }}');
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
