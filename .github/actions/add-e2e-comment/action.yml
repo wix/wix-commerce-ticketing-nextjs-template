@@ -1,4 +1,4 @@
-name: 'Store Playwright Results'
+name: 'Add Comment to PR (if applicable)'
 description: 'Store Playwright Results'
 inputs:
   githubToken:

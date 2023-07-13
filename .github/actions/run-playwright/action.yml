@@ -14,7 +14,7 @@ inputs:
     description: 'Pull request ID (optional)'
     required: false
 outputs:
-    conclusion:
+  conclusion:
     description: 'E2E result'
     required: true
 runs:
