@@ -53,7 +53,7 @@ runs:
           console.log('Update status check should run: ',prId && conclusion, {prId, conclusion}); 
           console.log('Args:', {prId, conclusion}); 
           if (prId && conclusion) {
-            const context = {
+            const checkInput = {
               owner: context.repo.owner,
               repo: context.repo.repo,
               check_run_id: `job/${{ github.job }}`,
@@ -64,13 +64,13 @@ runs:
                 summary: `Playwright E2E executed with conclusion: ${conclusion}`,
               },
             };
-            github.checks.update(context);
+            github.checks.update(checkInput);
           
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
               `E2E ${provider} results:`,
-              `[Playwright Report](https://github.com/${context.owner}/${context.repo}/actions/runs/${context.runId}/artifacts/playwright-report-${inputs.provider})`,
-              `[Screenshots](https://github.com/${context.owner}/${context.repo}/actions/runs/${context.runId}/artifacts/screenshots-${inputs.provider})`
+              `[Playwright Report](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${checkInput.check_run_id}/artifacts/playwright-report-${inputs.provider})`,
+              `[Screenshots](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${checkInput.check_run_id}/artifacts/screenshots-${inputs.provider})`
             ];
             const comment = artifactLinks.join('\n');
             github.issues.createComment({
