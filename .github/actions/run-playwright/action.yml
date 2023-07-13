@@ -39,6 +39,7 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
+          // const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const conclusion = 'success';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
@@ -49,18 +50,16 @@ runs:
             const repo = context.repo.repo;
             console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion});
             const jobName = context.job;
-            const [checksForPr, pullRequest] = await Promise.all([
-              github.rest.checks.listForRef({
-                owner: owner,
-                repo: repo,
-                pull_number: prNumber,
-              }),
-              github.rest.pulls.get({
-                owner,
-                repo,
-                pull_number: prNumber,
-              }),
-            ]);
+            const pullRequest = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: prNumber,
+            });
+            const checksForPr = await github.rest.checks.listForRef({
+              owner: owner,
+              repo: repo,
+              ref: pullRequest.data.head.ref,
+            });
 
             let checkRunId = null;
             for (const checkRun of checksForPr.data.check_runs) {
