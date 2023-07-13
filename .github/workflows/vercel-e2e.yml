@@ -4,9 +4,17 @@
 name: Vercel E2E
 on:
   deployment_status:
+  workflow_dispatch:
+    inputs:
+      deploymentUrl:
+        description: 'The deployment URL to test with'
+        required: true
+      prId:
+        description: 'Pull request number (optional)'
+        required: false
 jobs:
   vercel-e2e:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && contains(github.event.deployment_status.target_url, 'vercel-demo-wix-commerce') # TODO: change to your site name
+    if: github.event.inputs.deploymentUrl || (github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && contains(github.event.deployment_status.target_url, 'vercel-demo-wix-commerce')) # TODO: change to your site name
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +26,13 @@ jobs:
     - name: Install dependencies
       run: yarn
     - uses: ./.github/actions/setup-playwright
+    - name: Set Run with URL
+      id: setURL
+      run: |
+        echo "::set-output name=url::${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}"
     - uses: ./.github/actions/run-playwright
       with:
+        prId: ${{ github.event.inputs.prId }}
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'vercel'
-        provider-deployment-url: ${{ github.event.deployment_status.target_url }}
+        provider-deployment-url: ${{ steps.setURL.outputs.url }}
