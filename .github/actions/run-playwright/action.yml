@@ -92,11 +92,9 @@ runs:
             }
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
-              `| Name |  |`,
-              `|--------|----------|`,
-              `| Provider | ${provider}  |`,
-              `| Result | ${conclusion === 'success' ? ':green_circle:' : ':red_circle:'}  |`,
-              `| Summary | [Execution Summary](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
+              `| <h2>${conclusion === 'success' ? ':green_circle:' : ':red_circle:'} Playwright E2E for ${provider.toUpperCase()}</h2> |`,
+              `|----------|`,
+              `| [Execution Summary](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
             ];
             const comment = artifactLinks.join('\n');
             github.rest.issues.createComment({
