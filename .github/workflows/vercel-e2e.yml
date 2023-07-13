@@ -27,12 +27,12 @@ jobs:
       run: yarn
     - uses: ./.github/actions/setup-playwright
     - name: Set Run with URL
-      id: setURL
       run: |
-        echo "::set-output name=url::${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}"
+        echo "setting DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}"
+        echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}" >> $GITHUB_ENV
     - uses: ./.github/actions/run-playwright
       with:
         prId: ${{ github.event.inputs.prId }}
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'vercel'
-        provider-deployment-url: ${{ steps.setURL.outputs.url }}
+        provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
