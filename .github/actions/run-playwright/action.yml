@@ -35,7 +35,6 @@ runs:
         path: tests/e2e/__screenshots__/${{inputs.provider}}
         retention-days: 10
     - name: Update status check (manual run)
-      if: ${{ inputs.prId && steps.playwright-e2e.outputs.conclusion }}
       uses: actions/github-script@v4
       with:
         github-token: ${{ inputs.githubToken }}
@@ -43,7 +42,9 @@ runs:
           const conclusion = '${{ steps.playwright-e2e.outputs.conclusion }}';
           const prId = ${{ inputs.prId }};
           const provider = '${{ inputs.provider }}';
-          if (prId) {
+          console.log('Update status check should run: ',prId && conclusion, {pprId, conclusion}); 
+          console.log('Args:', {pprId, conclusion}); 
+          if (prId && conclusion) {
             const context = {
               owner: context.repo.owner,
               repo: context.repo.repo,
