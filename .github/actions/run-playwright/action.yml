@@ -83,7 +83,7 @@ runs:
                   summary: `Playwright E2E executed with conclusion: ${conclusion}`,
                 },
               };
-              github.rest.checkRuns.update(checkInput);
+              github.rest.checks.update(checkInput);
             }
           
             // Create a comment with the artifact links on the pull request
