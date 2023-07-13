@@ -96,7 +96,7 @@ runs:
               `## ${conclusion === 'success' ? ':green_circle:' : ':red_circle:'} Playwright E2E for ${provider.toUpperCase()}`,
               `| Name | Info    |`,
               `|------|---------|`,
-              `| Summary | [link](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
+              `| Summary | [Action Summary](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
               `| Site URL | [${deploymentUrl}](${deploymentUrl}) |`,
             ];
             const comment = artifactLinks.join('\n');
