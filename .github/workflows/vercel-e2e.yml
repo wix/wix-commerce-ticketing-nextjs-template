@@ -23,9 +23,9 @@ jobs:
       with:
         node-version: 16
         cache: 'yarn'
-#    - name: Install dependencies
-#      run: yarn
-#    - uses: ./.github/actions/setup-playwright
+    - name: Install dependencies
+      run: yarn
+    - uses: ./.github/actions/setup-playwright
     - name: Set Run with URL
       run: |
         echo "setting DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}"
