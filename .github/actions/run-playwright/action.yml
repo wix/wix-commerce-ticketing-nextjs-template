@@ -41,13 +41,12 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          console.log('Upload 1:', steps.playwright-report-artifact);
-          console.log('Upload 2:', steps.playwright-screenshots-artifact);
+          console.log('Upload 1:', '${{ steps.playwright-report-artifact.outputs.artifact_download_url }}');
+          console.log('Upload 2:', '${{ steps.playwright-screenshots-artifact.outputs.artifact_url }}');
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
           console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion}); 
-          console.log('Args:', {prNumber, conclusion}); 
           if (prNumber && conclusion) {
             const owner = context.repo.owner;
             const repo = context.repo.repo;
