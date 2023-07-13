@@ -28,8 +28,8 @@ jobs:
     - uses: ./.github/actions/setup-playwright
     - name: Set Run with URL
       run: |
-        echo "setting DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}"
-        echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}" >> $GITHUB_ENV
+        echo "setting DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}"
+        echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}" >> $GITHUB_ENV
     - uses: ./.github/actions/run-playwright
       with:
         prId: ${{ github.event.inputs.prId }}

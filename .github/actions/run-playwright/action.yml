@@ -18,7 +18,15 @@ runs:
   steps:
     - name: Run E2E Tests on Netlify URL
       id: playwright-e2e
-      run: REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e
+      run: |
+        REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e
+        exit_code=$?
+        # Store the result in an environment file
+        if [ $exit_code -eq 0 ]; then
+          echo "E2E_CONCLUSION=success" >> $GITHUB_ENV
+        else
+          echo "E2E_CONCLUSION=failure" >> $GITHUB_ENV
+        fi
       shell: bash
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ inputs.provider-deployment-url }}
@@ -39,8 +47,8 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          const conclusion = '${{ steps.playwright-e2e.outputs.conclusion }}';
-          const prId = ${{ inputs.prId }};
+          const conclusion = '${{ env.E2E_CONCLUSION }}';
+          const prId = '${{ inputs.prId }}';
           const provider = '${{ inputs.provider }}';
           console.log('Update status check should run: ',prId && conclusion, {prId, conclusion}); 
           console.log('Args:', {prId, conclusion}); 
