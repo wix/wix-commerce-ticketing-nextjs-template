@@ -90,7 +90,7 @@ runs:
             const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
               owner,
               repo,
-              run_id: 15025404458,
+              run_id: runId,
             });
             console.log('artifacts', artifacts);
           
