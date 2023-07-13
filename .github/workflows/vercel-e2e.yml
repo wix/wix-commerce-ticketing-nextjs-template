@@ -37,9 +37,3 @@ jobs:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         prNumber: ${{ github.event.inputs.prNumber }}
         provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
-    - uses: ./.github/actions/add-e2e-comment
-      with:
-        provider: 'vercel'
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
-        prNumber: ${{ github.event.inputs.prNumber }}
-        conclusion: ${{ steps.runPlaywright.outputs.conclusion }}
