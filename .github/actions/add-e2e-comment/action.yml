@@ -21,9 +21,10 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
+          const conclusion = '${{ inputs.conclusion }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
-          console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion}); 
+
           if (prNumber && conclusion) {
             const owner = context.repo.owner;
             const repo = context.repo.repo;
