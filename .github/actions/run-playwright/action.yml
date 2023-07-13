@@ -18,15 +18,7 @@ runs:
   steps:
     - name: Run E2E Tests on Netlify URL
       id: playwright-e2e
-      run: |
-        status=$(REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e)
-
-        # Store the result in an environment file
-        if [[ $status -eq 0 ]]; then
-          echo "E2E_CONCLUSION=success" >> $GITHUB_ENV
-        else
-          echo "E2E_CONCLUSION=failure" >> $GITHUB_ENV
-        fi
+      run: REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e
       shell: bash
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ inputs.provider-deployment-url }}
@@ -47,15 +39,17 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          const conclusion = '${{ env.E2E_CONCLUSION }}';
+          const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prId = '${{ inputs.prId }}';
           const provider = '${{ inputs.provider }}';
           console.log('Update status check should run: ',prId && conclusion, {prId, conclusion}); 
           console.log('Args:', {prId, conclusion}); 
           if (prId && conclusion) {
+            const owner = '${{ github.repository_owner }}';
+            const repo = '${{ github.repository }}';
             const checkInput = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner,
+              repo,
               check_run_id: `job/${{ github.job }}`,
               status: 'completed',
               conclusion: conclusion,
@@ -69,13 +63,13 @@ runs:
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
               `E2E ${provider} results:`,
-              `[Playwright Report](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${checkInput.check_run_id}/artifacts/playwright-report-${inputs.provider})`,
-              `[Screenshots](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${checkInput.check_run_id}/artifacts/screenshots-${inputs.provider})`
+              `[Playwright Report](https://github.com/${owner}/${repo}/actions/runs/${checkInput.check_run_id}/artifacts/playwright-report-${inputs.provider})`,
+              `[Screenshots](https://github.com/${owner}/${repo}/actions/runs/${checkInput.check_run_id}/artifacts/screenshots-${inputs.provider})`
             ];
             const comment = artifactLinks.join('\n');
             github.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              owner,
+              repo,
               issue_number: prId,
               body: comment
             });
