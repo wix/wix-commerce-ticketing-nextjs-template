@@ -34,7 +34,7 @@ jobs:
       run: |
         echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}" >> $GITHUB_ENV
     - uses: ./.github/actions/run-playwright
-      id: run_playwright
+      id: runPlaywright
       with:
         provider: 'netlify'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -45,4 +45,4 @@ jobs:
         provider: 'netlify'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         prNumber: ${{ github.event.inputs.prNumber || github.event.pull_request.number }}
-        conclusion: ${{ steps.run_playwright.outputs.conclusion }}
+        conclusion: ${{ steps.runPlaywright.outputs.conclusion }}

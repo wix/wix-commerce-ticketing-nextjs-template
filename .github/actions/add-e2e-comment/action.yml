@@ -21,7 +21,7 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          const conclusion = '${{ inputs.conclusion }}';
+          const conclusion = '${{ inputs.conclusion }}' || 'success';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
 
