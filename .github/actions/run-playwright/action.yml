@@ -47,10 +47,20 @@ runs:
           if (prId && conclusion) {
             const owner = '${{ github.repository_owner }}';
             const repo = '${{ github.repository }}';
+            console.log('Update status check should run: ',prId && conclusion, {prId, conclusion});
+            const pullRequest = github.rest.pulls.get({
+              owner,
+              repo,
+              pull_id: prId,
+            });
+            console.log('PR: ', pullRequest);
+              
+            console.log('PR ID: ', pullRequest.id);
             const checkInput = {
               owner,
               repo,
               check_run_id: `job/${{ github.job }}`,
+              pull_request_id: pullRequestId.id,
               status: 'completed',
               conclusion: conclusion,
               output: {
@@ -58,7 +68,7 @@ runs:
                 summary: `Playwright E2E executed with conclusion: ${conclusion}`,
               },
             };
-            github.checks.update(checkInput);
+            github.rest.checkRuns.update(checkInput);
           
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
@@ -67,10 +77,10 @@ runs:
               `[Screenshots](https://github.com/${owner}/${repo}/actions/runs/${checkInput.check_run_id}/artifacts/screenshots-${inputs.provider})`
             ];
             const comment = artifactLinks.join('\n');
-            github.issues.createComment({
+            github.rest.issues.createComment({
               owner,
               repo,
-              issue_number: prId,
+              issue_number: pullRequest.data.number,
               body: comment
             });
           }
