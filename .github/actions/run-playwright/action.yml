@@ -47,8 +47,9 @@ runs:
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
- 
+          
           if (prNumber && conclusion) {
+            core.setOutput('conclusion', conclusion);
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const jobName = context.job;
@@ -62,7 +63,7 @@ runs:
               repo: repo,
               ref: pullRequest.data.head.ref,
             });
-
+          
             let checkRunId = null;
             for (const checkRun of checksForPr.data.check_runs) {
               if (checkRun.name === jobName) {
@@ -71,7 +72,7 @@ runs:
                 break;
               }
             }
-            
+          
             if (checkRunId) {
               const checkInput = {
                 owner,
@@ -87,5 +88,4 @@ runs:
               };
               github.rest.checks.update(checkInput);
             }
-            core.setOutput('conclusion', conclusion);
           }

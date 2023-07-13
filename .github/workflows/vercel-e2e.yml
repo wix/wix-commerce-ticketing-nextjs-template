@@ -33,13 +33,13 @@ jobs:
     - uses: ./.github/actions/run-playwright
       id: run_playwright
       with:
-        prNumber: ${{ github.event.inputs.prNumber }}
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'vercel'
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        prNumber: ${{ github.event.inputs.prNumber }}
         provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
     - uses: ./.github/actions/add-e2e-comment
       with:
+        provider: 'vercel'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         prNumber: ${{ github.event.inputs.prNumber }}
         conclusion: ${{ steps.run_playwright.outputs.conclusion }}
-        provider: 'vercel'

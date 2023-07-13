@@ -37,13 +37,13 @@ jobs:
     - uses: ./.github/actions/run-playwright
       id: run_playwright
       with:
-        prNumber: ${{ github.event.inputs.prNumber || github.event.pull_request.number }}
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'netlify'
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        prNumber: ${{ github.event.inputs.prNumber || github.event.pull_request.number }}
         provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
     - uses: ./.github/actions/add-e2e-comment
       with:
+        provider: 'netlify'
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         prNumber: ${{ github.event.inputs.prNumber || github.event.pull_request.number }}
         conclusion: ${{ steps.run_playwright.outputs.conclusion }}
-        provider: 'netlify'
