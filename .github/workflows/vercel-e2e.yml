@@ -9,7 +9,7 @@ on:
       deploymentUrl:
         description: 'The deployment URL to test with'
         required: true
-      prId:
+      prNumber:
         description: 'Pull request number (optional)'
         required: false
 jobs:
@@ -32,7 +32,7 @@ jobs:
         echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}" >> $GITHUB_ENV
     - uses: ./.github/actions/run-playwright
       with:
-        prId: ${{ github.event.inputs.prId }}
+        prNumber: ${{ github.event.inputs.prNumber }}
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'vercel'
         provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
