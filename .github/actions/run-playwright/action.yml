@@ -94,8 +94,8 @@ runs:
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
               `<h2>${conclusion === 'success' ? ':green_circle:' : ':red_circle:'} Playwright E2E for ${provider.toUpperCase()}</h2>`,
-              `| Name | |`,
-              `|------|----|`,
+              `| Name | Info    |`,
+              `|------|---------|`,
               `| Summary | [link](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
               `| Site URL | [${deploymentUrl}](${deploymentUrl}) |`,
             ];
