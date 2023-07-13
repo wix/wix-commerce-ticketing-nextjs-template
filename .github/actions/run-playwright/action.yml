@@ -34,8 +34,8 @@ runs:
         name: screenshots-${{inputs.provider}}
         path: tests/e2e/__screenshots__/${{inputs.provider}}
         retention-days: 10
-    - name: Update status check (manual run)
-      uses: actions/github-script@v4
+    - uses: actions/github-script@v6
+      if: always()
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
