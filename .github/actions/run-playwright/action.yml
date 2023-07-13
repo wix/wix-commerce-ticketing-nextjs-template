@@ -87,9 +87,12 @@ runs:
           
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
-              `E2E ${provider} results:`,
-              `[Playwright Report](https://github.com/${owner}/${repo}/actions/runs/${checkRunId}/artifacts/playwright-report-${provider})`,
-              `[Screenshots](https://github.com/${owner}/${repo}/actions/runs/${checkRunId}/artifacts/screenshots-${provider})`
+              `| Name |  |`,
+              `|--------|----------|`,
+              `| Provider | ${provider}  |`,
+              `| Result | ${conclusion === 'success' ? ':green_circle:' : ':red_circle:'}  |`,
+              `| Playwright Report | [Playwright Report](https://github.com/${owner}/${repo}/actions/runs/${checkRunId}/artifacts/playwright-report-${provider}) |`,
+              `| Screenshots | [Screenshots](https://github.com/${owner}/${repo}/actions/runs/${checkRunId}/artifacts/screenshots-${provider}) |`
             ];
             const comment = artifactLinks.join('\n');
             github.rest.issues.createComment({
