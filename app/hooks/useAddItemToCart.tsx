@@ -24,20 +24,11 @@ async function addItemFromCart(
   const data = await wixClient.currentCart.addToCurrentCart({
     lineItems: [item],
   });
-
-  if (data?.cart?.lineItems?.length === 1) {
-    const { redirectSession } = await wixClient.redirects.createRedirectSession(
-      {
-        ecomCheckout: { checkoutId: '{checkoutId}' },
-        callbacks: {
-          postFlowUrl: window.location.origin,
-          thankYouPageUrl: `${window.location.origin}/stores-success`,
-          cartPageUrl: `${window.location.origin}/cart`,
-        },
-      }
-    );
-    await wixClient.currentCart.updateCurrentCart({
-      cartInfo: { checkoutUrl: redirectSession?.fullUrl },
+  if (!data?.cart?.checkoutUrl) {
+    void wixClient.currentCart.updateCurrentCart({
+      cartInfo: {
+        checkoutUrl: `${window.location.origin}/api/redirect-to-checkout?checkoutId={checkoutId}`,
+      },
     });
   }
   return data;

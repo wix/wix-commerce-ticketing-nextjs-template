@@ -50,6 +50,9 @@ export async function GET(
   const checkout = await wixClient.ecomCheckout.createCheckout({
     lineItems: [item],
     channelType: checkoutTypes.ChannelType.WEB,
+    checkoutInfo: {
+      checkoutUrl: `${baseUrl}api/redirect-to-checkout?checkoutId={checkoutId}`,
+    },
   });
 
   const { redirectSession } = await wixClient.redirects.createRedirectSession({
@@ -61,8 +64,5 @@ export async function GET(
     },
   });
 
-  await wixClient.ecomCheckout.updateCheckout(checkout._id!, {
-    checkoutUrl: redirectSession!.fullUrl!,
-  });
   return NextResponse.redirect(redirectSession!.fullUrl!);
 }
