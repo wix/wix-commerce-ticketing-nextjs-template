@@ -16,7 +16,6 @@ inputs:
 outputs:
   conclusion:
     description: 'E2E result'
-    required: true
 runs:
   using: "composite"
   steps:
