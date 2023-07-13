@@ -42,8 +42,8 @@ runs:
           const conclusion = '${{ steps.playwright-e2e.outputs.conclusion }}';
           const prId = ${{ inputs.prId }};
           const provider = '${{ inputs.provider }}';
-          console.log('Update status check should run: ',prId && conclusion, {pprId, conclusion}); 
-          console.log('Args:', {pprId, conclusion}); 
+          console.log('Update status check should run: ',prId && conclusion, {prId, conclusion}); 
+          console.log('Args:', {prId, conclusion}); 
           if (prId && conclusion) {
             const context = {
               owner: context.repo.owner,
