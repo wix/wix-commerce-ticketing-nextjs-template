@@ -41,7 +41,7 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          console.log('Upload 2:', '${{ fromJSON(steps.playwright-screenshots-artifact.outputs) }}');
+          console.log('Upload 2:', '${{ steps.playwright-screenshots-artifact.outputs }}');
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
