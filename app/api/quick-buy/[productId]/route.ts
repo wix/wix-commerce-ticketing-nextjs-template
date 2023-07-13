@@ -60,5 +60,9 @@ export async function GET(
       cartPageUrl: `${baseUrl}cart`,
     },
   });
+
+  await wixClient.ecomCheckout.updateCheckout(checkout._id!, {
+    checkoutUrl: redirectSession!.fullUrl!,
+  });
   return NextResponse.redirect(redirectSession!.fullUrl!);
 }
