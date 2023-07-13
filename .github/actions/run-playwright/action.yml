@@ -19,10 +19,10 @@ runs:
     - name: Run E2E Tests on Netlify URL
       id: playwright-e2e
       run: |
-        REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e
-        exit_code=$?
+        status=$(REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e)
+
         # Store the result in an environment file
-        if [ $exit_code -eq 0 ]; then
+        if [[ $status -eq 0 ]]; then
           echo "E2E_CONCLUSION=success" >> $GITHUB_ENV
         else
           echo "E2E_CONCLUSION=failure" >> $GITHUB_ENV
