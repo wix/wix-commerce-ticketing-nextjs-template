@@ -13,6 +13,10 @@ inputs:
   prNumber:
     description: 'Pull request ID (optional)'
     required: false
+outputs:
+    conclusion:
+    description: 'E2E result'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -44,12 +48,10 @@ runs:
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
-          console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion}); 
+ 
           if (prNumber && conclusion) {
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const runId = context.runId;
-            console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion});
             const jobName = context.job;
             const pullRequest = await github.rest.pulls.get({
               owner,
@@ -80,26 +82,11 @@ runs:
                 status: 'completed',
                 conclusion: conclusion,
                 output: {
-                  title: 'e2e ${provider}',
-                  summary: `Playwright E2E executed with conclusion: ${conclusion}`,
+                  title: `e2e ${provider}`,
+                  summary: `e2e ${provider}: ${conclusion}`,
                 },
               };
               github.rest.checks.update(checkInput);
             }
-          
-            // Create a comment with the artifact links on the pull request
-            const artifactLinks = [
-              `| Name |  |`,
-              `|--------|----------|`,
-              `| Provider | ${provider}  |`,
-              `| Result | ${conclusion === 'success' ? ':green_circle:' : ':red_circle:'}  |`,
-              `| Summary | [Execution Summary](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
-            ];
-            const comment = artifactLinks.join('\n');
-            github.rest.issues.createComment({
-              owner,
-              repo,
-              issue_number: pullRequest.data.number,
-              body: comment
-            });
+            core.setOutput('conclusion', conclusion);
           }

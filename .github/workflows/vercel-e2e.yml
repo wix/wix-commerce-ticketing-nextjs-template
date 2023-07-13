@@ -31,8 +31,15 @@ jobs:
         echo "setting DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}"
         echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || github.event.deployment_status.target_url }}" >> $GITHUB_ENV
     - uses: ./.github/actions/run-playwright
+      id: run-playwright
       with:
         prNumber: ${{ github.event.inputs.prNumber }}
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'vercel'
         provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
+    - uses: ./.github/actions/add-e2e-comment
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        prNumber: ${{ github.event.inputs.prNumber }}
+        conclusion: ${{ steps.run-playwright.outputs.conclusion }}
+        provider: 'vercel'
