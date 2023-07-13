@@ -87,21 +87,13 @@ runs:
               github.rest.checks.update(checkInput);
             }
           
-            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
-              owner,
-              repo,
-              run_id: runId,
-            });
-            console.log('artifacts', artifacts);
-          
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
               `| Name |  |`,
               `|--------|----------|`,
               `| Provider | ${provider}  |`,
               `| Result | ${conclusion === 'success' ? ':green_circle:' : ':red_circle:'}  |`,
-              `| Playwright Report | [Playwright Report](https://github.com/${owner}/${repo}/actions/runs/${checkRunId}/artifacts/playwright-report-${provider}) |`,
-              `| Screenshots | [Screenshots](https://github.com/${owner}/${repo}/actions/runs/${checkRunId}/artifacts/screenshots-${provider}) |`
+              `| Summary | [Execution Summary](https://github.com/${owner}/${repo}/actions/runs/${runId}/) |`,
             ];
             const comment = artifactLinks.join('\n');
             github.rest.issues.createComment({
