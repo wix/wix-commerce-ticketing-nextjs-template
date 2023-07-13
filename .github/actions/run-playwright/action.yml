@@ -10,7 +10,7 @@ inputs:
   githubToken:
     description: 'GitHub Token'
     required: true
-  prId:
+  prNumber:
     description: 'Pull request ID (optional)'
     required: false
 runs:
@@ -39,36 +39,54 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
+          const { context, github } = require('@actions/github');
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
-          const prId = '${{ inputs.prId }}';
+          const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
-          console.log('Update status check should run: ',prId && conclusion, {prId, conclusion}); 
-          console.log('Args:', {prId, conclusion}); 
-          if (prId && conclusion) {
-            const owner = '${{ github.repository_owner }}';
-            const repo = '${{ github.repository }}';
-            console.log('Update status check should run: ',prId && conclusion, {prId, conclusion});
-            const pullRequest = github.rest.pulls.get({
-              owner,
-              repo,
-              pull_id: prId,
-            });
-            console.log('PR: ', pullRequest);
-              
-            console.log('PR ID: ', pullRequest.id);
-            const checkInput = {
-              owner,
-              repo,
-              check_run_id: `job/${{ github.job }}`,
-              pull_request_id: pullRequestId.id,
-              status: 'completed',
-              conclusion: conclusion,
-              output: {
-                title: 'e2e ${provider}',
-                summary: `Playwright E2E executed with conclusion: ${conclusion}`,
-              },
-            };
-            github.rest.checkRuns.update(checkInput);
+          console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion}); 
+          console.log('Args:', {prNumber, conclusion}); 
+          if (prNumber && conclusion) {
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            console.log('Update status check should run: ',prNumber && conclusion, {prNumber, conclusion});
+            const jobName = context.job;
+            const [checksForPr, pullRequest] = await Promise.all([
+              github.rest.checks.listForRef({
+                owner: owner,
+                repo: repo,
+                pull_number: prNumber,
+              }),
+              github.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: prNumber,
+              }),
+            ]);
+
+            let checkRunId = null;
+            for (const checkRun of checksForPr.data.check_runs) {
+              if (checkRun.name === jobName) {
+                checkRunId = checkRun.id;
+                console.log(`Found Check Run ID: ${checkRunId}`);
+                break;
+              }
+            }
+            
+            if (checkRunId) {
+              const checkInput = {
+                owner,
+                repo,
+                check_run_id: checkRunId,
+                pull_request: prNumber,
+                status: 'completed',
+                conclusion: conclusion,
+                output: {
+                  title: 'e2e ${provider}',
+                  summary: `Playwright E2E executed with conclusion: ${conclusion}`,
+                },
+              };
+              github.rest.checkRuns.update(checkInput);
+            }
           
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
