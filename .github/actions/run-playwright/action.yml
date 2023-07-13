@@ -7,10 +7,17 @@ inputs:
   provider:
     description: 'Which next deployment provider is used'
     required: true
+  githubToken:
+    description: 'GitHub Token'
+    required: true
+  prId:
+    description: 'Pull request ID (optional)'
+    required: false
 runs:
   using: "composite"
   steps:
     - name: Run E2E Tests on Netlify URL
+      id: playwright-e2e
       run: REMOTE_PROVIDER=${{ inputs.provider }} yarn e2e
       shell: bash
       env:
@@ -27,3 +34,40 @@ runs:
         name: screenshots-${{inputs.provider}}
         path: tests/e2e/__screenshots__/${{inputs.provider}}
         retention-days: 10
+    - name: Update status check (manual run)
+      if: ${{ inputs.prId && steps.playwright-e2e.outputs.conclusion }}
+      uses: actions/github-script@v4
+      with:
+        github-token: ${{ inputs.githubToken }}
+        script: |
+          const conclusion = '${{ steps.playwright-e2e.outputs.conclusion }}';
+          const prId = ${{ inputs.prId }};
+          const provider = '${{ inputs.provider }}';
+          if (prId) {
+            const context = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              check_run_id: `job/${{ github.job }}`,
+              status: 'completed',
+              conclusion: conclusion,
+              output: {
+                title: 'e2e ${provider}',
+                summary: `Playwright E2E executed with conclusion: ${conclusion}`,
+              },
+            };
+            github.checks.update(context);
+          
+            // Create a comment with the artifact links on the pull request
+            const artifactLinks = [
+              `E2E ${provider} results:`,
+              `[Playwright Report](https://github.com/${context.owner}/${context.repo}/actions/runs/${context.runId}/artifacts/playwright-report-${inputs.provider})`,
+              `[Screenshots](https://github.com/${context.owner}/${context.repo}/actions/runs/${context.runId}/artifacts/screenshots-${inputs.provider})`
+            ];
+            const comment = artifactLinks.join('\n');
+            github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prId,
+              body: comment
+            });
+          }

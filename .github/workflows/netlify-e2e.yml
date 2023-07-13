@@ -2,6 +2,14 @@ name: Netlify E2E
 on:
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      deploymentUrl:
+        description: 'The deployment URL to test with'
+        required: true
+      prId:
+        description: 'Pull request number (optional)'
+        required: false
 jobs:
   netlify-e2e:
     timeout-minutes: 60
@@ -16,12 +24,19 @@ jobs:
         run: yarn
       - uses: ./.github/actions/setup-playwright
       - name: Waiting for 200 from the Netlify Preview
+        if: ${{ !github.event.inputs.deploymentUrl }}
         uses: jakepartusch/wait-for-netlify-action@v1.4
         id: waitFor200
         with:
           site_name: "wix-commerce-ticketing-nextjs-templat" # TODO: change to your site name
           max_timeout: 120 # 2 Minutes, depends on your build pipeline duration
+      - name: Set Run with URL
+        id: setURL
+        run: |
+          echo "::set-output name=url::${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}"
       - uses: ./.github/actions/run-playwright
         with:
+          prId: ${{ github.event.inputs.prId || github.event.pull_request.number }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           provider: 'netlify'
-          provider-deployment-url: ${{ steps.waitFor200.outputs.url }}
+          provider-deployment-url: ${{ steps.setURL.outputs.url }}
