@@ -34,16 +34,16 @@ runs:
         name: screenshots-${{inputs.provider}}
         path: tests/e2e/__screenshots__/${{inputs.provider}}
         retention-days: 10
-    - name: Update status check (manual run)
-      uses: actions/github-script@v4
+    - uses: actions/github-script@v6
+      if: always()
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
           const conclusion = '${{ steps.playwright-e2e.outputs.conclusion }}';
           const prId = ${{ inputs.prId }};
           const provider = '${{ inputs.provider }}';
-          console.log('Update status check should run: ',prId && conclusion, {pprId, conclusion}); 
-          console.log('Args:', {pprId, conclusion}); 
+          console.log('Update status check should run: ',prId && conclusion, {prId, conclusion}); 
+          console.log('Args:', {prId, conclusion}); 
           if (prId && conclusion) {
             const context = {
               owner: context.repo.owner,
