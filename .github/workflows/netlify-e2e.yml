@@ -32,11 +32,11 @@ jobs:
         max_timeout: 120 # 2 Minutes, depends on your build pipeline duration
     - name: Set Run with URL
       run: |
-        echo "setting DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}"
         echo "DEPLOYMENT_URL=${{ github.event.inputs.deploymentUrl || steps.waitFor200.outputs.url }}" >> $GITHUB_ENV
     - uses: ./.github/actions/run-playwright
+      id: runPlaywright
       with:
-        prNumber: ${{ github.event.inputs.prNumber || github.event.pull_request.number }}
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
         provider: 'netlify'
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        prNumber: ${{ github.event.inputs.prNumber || github.event.pull_request.number }}
         provider-deployment-url: ${{ env.DEPLOYMENT_URL }}
