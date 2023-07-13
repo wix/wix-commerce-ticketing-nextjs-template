@@ -39,7 +39,6 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
-          const { context, github } = require('@actions/github');
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
