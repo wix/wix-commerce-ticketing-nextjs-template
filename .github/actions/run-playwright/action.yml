@@ -23,12 +23,14 @@ runs:
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ inputs.provider-deployment-url }}
     - uses: actions/upload-artifact@v3
+      id: playwright-report-artifact
       if: always()
       with:
         name: playwright-report-${{ inputs.provider }}
         path: playwright-report/
         retention-days: 10
     - uses: actions/upload-artifact@v3
+      id: playwright-screenshots-artifact
       if: always()
       with:
         name: screenshots-${{inputs.provider}}
@@ -39,6 +41,8 @@ runs:
       with:
         github-token: ${{ inputs.githubToken }}
         script: |
+          console.log('Upload 1:', steps.playwright-report-artifact);
+          console.log('Upload 2:', steps.playwright-screenshots-artifact);
           const conclusion = '${{ steps.playwright-e2e.outcome }}';
           const prNumber = '${{ inputs.prNumber }}';
           const provider = '${{ inputs.provider }}';
