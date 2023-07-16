@@ -25,10 +25,7 @@ test.describe('Tickets Page', () => {
     await navigateToTicketsPage(page);
     const numOfTicketsToSelect = '2';
 
-    await page
-      .getByTestId(testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_PICKER)
-      .first()
-      .click();
+    await (await page.$$('.flowbite-dropdown-target'))[0].click();
 
     await page
       .getByTestId(testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_OPTIONS)

@@ -16,8 +16,7 @@ const ids = {
   TICKET_DETAILS_PAGE: {
     CONTAINER: 'ticket-details.container',
     HEADER: 'ticket-details.header',
-    TICKETS_NUMBER_PICKER: 'flowbite-tooltip-target',
-    TICKETS_NUMBER_OPTIONS: 'flowbite-tooltip',
+    TICKETS_NUMBER_OPTIONS: 'flowbite-dropdown',
     CHECKOUT_CTA: 'ticket-details.checkout.cta',
   },
   SHOP_PAGE: {
