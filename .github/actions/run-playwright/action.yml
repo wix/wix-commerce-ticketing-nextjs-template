@@ -90,7 +90,7 @@ runs:
                 },
               };
               github.rest.checks.update(checkInput).catch((error) => {
-                console.log('Error updating check:', error, ' flow continues');
+                console.warn('Error updating check:', error, ' flow continues');
               });
             }
             // Create a comment with the artifact links on the pull request
@@ -108,6 +108,6 @@ runs:
               issue_number: pullRequest.data.number,
               body: comment
             }).catch((error) => {
-              console.log('Error creating comment:', error, ' flow continues');
+              console.warn('Error creating comment:', error, ' flow continues');
             });
           }
