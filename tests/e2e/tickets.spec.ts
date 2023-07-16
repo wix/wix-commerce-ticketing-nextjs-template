@@ -26,15 +26,15 @@ test.describe('Tickets Page', () => {
     const numOfTicketsToSelect = '2';
 
     await page.waitForSelector('.flowbite-dropdown-target');
-    // await page.waitForTimeout(3000);
+    await page.waitForTimeout(3000);
 
     await (await page.$$('.flowbite-dropdown-target')).pop()!.click();
 
-    await page.waitForTimeout(3000);
+    // await page.waitForTimeout(3000);
 
-    await page.waitForSelector(
-      `[data-testid="${testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_OPTIONS}"]`
-    );
+    // await page.waitForSelector(
+    //   `[data-testid="${testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_OPTIONS}"]`
+    // );
 
     await page
       .getByTestId(testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_OPTIONS)
