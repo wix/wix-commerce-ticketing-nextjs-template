@@ -27,6 +27,10 @@ test.describe('Tickets Page', () => {
 
     await (await page.$$('.flowbite-dropdown-target'))[0].click();
 
+    await page.waitForSelector(
+      `[data-testid="${testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_OPTIONS}"]`
+    );
+
     await page
       .getByTestId(testIds.TICKET_DETAILS_PAGE.TICKETS_NUMBER_OPTIONS)
       .getByText(numOfTicketsToSelect, { exact: true })
