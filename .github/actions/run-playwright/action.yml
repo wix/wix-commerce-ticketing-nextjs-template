@@ -89,7 +89,9 @@ runs:
                   summary: `e2e ${provider}: ${conclusion}`,
                 },
               };
-              github.rest.checks.update(checkInput);
+              github.rest.checks.update(checkInput).catch((error) => {
+                console.log('Error updating check:', error, ' flow continues');
+              });
             }
             // Create a comment with the artifact links on the pull request
             const artifactLinks = [
@@ -105,5 +107,7 @@ runs:
               repo,
               issue_number: pullRequest.data.number,
               body: comment
+            }).catch((error) => {
+              console.log('Error creating comment:', error, ' flow continues');
             });
           }
