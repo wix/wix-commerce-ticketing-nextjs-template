@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import { getWixClient } from '../hooks/useWixClientServer';
 import { products } from '@wix/stores';
-import { PLACEHOLDER_IMAGE } from '@app/constants';
 import testIds from '@app/utils/test-ids';
+import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 
 export default async function StoresCategoryPage() {
   const wixClient = await getWixClient();
@@ -31,7 +30,7 @@ export default async function StoresCategoryPage() {
           className="full-w overflow-hidden mx-auto text-center mt-[-200px] sm:mt-[-130px] px-10"
           data-testid={testIds.PRODUCT_LIST.CONTAINER}
         >
-          <ul className="grid sm:grid-cols-3 gap-4 grid-flow-row">
+          <ul className="grid sm:grid-cols-3 gap-8 grid-flow-row">
             {items.map((item) => (
               <li
                 key={item._id}
@@ -42,12 +41,16 @@ export default async function StoresCategoryPage() {
                   href={`/product-page/${item.slug}`}
                   data-testid={testIds.PRODUCT_ITEM.PRODUCT_DETAILS_CTA}
                 >
-                  <Image
-                    src={item.media?.mainMedia?.image?.url || PLACEHOLDER_IMAGE}
-                    width={566}
-                    height={0}
-                    alt={item.media?.mainMedia?.image?.altText || 'main image'}
-                  />
+                  <div className="h-auto max-w-full">
+                    <WixMediaImage
+                      media={item.media?.mainMedia?.image?.url}
+                      height={560}
+                      width={560}
+                      alt={
+                        item.media?.mainMedia?.image?.altText || 'main image'
+                      }
+                    />
+                  </div>
                   {!item.manageVariants && item.stock?.inStock ? (
                     <a
                       data-testid={testIds.PRODUCT_ITEM.BUY_NOW_CTA}
