@@ -25,6 +25,8 @@ test.describe('Tickets Page', () => {
     await navigateToTicketsPage(page);
     const numOfTicketsToSelect = '2';
 
+    await page.waitForSelector('.flowbite-dropdown-target');
+
     await (await page.$$('.flowbite-dropdown-target')).pop()!.click();
 
     await page.waitForSelector(
