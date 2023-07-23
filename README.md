@@ -10,13 +10,13 @@ To integrate the Wix Stores and Wix Events business solutions with the template,
 
 ### Step 1: Create a project on Wix
 
-Create a [new Wix Headless project](https://www.wix.com/intro/headless). For instructions on creating a Wix project, see [Create a Wix Headless Project](https://dev.wix.com/api/sdk/sdk-setup:-wix-headless/create-a-project).
+Create a [new Wix Headless project](https://www.wix.com/intro/headless). For instructions on creating a Wix project, see [Create a Wix Headless Project](https://dev.wix.com/api/sdk/setup:-wix-headless/create-a-project).
 
 When prompted to add functionalities to your new project, select eCommerce and Events:
 
 ![Apps Menu - select Bookings and Pricing Plans](docs/media/project-business-solutions.png)
 
-You can also add business solutions to your project later. See [Add Apps to a Project](https://dev.wix.com/api/sdk/guides/add-apps-to-a-project).
+You can also add business solutions to your project later. See [Add Apps to a Project](https://dev.wix.com/api/sdk/setup:-wix-headless/add-apps-to-a-project).
 
 ### Step 2: Set up the Wix business solutions you need
 
@@ -50,7 +50,7 @@ You can also view our [live demo site](https://netlify.commerce-ticketing-demo.w
 
 If you don't want to use quick-start deployment, begin by forking this repo to your git account.
 
-Read [Set Up Authorization](https://dev.wix.com/api/sdk/sdk-setup:-wix-headless/authorization) in the Wix SDK documentation for instructions on how to manually create an OAuth app and generate a client ID in the [Headless Settings](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2Foauth-apps-settings) menu of the Wix dashboard.
+Read [Set Up Authorization](https://dev.wix.com/api/sdk/auth:-headless-visitors/authorization:-create-an-oauth-app) in the Wix SDK documentation for instructions on how to manually create an OAuth app and generate a client ID in the [Headless Settings](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2Foauth-apps-settings) menu of the Wix dashboard.
 
 After creating an OAuth app, store the Client ID in a secure location.
 
@@ -106,7 +106,7 @@ To change the base URL for Wix-managed checkout pages, follow these steps in the
 2. Click **Rename Project**.
 3. Change the editable part of the URL in **Site Address (URL)** and click **Save**.
 
-Alternatively, you can [connect a custom domain](https://dev.wix.com/api/sdk/sdk-setup:-wix-headless/customize-domains).
+Alternatively, you can [connect a custom domain](https://dev.wix.com/api/sdk/auth:-headless-visitors/customize-domains).
 
 ## Part IV: Learn more about the tech stack
 
