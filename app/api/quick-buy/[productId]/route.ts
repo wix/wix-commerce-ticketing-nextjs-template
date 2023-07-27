@@ -50,9 +50,7 @@ export async function GET(
   const checkout = await wixClient.ecomCheckout.createCheckout({
     lineItems: [item],
     channelType: checkoutTypes.ChannelType.WEB,
-    checkoutInfo: {
-      checkoutUrl: `${baseUrl}api/redirect-to-checkout?checkoutId={checkoutId}`,
-    },
+    overrideCheckoutUrl: `${baseUrl}api/redirect-to-checkout?checkoutId={checkoutId}`,
   });
 
   const { redirectSession } = await wixClient.redirects.createRedirectSession({

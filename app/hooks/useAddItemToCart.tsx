@@ -24,10 +24,10 @@ async function addItemFromCart(
   const data = await wixClient.currentCart.addToCurrentCart({
     lineItems: [item],
   });
-  if (!data?.cart?.checkoutUrl) {
+  if (!data?.cart?.overrideCheckoutUrl) {
     void wixClient.currentCart.updateCurrentCart({
       cartInfo: {
-        checkoutUrl: `${window.location.origin}/api/redirect-to-checkout?checkoutId={checkoutId}`,
+        overrideCheckoutUrl: `${window.location.origin}/api/redirect-to-checkout?checkoutId={checkoutId}`,
       },
     });
   }
