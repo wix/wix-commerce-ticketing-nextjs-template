@@ -10,26 +10,26 @@ To integrate the Wix Stores and Wix Events business solutions with the template,
 
 ### Step 1: Create a project on Wix
 
-Create a [new Wix Headless project](https://www.wix.com/intro/headless). For instructions on creating a Wix project, see [Create a Wix Headless Project](https://dev.wix.com/api/sdk/setup:-wix-headless/create-a-project).
+Create a [new Wix Headless project](https://www.wix.com/intro/headless?referralInfo=netlify_github_music). For instructions on creating a Wix project, see [Create a Wix Headless Project](https://dev.wix.com/docs/go-headless/getting-started/setup/general-setup/create-a-project).
 
 When prompted to add functionalities to your new project, select eCommerce and Events:
 
 ![Apps Menu - select Bookings and Pricing Plans](docs/media/project-business-solutions.png)
 
-You can also add business solutions to your project later. See [Add Apps to a Project](https://dev.wix.com/api/sdk/setup:-wix-headless/add-apps-to-a-project).
+You can also add business solutions to your project later. See [Add Apps to a Project](https://dev.wix.com/docs/go-headless/getting-started/setup/general-setup/add-apps-to-a-project).
 
 ### Step 2: Set up the Wix business solutions you need
 
 See [Wix Stores](https://support.wix.com/en/wix-stores) and [Wix Events](https://support.wix.com/en/wix-events) for information on configuring the events and products your business needs.
 
-> ***Note:*** You can add Wix Events and Wix Stores functionality to your project for free, but you must [upgrade to a Business Premium Plan](https://support.wix.com/en/article/wix-stores-upgrading-your-stores-premium-plan) to accept orders and payments.
+> **_Note:_** You can add Wix Events and Wix Stores functionality to your project for free, but you must [upgrade to a Business Premium Plan](https://support.wix.com/en/article/wix-stores-upgrading-your-stores-premium-plan) to accept orders and payments.
 
 ### Step 3: Authorize the template
 
 There are 2 ways to authorize the template to access your Wix project:
 
-+ [Option A: Quick start deployment](#option-a-quick-start-deployment).
-+ [Option B: Create an OAuth client ID in the Wix dashboard](#option-b-create-an-oauth-client-id-in-the-wix-dashboard).
+- [Option A: Quick start deployment](#option-a-quick-start-deployment).
+- [Option B: Create an OAuth client ID in the Wix dashboard](#option-b-create-an-oauth-client-id-in-the-wix-dashboard).
 
 #### Option A: Quick start deployment
 
@@ -38,6 +38,7 @@ Click the quick start deployment link below to automatically authorize your temp
 Authentication credentials are automatically incorporated into the template, making it easy to get started coding and customizing.
 
 ##### Netlify
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/77dd7904-ed54-4adf-bd08-023b3f9287d7/deploy-status)](https://app.netlify.com/sites/wix-commerce-ticketing-nextjs-templat/deploys)
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://manage.wix.com/headless-funnel-nextjs/netlify?repository=https://github.com/wix/wix-commerce-ticketing-nextjs-template)
@@ -102,6 +103,7 @@ To enable the checkout page and accept payments using Wix business solutions, yo
 ### Step 2: Change the checkout redirect base URL (optional)
 
 To change the base URL for Wix-managed checkout pages, follow these steps in the :
+
 1. In the project [dashboard](https://www.wix.com/my-account/site-selector/?buttonText=Select%20Site&title=Select%20a%20Site&autoSelectOnSingleSite=true&actionUrl=https:%2F%2Fwww.wix.com%2Fdashboard%2F%7B%7BmetaSiteId%7D%7D%2Fhome), click **More Actions**.
 2. Click **Rename Project**.
 3. Change the editable part of the URL in **Site Address (URL)** and click **Save**.
@@ -114,17 +116,18 @@ To learn how to customize the template and add more functionality using Wix APIs
 
 This template is written in [Next.js](https://nextjs.org/docs) 13 using [Next.js app directory](https://beta.nextjs.org/docs/app-directory-roadmap). To learn more about `Next.js`, see the following resources:
 
-+ [Next.js documentation](https://nextjs.org/docs): Learn about Next.js features and APIs.
-+ [Learn Next.js](https://nextjs.org/learn): An interactive Next.js tutorial.
-+ [Next.js app directory](https://beta.nextjs.org/docs/app-directory-roadmap): Information on the Next.js App Router Roadmap.
+- [Next.js documentation](https://nextjs.org/docs): Learn about Next.js features and APIs.
+- [Learn Next.js](https://nextjs.org/learn): An interactive Next.js tutorial.
+- [Next.js app directory](https://beta.nextjs.org/docs/app-directory-roadmap): Information on the Next.js App Router Roadmap.
 
 Additionally, this template uses the following libraries and features:
-+ [React Server Components](https://nextjs.org/docs/advanced-features/react-18/server-components)
-+ [TypeScript](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html)
-+ [TanStack Query <sup>v4</sup>](https://tanstack.com/query/latest)
-+ [Tailwind CSS](https://tailwindcss.com/)
-+ [Flowbite](https://flowbite.com/)
-+ [Wix client SDK](https://dev.wix.com/api/sdk/introduction)
+
+- [React Server Components](https://nextjs.org/docs/advanced-features/react-18/server-components)
+- [TypeScript](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html)
+- [TanStack Query <sup>v4</sup>](https://tanstack.com/query/latest)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Flowbite](https://flowbite.com/)
+- [Wix client SDK](https://dev.wix.com/api/sdk/introduction)
 
 ## Part V: Deployment
 
@@ -145,6 +148,7 @@ Feel free to delete the one you are not using.<br>
 **Note**: there is a `# TODO: change to your site name` in both `YAML` files, please change the site name to the actual site name in the relevant deployment platform
 
 ### Screenshot Testing
+
 This repo includes the screenshots to validate the initial site provided by this repo. Obviously, changing it to your needs would break these tests.<br>
 To update the screenshots simply delete the failing ones under [location](./tests/e2e/__screenshots__), create a pull request and let the PR build fail, then head to `Netlify E2E / netlify-e2e`/`Vercel E2E / vercel-e2e` status checks, and under `Summary`, the screenshots generated by Playwright are available to download and update in the folder [location](./tests/e2e/__screenshots__)
 
