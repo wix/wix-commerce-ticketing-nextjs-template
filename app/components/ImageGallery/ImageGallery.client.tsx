@@ -1,8 +1,8 @@
 'use client';
 import { Carousel, Flowbite, useTheme } from 'flowbite-react';
 import { products } from '@wix/stores';
-import Image from 'next/image';
 import { PLACEHOLDER_IMAGE } from '@app/constants';
+import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 export function ImageGalleryClient({ items }: { items: products.MediaItem[] }) {
   const { theme } = useTheme();
   const images = items.length ? items : [{ image: { url: PLACEHOLDER_IMAGE } }];
@@ -22,9 +22,9 @@ export function ImageGalleryClient({ items }: { items: products.MediaItem[] }) {
       >
         <Carousel slide={false}>
           {images.map((media, index) => (
-            <Image
+            <WixMediaImage
               key={index}
-              src={media.image?.url || ''}
+              media={media.image?.url || ''}
               alt={media.image?.altText ?? ''}
               width={600}
               height={400}

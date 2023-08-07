@@ -1,6 +1,7 @@
 import { ProductSidebar } from '../../components/Product/ProductSidebar/ProductSidebar';
 import { ImageGalleryClient } from '../../components/ImageGallery/ImageGallery.client';
 import { getWixClient } from '../../hooks/useWixClientServer';
+import testIds from '@app/utils/test-ids';
 export default async function StoresCategoryPage({ params }: any) {
   if (!params.slug) {
     return;
@@ -15,7 +16,10 @@ export default async function StoresCategoryPage({ params }: any) {
   return (
     <div className="mx-auto px-14 mt-12">
       {product ? (
-        <div className="full-w overflow-hidden max-w-7xl mx-auto">
+        <div
+          className="full-w overflow-hidden max-w-7xl mx-auto"
+          data-testid={testIds.PRODUCT_DETAILS.CONTAINER}
+        >
           <div className="flex flex-col sm:flex-row gap-2">
             <div className="box-border flex flex-col basis-1/2">
               <div>

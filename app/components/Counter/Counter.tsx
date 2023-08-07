@@ -34,7 +34,7 @@ export function Counter({
             floating: {
               target: 'w-full sm:w-fit',
             },
-            inlineWrapper: `${theme.dropdown.inlineWrapper} border px-5 py-1 justify-between border-black w-full sm:w-24`,
+            inlineWrapper: `${theme.dropdown.inlineWrapper} border px-5 py-1 justify-between border-black w-full sm:w-24 flowbite-dropdown-target`,
             content: `${theme.dropdown.content} overflow-y-auto max-h-48 px-5 py-1`,
           },
         },

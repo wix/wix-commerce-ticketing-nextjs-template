@@ -1,6 +1,7 @@
 import { createClient, OAuthStrategy } from '@wix/api-client';
 import { collections, products } from '@wix/stores';
-import { orders, currentCart } from '@wix/ecom';
+import { orders, currentCart, checkout as ecomCheckout } from '@wix/ecom';
+import { redirects } from '@wix/redirects';
 import {
   wixEvents,
   checkout,
@@ -24,10 +25,12 @@ export const getWixClient = async () => {
       collections,
       wixEvents,
       checkout,
+      ecomCheckout,
       schedule,
       orders,
       eventOrders,
       currentCart,
+      redirects,
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,

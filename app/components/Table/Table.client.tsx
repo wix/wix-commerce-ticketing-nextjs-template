@@ -13,6 +13,7 @@ import { useWixClient } from '../../hooks/useWixClient';
 import { Badge } from 'flowbite-react';
 import { formatDateWithTime } from '../../utils/date-formatter';
 import { TicketDefinitionExtended } from '../../types/ticket';
+import testIds from '@app/utils/test-ids';
 
 export function TicketsTable({
   tickets,
@@ -374,7 +375,7 @@ export function TicketsTable({
                     </div>
                   </div>
                 ))}
-              {ticket.pricing?.pricingOptions?.options!.length! > 3 && (
+              {ticket.pricing?.pricingOptions?.options?.length! > 3 && (
                 <div className="whitespace-nowrap mt-6">
                   <div className="flex justify-between">
                     <button
@@ -440,6 +441,7 @@ export function TicketsTable({
         <div className="mt-6" key="checkout">
           <div className="whitespace-nowrap font-medium">
             <button
+              data-testid={testIds.TICKET_DETAILS_PAGE.CHECKOUT_CTA}
               onClick={createReservation}
               disabled={
                 Object.keys(selectedTickets).length === 0 || redirecting

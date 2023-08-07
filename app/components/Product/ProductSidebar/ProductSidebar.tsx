@@ -1,5 +1,5 @@
 'use client';
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { products } from '@wix/stores';
 import { ProductOptions } from '../ProductOptions/ProductOptions';
 import { Accordion, Flowbite } from 'flowbite-react';
@@ -10,11 +10,24 @@ import { HiArrowDown } from 'react-icons/hi';
 import { Quantity } from '../../Quantity/Quantity';
 import { ProductTag } from '../ProductTag/ProductTag';
 import { usePrice } from '../../../hooks/use-price';
+import testIds from '@app/utils/test-ids';
 
 interface ProductSidebarProps {
   product: products.Product;
   className?: string;
 }
+
+const createProductOptions = (
+  selectedOptions?: any,
+  selectedVariant?: products.Variant
+) =>
+  Object.keys(selectedOptions ?? {}).length
+    ? {
+        options: selectedVariant?._id
+          ? { variantId: selectedVariant!._id }
+          : { options: selectedOptions },
+      }
+    : undefined;
 
 export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
   const addItem = useAddItemToCart();
@@ -48,7 +61,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
     selectDefaultOptionFromProduct(product, setSelectedOptions);
   }, [product]);
 
-  const isButtonEnabled = useCallback(() => {
+  const isAvailableForPurchase = useMemo(() => {
     if (!product.manageVariants && product.stock?.inStock) {
       return true;
     }
@@ -67,11 +80,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
         catalogReference: {
           catalogItemId: product._id!,
           appId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-          ...(Object.keys(selectedOptions).length && {
-            options: selectedVariant._id
-              ? { variantId: selectedVariant._id }
-              : { options: selectedOptions },
-          }),
+          ...createProductOptions(selectedOptions, selectedVariant),
         },
       });
       setLoading(false);
@@ -80,6 +89,17 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
       setLoading(false);
     }
   };
+  const buyNowLink = useMemo(() => {
+    const productOptions = createProductOptions(
+      selectedOptions,
+      selectedVariant
+    );
+    return `/api/quick-buy/${product._id}?quantity=${quantity}&productOptions=${
+      productOptions
+        ? decodeURIComponent(JSON.stringify(productOptions.options))
+        : ''
+    }`;
+  }, [selectedOptions, selectedVariant, product._id, quantity]);
 
   return (
     <>
@@ -113,14 +133,26 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
       </div>
       <div>
         <button
+          data-testid={testIds.PRODUCT_DETAILS.ADD_TO_CART_CTA}
           aria-label="Add to Cart"
           className="btn-main w-full my-1 rounded-2xl"
           type="button"
           onClick={addToCart}
-          disabled={loading || !isButtonEnabled()}
+          disabled={loading || !isAvailableForPurchase}
         >
-          {isButtonEnabled() ? 'Add to Cart' : 'Out of Stock'}
+          {isAvailableForPurchase ? 'Add to Cart' : 'Out of Stock'}
         </button>
+        {isAvailableForPurchase ? (
+          <div className="w-full pt-2">
+            <a
+              data-testid={testIds.PRODUCT_DETAILS.BUY_NOW_CTA}
+              className="btn-main w-full my-1 rounded-2xl block text-center"
+              href={buyNowLink}
+            >
+              Buy Now
+            </a>
+          </div>
+        ) : null}
       </div>
       <p
         className="pb-4 break-words w-full max-w-xl mt-6"
