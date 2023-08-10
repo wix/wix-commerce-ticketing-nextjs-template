@@ -7,7 +7,7 @@
     "debug": "NODE_OPTIONS='--inspect' next dev -p 3005",
     "test": "yarn e2e",
     "e2e": "yarn playwright test",
-    "build": "node disable-captcha.js && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint --fix"
   },
@@ -29,7 +29,8 @@
     "jsurl": "^0.1.5",
     "next": "^13.4.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha-enterprise": "^1.0.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.34.3",

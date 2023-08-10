@@ -7,6 +7,8 @@ import { useWixClient } from '@app/hooks/useWixClient';
 import Cookies from 'js-cookie';
 import { WIX_REFRESH_TOKEN } from '@app/constants';
 import { LoginState } from '@wix/api-client';
+// @ts-ignore
+import ReCAPTCHA from 'react-google-recaptcha-enterprise';
 
 enum State {
   LOGIN = 'LOGIN',
@@ -27,6 +29,9 @@ export const LoginModal = () => {
   const [pending, setPending] = React.useState({ state: false, message: '' });
   const [passwordInvalid, setPasswordInvalid] = React.useState(false);
   const [emailInvalid, setEmailInvalid] = React.useState(false);
+  const [captcha, setCaptcha] = React.useState('');
+
+  const captchaRef = React.useRef<ReCAPTCHA>(null);
 
   const closeModal = () => {
     setState(State.LOGIN);
@@ -47,6 +52,7 @@ export const LoginModal = () => {
 
   useEffect(() => {
     resetState();
+    captchaRef.current?.reset();
   }, [state]);
 
   const submit = async (event: React.FormEvent) => {
@@ -76,6 +82,7 @@ export const LoginModal = () => {
       response = await wixClient.auth.register({
         email,
         password,
+        captchaTokens: { recaptchaToken: captcha },
         profile: { nickname: username },
       });
     }
@@ -111,6 +118,7 @@ export const LoginModal = () => {
         });
       }
     }
+    captchaRef.current?.reset();
     setLoading(false);
   };
 
@@ -246,14 +254,24 @@ export const LoginModal = () => {
                     </div>
                   ) : null}
                   {state === State.LOGIN ? (
-                    <div className="flex justify-between">
-                      <a
-                        onClick={() => setState(State.RESET_PASSWORD)}
-                        className="text-sm text-blue-700 hover:underline"
-                      >
-                        Forgot password?
-                      </a>
-                    </div>
+                    <>
+                      <div className="flex justify-between">
+                        <a
+                          onClick={() => setState(State.RESET_PASSWORD)}
+                          className="text-sm text-blue-700 hover:underline"
+                        >
+                          Forgot password?
+                        </a>
+                      </div>
+                    </>
+                  ) : null}
+                  {state === State.SIGNUP ? (
+                    <ReCAPTCHA
+                      size="normal"
+                      ref={captchaRef}
+                      sitekey={wixClient.auth.captchaVisibleSiteKey}
+                      onChange={setCaptcha}
+                    />
                   ) : null}
                   <div className="w-full">
                     <Button
