@@ -4,7 +4,7 @@ import { createContext, ReactNode } from 'react';
 import { ManagedUIContext } from './context';
 import { createClient, OAuthStrategy } from '@wix/api-client';
 import { collections, products } from '@wix/stores';
-import { currentCart, backInStockNotification } from '@wix/ecom';
+import { currentCart, backInStockNotifications } from '@wix/ecom';
 import { wixEvents, checkout } from '@wix/events';
 import { redirects } from '@wix/redirects';
 import Cookies from 'js-cookie';
@@ -18,7 +18,7 @@ const wixClient = createClient({
     products,
     collections,
     currentCart,
-    backInStockNotification,
+    backInStockNotifications,
     wixEvents,
     checkout,
     redirects,

@@ -28,7 +28,7 @@ export const BackInStockFormModal = ({
     event.preventDefault();
     setLoading(true);
     try {
-      await wixClient.backInStockNotification.createBackInStockNotificationRequest(
+      await wixClient.backInStockNotifications.createBackInStockNotificationRequest(
         {
           email,
           itemUrl: window.location.href,
@@ -39,11 +39,9 @@ export const BackInStockFormModal = ({
           },
         },
         {
-          itemDetails: {
-            price: product.price?.price?.toFixed(),
-            name: product.name!,
-            image: product.media?.mainMedia?.image?.url,
-          },
+          price: product.price?.price?.toFixed(),
+          name: product.name!,
+          image: product.media?.mainMedia?.image?.url,
         }
       );
       closeModalBackInStock();
