@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getRequestUrl } from '@app/utils/server-utils';
 import { getWixClient } from '@app/hooks/useWixClientServer';
 import { checkout as checkoutTypes } from '@wix/ecom';
+import { STORES_APP_ID } from '@app/constants';
 
 export async function GET(
   request: NextRequest,
@@ -42,7 +43,7 @@ export async function GET(
     quantity,
     catalogReference: {
       catalogItemId: product._id!,
-      appId: '1380b703-ce81-ff05-f115-39571d94dfcd',
+      appId: STORES_APP_ID,
       options: selectedOptions,
     },
   };
