@@ -2,7 +2,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createContext, ReactNode } from 'react';
 import { ManagedUIContext } from './context';
-import { createClient, OAuthStrategy } from '@wix/api-client';
+import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
 import { currentCart, backInStockNotifications } from '@wix/ecom';
 import { wixEvents, checkout } from '@wix/events';
