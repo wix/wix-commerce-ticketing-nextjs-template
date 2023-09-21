@@ -1,12 +1,12 @@
 'use client';
 import { ChangeEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePrice } from '../../hooks/use-price';
+import { formatPrice } from '@app/utils/price-formatter';
 import { cart } from '@wix/ecom';
-import { useUI } from '../Provider/context';
-import { Quantity } from '../Quantity/Quantity';
-import { useUpdateCart } from '../../hooks/useUpdateCart';
-import { useRemoveItemFromCart } from '../../hooks/useRemoveItemFromCart';
+import { useUI } from '@app/components/Provider/context';
+import { Quantity } from '@app/components/Quantity/Quantity';
+import { useUpdateCart } from '@app/hooks/useUpdateCart';
+import { useRemoveItemFromCart } from '@app/hooks/useRemoveItemFromCart';
 import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 
 export const CartItem = ({
@@ -25,7 +25,7 @@ export const CartItem = ({
   const removeItem = useRemoveItemFromCart();
   const updateCartMutation = useUpdateCart();
 
-  const price = usePrice({
+  const price = formatPrice({
     amount: Number.parseFloat(item.price?.amount!) * item.quantity!,
     baseAmount: Number.parseFloat(item.price?.amount!) * item.quantity!,
     currencyCode,
@@ -68,12 +68,12 @@ export const CartItem = ({
         <div className="w-20 h-20 bg-violet relative overflow-hidden z-0">
           {slug ? (
             <Link href={`/product-page/${slug}`}>
-              <div onClick={() => closeSidebarIfPresent()}>
-                <WixMediaImage width={150} height={150} media={item.image!} />
+              <div onClick={closeSidebarIfPresent}>
+                <WixMediaImage width={150} height={150} media={item.image} />
               </div>
             </Link>
           ) : (
-            <WixMediaImage width={150} height={150} media={item.image!} />
+            <WixMediaImage width={150} height={150} media={item.image} />
           )}
         </div>
         <div className="flex-1">
@@ -117,7 +117,7 @@ export const CartItem = ({
           )}
         </div>
         {!hideButtons && (
-          <button className="flex" onClick={() => handleRemove()}>
+          <button className="flex" onClick={handleRemove}>
             <svg
               fill="none"
               className="w-4 h-4"

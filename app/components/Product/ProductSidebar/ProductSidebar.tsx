@@ -1,15 +1,15 @@
 'use client';
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { products } from '@wix/stores';
-import { ProductOptions } from '../ProductOptions/ProductOptions';
 import { Accordion, Flowbite } from 'flowbite-react';
-import { selectDefaultOptionFromProduct } from '../ProductOptions/helpers';
-import { useUI } from '../../Provider/context';
-import { useAddItemToCart } from '../../../hooks/useAddItemToCart';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { HiArrowDown } from 'react-icons/hi';
-import { Quantity } from '../../Quantity/Quantity';
-import { ProductTag } from '../ProductTag/ProductTag';
-import { usePrice } from '../../../hooks/use-price';
+import { products } from '@wix/stores';
+import { ProductOptions } from '@app/components/Product/ProductOptions/ProductOptions';
+import { selectDefaultOptionFromProduct } from '@app/components/Product/ProductOptions/helpers';
+import { ProductTag } from '@app/components/Product/ProductTag/ProductTag';
+import { formatPrice } from '@app/utils/price-formatter';
+import { useUI } from '@app/components/Provider/context';
+import { useAddItemToCart } from '@app/hooks/useAddItemToCart';
+import { Quantity } from '@app/components/Quantity/Quantity';
 import testIds from '@app/utils/test-ids';
 
 interface ProductSidebarProps {
@@ -37,7 +37,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
   const [selectedVariant, setSelectedVariant] = useState<products.Variant>({});
   const [selectedOptions, setSelectedOptions] = useState<any>({});
 
-  const price = usePrice({
+  const price = formatPrice({
     amount: selectedVariant?.variant?.priceData?.price || product.price!.price!,
     currencyCode: product.price!.currency!,
   });
@@ -55,7 +55,12 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
       setSelectedVariant(variant!);
     }
     setQuantity(1);
-  }, [selectedOptions]);
+  }, [
+    selectedOptions,
+    product.manageVariants,
+    product.productOptions?.length,
+    product.variants,
+  ]);
 
   useEffect(() => {
     selectDefaultOptionFromProduct(product, setSelectedOptions);
