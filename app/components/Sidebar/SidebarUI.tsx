@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Sidebar } from './Sidebar';
-import { useUI } from '../Provider/context';
+import { useUI } from '@app/components/Provider/context';
 import { CartView } from '@app/components/Cart/CartView';
 
 export const SidebarUI: React.FC = () => {

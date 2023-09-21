@@ -28,9 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ children, onClose }) => {
       disableBodyScroll(contentElement, { reserveScrollBarGap: true });
     }
 
-    return () => {
-      clearAllBodyScrollLocks();
-    };
+    return () => clearAllBodyScrollLocks();
   }, []);
 
   return (

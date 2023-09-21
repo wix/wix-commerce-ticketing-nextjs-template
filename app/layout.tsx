@@ -1,8 +1,8 @@
 import './globals.css';
-import Footer from './components/Layout/Footer';
-import Header from './components/Layout/Header';
-import { ClientProvider } from './components/Provider/ClientProvider';
-import { SidebarUI } from './components/Sidebar/SidebarUI';
+import Footer from '@app/components/Layout/Footer';
+import Header from '@app/components/Layout/Header';
+import { ClientProvider } from '@app/components/Provider/ClientProvider';
+import { SidebarUI } from '@app/components/Sidebar/SidebarUI';
 import { NotPremium } from '@app/components/NotPremium/NotPremium';
 import { LoginModal } from '@app/components/LoginModal/LoginModal';
 

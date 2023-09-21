@@ -1,6 +1,6 @@
 'use client';
-import Swatch from '../Swatch/Swatch';
-import { Option } from '../Option/Option';
+import Swatch from '@app/components/Product/Swatch/Swatch';
+import { Option } from '@app/components/Product/Option/Option';
 import { products } from '@wix/stores';
 
 interface ProductOptionsProps {

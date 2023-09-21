@@ -1,10 +1,10 @@
-import { WixMediaImage } from '../../components/Image/WixMediaImage';
-import { formatDate } from '../../utils/date-formatter';
-import { TicketsTable } from '../../components/Table/Table.client';
-import { getWixClient } from '../../hooks/useWixClientServer';
+import { WixMediaImage } from '@app/components/Image/WixMediaImage';
+import { formatDate } from '@app/utils/date-formatter';
+import { TicketsTable } from '@app/components/Table/Table.client';
+import { getWixClient } from '@app/hooks/useWixClientServer';
 import { wixEvents } from '@wix/events';
-import { Schedule } from '../../components/Schedule/Schedule';
-import { TicketDefinitionExtended } from '../../types/ticket';
+import { Schedule } from '@app/components/Schedule/Schedule';
+import { TicketDefinitionExtended } from '@app/types/ticket';
 import testIds from '@app/utils/test-ids';
 
 export default async function EventPage({ params }: any) {
