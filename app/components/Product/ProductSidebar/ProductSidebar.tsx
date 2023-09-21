@@ -98,7 +98,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
   };
 
   const notifyWhenAvailable = async () => {
-    openModalBackInStock(product);
+    openModalBackInStock();
   };
 
   const buyNowLink = useMemo(() => {
