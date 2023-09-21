@@ -6,7 +6,7 @@ import { useUI } from '@app/components/Provider/context';
 import { useWixClient } from '@app/hooks/useWixClient';
 import Cookies from 'js-cookie';
 import { WIX_REFRESH_TOKEN } from '@app/constants';
-import { LoginState } from '@wix/api-client';
+import { LoginState } from '@wix/sdk';
 // @ts-ignore
 import ReCAPTCHA from 'react-google-recaptcha-enterprise';
 

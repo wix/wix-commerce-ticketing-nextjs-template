@@ -11,6 +11,8 @@ import { useUI } from '@app/components/Provider/context';
 import { useAddItemToCart } from '@app/hooks/useAddItemToCart';
 import { Quantity } from '@app/components/Quantity/Quantity';
 import testIds from '@app/utils/test-ids';
+import { BackInStockFormModal } from '@app/components/BackInStockFormModal/BackInStockFormModal';
+import { STORES_APP_ID } from '@app/constants';
 
 interface ProductSidebarProps {
   product: products.Product;
@@ -31,7 +33,7 @@ const createProductOptions = (
 
 export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
   const addItem = useAddItemToCart();
-  const { openSidebar } = useUI();
+  const { openSidebar, openModalBackInStock } = useUI();
   const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedVariant, setSelectedVariant] = useState<products.Variant>({});
@@ -84,7 +86,7 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
         quantity,
         catalogReference: {
           catalogItemId: product._id!,
-          appId: '1380b703-ce81-ff05-f115-39571d94dfcd',
+          appId: STORES_APP_ID,
           ...createProductOptions(selectedOptions, selectedVariant),
         },
       });
@@ -94,6 +96,11 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
       setLoading(false);
     }
   };
+
+  const notifyWhenAvailable = async () => {
+    openModalBackInStock(product);
+  };
+
   const buyNowLink = useMemo(() => {
     const productOptions = createProductOptions(
       selectedOptions,
@@ -136,18 +143,18 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
           />
         </div>
       </div>
-      <div>
-        <button
-          data-testid={testIds.PRODUCT_DETAILS.ADD_TO_CART_CTA}
-          aria-label="Add to Cart"
-          className="btn-main w-full my-1 rounded-2xl"
-          type="button"
-          onClick={addToCart}
-          disabled={loading || !isAvailableForPurchase}
-        >
-          {isAvailableForPurchase ? 'Add to Cart' : 'Out of Stock'}
-        </button>
-        {isAvailableForPurchase ? (
+      {isAvailableForPurchase ? (
+        <div>
+          <button
+            data-testid={testIds.PRODUCT_DETAILS.ADD_TO_CART_CTA}
+            aria-label="Add to Cart"
+            className="btn-main w-full my-1 rounded-2xl"
+            type="button"
+            onClick={addToCart}
+            disabled={loading}
+          >
+            Add to Cart
+          </button>
           <div className="w-full pt-2">
             <a
               data-testid={testIds.PRODUCT_DETAILS.BUY_NOW_CTA}
@@ -157,8 +164,26 @@ export const ProductSidebar: FC<ProductSidebarProps> = ({ product }) => {
               Buy Now
             </a>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
+      {!isAvailableForPurchase ? (
+        <div>
+          <BackInStockFormModal
+            product={product}
+            variantId={selectedVariant._id}
+          />
+          <button
+            data-testid={testIds.PRODUCT_DETAILS.ADD_TO_CART_CTA}
+            aria-label="Notify When Available"
+            className="btn-main w-full my-1 rounded-2xl"
+            type="button"
+            onClick={notifyWhenAvailable}
+            disabled={loading}
+          >
+            Notify When Available
+          </button>
+        </div>
+      ) : null}
       <p
         className="pb-4 break-words w-full max-w-xl mt-6"
         dangerouslySetInnerHTML={{ __html: product.description ?? '' }}

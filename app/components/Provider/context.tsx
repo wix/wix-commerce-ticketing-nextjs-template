@@ -4,6 +4,7 @@ export interface State {
   displaySidebar: boolean;
   displayNotPremiumModal: boolean;
   displayLoginModal: boolean;
+  displayBackInStockModal: boolean;
   sidebarView: string;
   openSidebar: () => void;
   closeSidebar: () => void;
@@ -14,6 +15,8 @@ export interface State {
   closeModalNotPremium: () => void;
   openModalLogin: () => void;
   closeModalLogin: () => void;
+  openModalBackInStock: () => void;
+  closeModalBackInStock: () => void;
 }
 
 const actionOutSideProvider = () => {
@@ -24,6 +27,7 @@ const initialState = {
   displaySidebar: false,
   displayNotPremiumModal: false,
   displayLoginModal: false,
+  displayBackInStockModal: false,
   sidebarView: 'CART_VIEW',
   openSidebar: actionOutSideProvider,
   closeSidebar: actionOutSideProvider,
@@ -34,15 +38,13 @@ const initialState = {
   closeModalNotPremium: actionOutSideProvider,
   openModalLogin: actionOutSideProvider,
   closeModalLogin: actionOutSideProvider,
+  openModalBackInStock: actionOutSideProvider,
+  closeModalBackInStock: actionOutSideProvider,
 };
 
 type Action =
-  | {
-      type: 'OPEN_SIDEBAR';
-    }
-  | {
-      type: 'CLOSE_SIDEBAR';
-    }
+  | { type: 'OPEN_SIDEBAR' }
+  | { type: 'CLOSE_SIDEBAR' }
   | {
       type: 'SET_SIDEBAR_VIEW';
       view: SIDEBAR_VIEWS;
@@ -50,7 +52,9 @@ type Action =
   | { type: 'OPEN_NOT_PREMIUM_MODAL' }
   | { type: 'CLOSE_NOT_PREMIUM_MODAL' }
   | { type: 'OPEN_LOGIN_MODAL' }
-  | { type: 'CLOSE_LOGIN_MODAL' };
+  | { type: 'CLOSE_LOGIN_MODAL' }
+  | { type: 'OPEN_BACK_IN_STOCK_MODAL' }
+  | { type: 'CLOSE_BACK_IN_STOCK_MODAL' };
 
 type SIDEBAR_VIEWS = 'CART_VIEW';
 
@@ -102,6 +106,18 @@ function uiReducer(state: State, action: Action) {
         displayLoginModal: false,
       };
     }
+    case 'OPEN_BACK_IN_STOCK_MODAL': {
+      return {
+        ...state,
+        displayBackInStockModal: true,
+      };
+    }
+    case 'CLOSE_BACK_IN_STOCK_MODAL': {
+      return {
+        ...state,
+        displayBackInStockModal: false,
+      };
+    }
   }
 }
 
@@ -129,6 +145,10 @@ const UIProvider = (props: any) => {
       closeModalNotPremium: () => dispatch({ type: 'CLOSE_NOT_PREMIUM_MODAL' }),
       openModalLogin: () => dispatch({ type: 'OPEN_LOGIN_MODAL' }),
       closeModalLogin: () => dispatch({ type: 'CLOSE_LOGIN_MODAL' }),
+      openModalBackInStock: () =>
+        dispatch({ type: 'OPEN_BACK_IN_STOCK_MODAL' }),
+      closeModalBackInStock: () =>
+        dispatch({ type: 'CLOSE_BACK_IN_STOCK_MODAL' }),
     }),
     [state]
   );
