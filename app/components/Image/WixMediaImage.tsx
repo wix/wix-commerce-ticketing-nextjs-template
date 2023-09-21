@@ -1,4 +1,4 @@
-import { media as wixMedia } from '@wix/api-client';
+import { media as wixMedia } from '@wix/sdk';
 import Image, { ImageProps } from 'next/image';
 import { PLACEHOLDER_IMAGE } from '@app/constants';
 
