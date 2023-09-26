@@ -1,13 +1,13 @@
-import { formatCurrency } from '../../utils/price-formtter';
+import { formatCurrency } from '@app/utils/price-formatter';
 import { Flowbite, TextInput } from 'flowbite-react';
 import React from 'react';
-import { WIX_SERVICE_FEE } from '../../constants';
+import { WIX_SERVICE_FEE } from '@app/constants';
 import {
   ticketDefinitions as api,
   wixEvents,
   ticketDefinitions,
 } from '@wix/events';
-import { TicketDefinitionExtended } from '../../types/ticket';
+import { TicketDefinitionExtended } from '@app/types/ticket';
 
 export function Price({
   ticket,

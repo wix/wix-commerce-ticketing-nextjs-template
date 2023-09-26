@@ -1,26 +1,31 @@
 'use client';
 import React, { useCallback, useState } from 'react';
-import { usePrice } from '@app/hooks/use-price';
-import { CartItem } from '../CartItem/CartItem';
+import { formatPrice } from '@app/utils/price-formatter';
+import { CartItem } from '@app/components/CartItem/CartItem';
 import { useCart } from '@app/hooks/useCart';
-import { useUI } from '../Provider/context';
+import { useUI } from '@app/components/Provider/context';
 import { useWixClient } from '@app/hooks/useWixClient';
 import { Spinner } from 'flowbite-react';
-import { cart, currentCart } from '@wix/ecom';
+import { currentCart } from '@wix/ecom';
+
 export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
   const wixClient = useWixClient();
   const { closeSidebar, openModalNotPremium } = useUI();
   const { data, isLoading } = useCart();
   const [redirecting, setRedirecting] = useState<boolean>(false);
-  const subTotal = usePrice(
+  const subTotal = formatPrice(
     data && {
-      amount: data!.lineItems!.reduce((acc, item) => {
-        return acc + Number.parseFloat(item.price?.amount!) * item.quantity!;
-      }, 0),
-      currencyCode: data.currency!,
+      amount:
+        data.lineItems?.reduce((acc, item) => {
+          return (
+            acc +
+            Number.parseFloat(item.price?.amount ?? '0') * (item.quantity ?? 0)
+          );
+        }, 0) ?? 0,
+      currencyCode: data.currency,
     }
   );
-  const handleClose = () => closeSidebar();
+
   const goToCheckout = useCallback(async () => {
     closeSidebar();
     setRedirecting(true);
@@ -31,14 +36,16 @@ export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
         });
       const { redirectSession } =
         await wixClient.redirects.createRedirectSession({
-          ecomCheckout: { checkoutId: checkout!.checkoutId! },
+          ecomCheckout: { checkoutId: checkout.checkoutId },
           callbacks: {
             postFlowUrl: window.location.origin,
             thankYouPageUrl: `${window.location.origin}/stores-success`,
             cartPageUrl: `${window.location.origin}/cart`,
           },
         });
-      window.location.href = redirectSession!.fullUrl!;
+      if (redirectSession?.fullUrl) {
+        window.location.href = redirectSession.fullUrl;
+      }
     } catch (e: any) {
       if (
         e.details.applicationError.code ===
@@ -48,7 +55,12 @@ export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
       }
       setRedirecting(false);
     }
-  }, [cart]);
+  }, [
+    closeSidebar,
+    openModalNotPremium,
+    wixClient.currentCart,
+    wixClient.redirects,
+  ]);
 
   const isMini = layout === 'mini';
   return (
@@ -64,7 +76,7 @@ export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
             <div className="relative">
               {isMini ? (
                 <button
-                  onClick={handleClose}
+                  onClick={closeSidebar}
                   aria-label="Close"
                   className="hover:text-accent-5 absolute transition ease-in-out duration-150 focus:outline-none mr-6 top-[32px]"
                 >

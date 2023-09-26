@@ -1,4 +1,4 @@
-import { CartBag } from '../CartBag/CartBag';
+import { CartBag } from '@app/components/CartBag/CartBag';
 import { NavBar } from './NavBar/NavBar';
 import { Login } from '@app/components/Login/Login';
 import testIds from '@app/utils/test-ids';

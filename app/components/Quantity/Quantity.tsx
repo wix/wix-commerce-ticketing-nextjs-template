@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 export interface QuantityProps {
   value: number;
-  increase: () => any;
-  decrease: () => any;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  increase?: () => void;
+  decrease?: () => void;
+  handleChange?: React.ChangeEventHandler<HTMLInputElement>;
   max?: number;
   size?: 'sm' | 'md';
 }
@@ -28,7 +28,7 @@ export const Quantity: FC<QuantityProps> = ({
             size === 'sm' ? 'text-xs' : 'text-sm'
           } px-2 w-full h-full border-0 focus:outline-none select-none pointer-events-auto`}
           onChange={(e) =>
-            Number(e.target.value) < max + 1 ? handleChange(e) : () => {}
+            Number(e.target.value) < max + 1 ? handleChange?.(e) : () => {}
           }
           pattern="[0-9]*"
           aria-label="Quantity"

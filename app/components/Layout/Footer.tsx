@@ -1,5 +1,5 @@
 import './footer.css';
-import ScrollIntoView from '../ScrollIntoView/ScrollIntoView';
+import ScrollIntoView from '@app/components/ScrollIntoView/ScrollIntoView';
 import testIds from '@app/utils/test-ids';
 
 const Footer = () => (

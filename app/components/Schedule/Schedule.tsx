@@ -1,5 +1,5 @@
 import { schedule } from '@wix/events';
-import { formatDuration, formatHours } from '../../utils/date-formatter';
+import { formatDuration, formatHours } from '@app/utils/date-formatter';
 
 export const Schedule = ({
   items,

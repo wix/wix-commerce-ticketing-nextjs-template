@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { WixClient } from '@app/components/Provider/ClientProvider';
 import { useWixClient } from './useWixClient';
-import { WixClient } from '../components/Provider/ClientProvider';
 
 export const useRemoveItemFromCart = () => {
   const wixClient = useWixClient();

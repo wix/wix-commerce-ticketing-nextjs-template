@@ -1,18 +1,18 @@
 'use client';
-import { Counter } from '../Counter/Counter';
-import { useEffect, useState } from 'react';
-import { formatCurrency } from '../../utils/price-formtter';
-import { Price } from '../Price/Price';
-import { WIX_SERVICE_FEE } from '../../constants';
+import { Badge } from 'flowbite-react';
+import { useCallback, useEffect, useState } from 'react';
+import { Counter } from '@app/components/Counter/Counter';
+import { Price } from '@app/components/Price/Price';
+import { formatCurrency } from '@app/utils/price-formatter';
+import { WIX_SERVICE_FEE } from '@app/constants';
 import {
   checkout as checkoutApi,
   wixEvents,
   ticketDefinitions as api,
 } from '@wix/events';
-import { useWixClient } from '../../hooks/useWixClient';
-import { Badge } from 'flowbite-react';
-import { formatDateWithTime } from '../../utils/date-formatter';
-import { TicketDefinitionExtended } from '../../types/ticket';
+import { useWixClient } from '@app/hooks/useWixClient';
+import { formatDateWithTime } from '@app/utils/date-formatter';
+import { TicketDefinitionExtended } from '@app/types/ticket';
 import testIds from '@app/utils/test-ids';
 
 export function TicketsTable({
@@ -57,25 +57,28 @@ export function TicketsTable({
   ) => {
     const [ticketId, { quantity }] = Object.entries(ticket)[0];
     if (quantity === 0) {
-      delete selectedTickets[ticketId];
-      setSelectedTickets({ ...selectedTickets });
+      const { [ticketId]: _, ...rest } = selectedTickets;
+      setSelectedTickets({ ...rest });
       return;
     }
     setSelectedTickets({ ...selectedTickets, ...ticket });
     setError('');
   };
 
-  const findTicketAndMaybeOption = (key: string) => {
-    const [ticketId, optionId] = key.split('|');
-    const ticket = tickets.find((t) => t._id === ticketId);
-    if (!optionId) {
-      return { ticket };
-    }
-    const option = ticket!.pricing!.pricingOptions!.options!.find(
-      (o) => o._id === optionId
-    );
-    return { ticket, option };
-  };
+  const findTicketAndMaybeOption = useCallback(
+    (key: string) => {
+      const [ticketId, optionId] = key.split('|');
+      const ticket = tickets.find((t) => t._id === ticketId);
+      if (!optionId) {
+        return { ticket };
+      }
+      const option = ticket!.pricing!.pricingOptions!.options!.find(
+        (o) => o._id === optionId
+      );
+      return { ticket, option };
+    },
+    [tickets]
+  );
 
   useEffect(() => {
     setServiceFee(
@@ -122,7 +125,12 @@ export function TicketsTable({
         )
       );
     }
-  }, [selectedTickets]);
+  }, [
+    event.registration?.ticketing?.config?.taxConfig?.rate,
+    event.registration?.ticketing?.config?.taxConfig?.type,
+    findTicketAndMaybeOption,
+    selectedTickets,
+  ]);
 
   const createReservation = async () => {
     const ticketsGrouped = Object.keys(selectedTickets).reduce(

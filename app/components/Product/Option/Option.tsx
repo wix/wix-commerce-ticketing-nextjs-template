@@ -6,12 +6,12 @@ export function Option({
   option,
   selectedOption,
 }: {
-  onChange: Function;
+  onChange?: (selected: Record<string, string>) => void;
   option: products.ProductOption;
   selectedOption: string;
 }) {
   const onSelect = (optionSelected: string) => {
-    onChange({ [option.name!]: optionSelected });
+    onChange?.({ [option.name!]: optionSelected });
   };
   const { theme } = useTheme();
 

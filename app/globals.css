@@ -6,15 +6,22 @@
   font-display: block;
   font-family: Avenir-LT-W01_35-Light1475496;
   src: url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix);
-  src: url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix) format("eot"),url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0078f486-8e52-42c0-ad81-3c8d3d43f48e.woff2) format("woff2"),url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/908c4810-64db-4b46-bb8e-823eb41f68c0.woff) format("woff"),url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4577388c-510f-4366-addb-8b663bcc762a.ttf) format("truetype"),url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/b0268c31-e450-4159-bfea-e0d20e2b5c0c.svg#b0268c31-e450-4159-bfea-e0d20e2b5c0c) format("svg")
+  src: url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix) format('eot'),
+    url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0078f486-8e52-42c0-ad81-3c8d3d43f48e.woff2) format('woff2'),
+    url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/908c4810-64db-4b46-bb8e-823eb41f68c0.woff) format('woff'),
+    url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4577388c-510f-4366-addb-8b663bcc762a.ttf) format('truetype'),
+    url(//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/b0268c31-e450-4159-bfea-e0d20e2b5c0c.svg#b0268c31-e450-4159-bfea-e0d20e2b5c0c) format('svg');
 }
 
-@font-face {font-family: "Helvetica-W01-Light"; src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/03805817-4611-4dbc-8c65-0f73031c3973.woff") format("woff");}
+@font-face {
+  font-family: 'Helvetica-W01-Light';
+  src: url('//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/03805817-4611-4dbc-8c65-0f73031c3973.woff') format('woff');
+}
 
 @font-face {
-  font-family: "Poppins-SemiBold";
+  font-family: 'Poppins-SemiBold';
   font-weight: 700;
-  src: url("//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-Sfk_vArhqVIZ0nv9q090hN8.woff2") format("woff2");
+  src: url('//fonts.gstatic.com/s/poppins/v5/aDjpMND83pDErGXlVEr-Sfk_vArhqVIZ0nv9q090hN8.woff2') format('woff2');
 }
 
 @layer components {
@@ -47,7 +54,8 @@
     font-family: Helvetica-W01-Light, sans-serif;
   }
 
-  h1, .title {
+  h1,
+  .title {
     @apply font-default;
     @apply text-2xl;
   }
@@ -74,7 +82,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font: normal normal normal 18px/1.4em avenir-lt-w01_35-light1475496, sans-serif;
+  font: normal normal normal 18px/1.4em avenir-lt-w01_35-light1475496,
+    sans-serif;
   @apply text-black;
   @apply font-helvetica;
 }
@@ -96,6 +105,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }

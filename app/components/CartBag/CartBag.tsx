@@ -1,6 +1,6 @@
 'use client';
-import { useUI } from '../Provider/context';
-import { useCart } from '../../hooks/useCart';
+import { useUI } from '@app/components/Provider/context';
+import { useCart } from '@app/hooks/useCart';
 import { cart } from '@wix/ecom';
 
 export const CartBag = () => {
