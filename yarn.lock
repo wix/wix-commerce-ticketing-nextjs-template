@@ -1343,13 +1343,13 @@ __metadata:
   linkType: hard
 
 "@wix/stores@npm:^1.0.71":
-  version: 1.0.102
-  resolution: "@wix/stores@npm:1.0.102"
+  version: 1.0.103
+  resolution: "@wix/stores@npm:1.0.103"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-types": ^1.3.0
-  checksum: 005a526532edae4db1009dbc82deea32b034708657fefbc1631df262265fafee3d49260f0d960655beb12a6bacba6cb346d624f65bda060b52f8be5be04da421
+  checksum: f51e490768756513966764157dddbda485d3657bd3d1137fba943aa90e8a0704cced839e17054b36cc2160fa859ce2f2677665fc8380a782c55db746cc658371
   languageName: node
   linkType: hard
 
