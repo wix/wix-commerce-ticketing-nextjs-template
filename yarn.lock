@@ -1182,7 +1182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/sdk-runtime@npm:^0.2.6, @wix/sdk-runtime@npm:^0.2.7":
+"@wix/sdk-runtime@npm:^0.2.7":
   version: 0.2.7
   resolution: "@wix/sdk-runtime@npm:0.2.7"
   dependencies:
@@ -1221,14 +1221,14 @@ __metadata:
   linkType: hard
 
 "@wix/stores@npm:^1.0.71":
-  version: 1.0.122
-  resolution: "@wix/stores@npm:1.0.122"
+  version: 1.0.123
+  resolution: "@wix/stores@npm:1.0.123"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
-    "@wix/sdk-runtime": ^0.2.6
+    "@wix/sdk-runtime": ^0.2.7
     "@wix/sdk-types": ^1.5.3
-  checksum: fd2fed468cf4f972c63825c1a4f56fcdeba944cfa1d29a83929a9f3c874ae795c14d1f3c5d2e0275660e2020715d32203a39cca668bc1889f4edf9f275bfda40
+  checksum: 93467276487a796cac2d791de51fe34dd2d7cce2b90ff7ba786bd1786a80b2fa837eedc5cfa824e3fa44bcd3c80ffb000792c009b3f2f8abbd08d73f5ae4b85e
   languageName: node
   linkType: hard
 
