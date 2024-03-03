@@ -137,7 +137,7 @@ export default async function EventPage({ params }: any) {
             {schedule?.items?.length ? (
               <div className="mb-4 sm:mb-14">
                 <h2 className="mt-7">SCHEDULE</h2>
-                <Schedule items={schedule.items} slug={event.slug!}/>
+                <Schedule items={schedule.items} slug={event.slug!} />
               </div>
             ) : null}
             {event.registration?.external && (
@@ -174,8 +174,7 @@ export default async function EventPage({ params }: any) {
                     viewBox="0 0 512 512"
                     className="w-4 h-4"
                   >
-                    <path
-                      d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z"></path>
+                    <path d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z"></path>
                   </svg>
                 </a>
                 <a
@@ -192,8 +191,7 @@ export default async function EventPage({ params }: any) {
                     viewBox="0 0 512 512"
                     className="w-4 h-4"
                   >
-                    <path
-                      d="m459 152 1 13c0 139-106 299-299 299-59 0-115-17-161-47a217 217 0 0 0 156-44c-47-1-85-31-98-72l19 1c10 0 19-1 28-3-48-10-84-52-84-103v-2c14 8 30 13 47 14A105 105 0 0 1 36 67c51 64 129 106 216 110-2-8-2-16-2-24a105 105 0 0 1 181-72c24-4 47-13 67-25-8 24-25 45-46 58 21-3 41-8 60-17-14 21-32 40-53 55z"></path>
+                    <path d="m459 152 1 13c0 139-106 299-299 299-59 0-115-17-161-47a217 217 0 0 0 156-44c-47-1-85-31-98-72l19 1c10 0 19-1 28-3-48-10-84-52-84-103v-2c14 8 30 13 47 14A105 105 0 0 1 36 67c51 64 129 106 216 110-2-8-2-16-2-24a105 105 0 0 1 181-72c24-4 47-13 67-25-8 24-25 45-46 58 21-3 41-8 60-17-14 21-32 40-53 55z"></path>
                   </svg>
                 </a>
                 <a
@@ -210,8 +208,7 @@ export default async function EventPage({ params }: any) {
                     viewBox="0 0 512 512"
                     className="w-4 h-4"
                   >
-                    <path
-                      d="M136 183v283H42V183h94zm6-88c1 27-20 49-53 49-32 0-52-22-52-49 0-28 21-49 53-49s52 21 52 49zm333 208v163h-94V314c0-38-13-64-47-64-26 0-42 18-49 35-2 6-3 14-3 23v158h-94V183h94v41c12-20 34-48 85-48 62 0 108 41 108 127z"></path>
+                    <path d="M136 183v283H42V183h94zm6-88c1 27-20 49-53 49-32 0-52-22-52-49 0-28 21-49 53-49s52 21 52 49zm333 208v163h-94V314c0-38-13-64-47-64-26 0-42 18-49 35-2 6-3 14-3 23v158h-94V183h94v41c12-20 34-48 85-48 62 0 108 41 108 127z"></path>
                   </svg>
                 </a>
               </div>
@@ -220,7 +217,7 @@ export default async function EventPage({ params }: any) {
         </div>
       ) : (
         <div className="text-3xl w-full text-center p-9 box-border">
-        The event was not found
+          The event was not found
         </div>
       )}
     </div>
