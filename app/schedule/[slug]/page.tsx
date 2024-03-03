@@ -3,9 +3,11 @@ import { ScheduleEvent } from '@app/components/Schedule/ScheduleEvent';
 
 export default async function SchedulePage({ params }: any) {
   const wixClient = await getWixClient();
-  const { events } = await wixClient.wixEvents.queryEventsV2({
-    query: { filter: { slug: params.slug }, paging: { limit: 1, offset: 0 } },
-  });
+  const { items: events } = await wixClient.wixEvents
+    .queryEvents()
+    .eq('slug', params.slug)
+    .limit(1)
+    .find();
   const event = events?.length ? events![0] : null;
   const { items } = await wixClient.schedule.listScheduleItems({
     eventId: [event!._id!],
