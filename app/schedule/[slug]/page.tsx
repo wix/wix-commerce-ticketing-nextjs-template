@@ -1,6 +1,6 @@
 import { getWixClient } from '@app/hooks/useWixClientServer';
 import { ScheduleEvent } from '@app/components/Schedule/ScheduleEvent';
-import {wixEvents} from '@wix/events';
+import { wixEvents } from '@wix/events';
 
 export default async function SchedulePage({ params }: any) {
   const wixClient = await getWixClient();

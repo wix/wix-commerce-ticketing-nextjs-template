@@ -15,7 +15,9 @@ export function ScheduleEvent({
     <div className="max-w-4xl mx-auto px-8 sm:px-14 pt-4 sm:pt-16">
       <div className="flex flex-col-reverse sm:flex-col">
         <p className="font-helvetica text-xs sm:text-base">
-          {`${event.title} | ${event.dateAndTimeSettings?.formatted?.dateAndTime}, ${
+          {`${event.title} | ${
+            event.dateAndTimeSettings?.formatted?.dateAndTime
+          }, ${
             // @ts-ignore
             event.location!.address.formatted!
           }`}
