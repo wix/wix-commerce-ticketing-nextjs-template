@@ -121,7 +121,10 @@ export default async function EventPage({ params }: any) {
               {event.dateAndTimeSettings?.formatted?.dateAndTime}
             </p>
             <p className="font-helvetica">
-              {event.location?.address?.formatted!}
+              {
+                // @ts-ignore
+                event.location?.address?.formatted!
+              }
             </p>
             {event.detailedDescription! !== '' ? (
               <>

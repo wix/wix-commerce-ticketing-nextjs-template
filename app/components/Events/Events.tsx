@@ -107,7 +107,11 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
                 >
                   <p>{event!.dateAndTimeSettings?.formatted?.dateAndTime}</p>
                   <p>
-                    {event!.title}, {event!.location!.address?.formatted!}
+                    {event!.title},{' '}
+                    {
+                      // @ts-ignore
+                      event!.location!.address?.formatted!
+                    }
                   </p>
                   <p className="mt-3">{event.shortDescription}</p>
                 </div>
