@@ -126,7 +126,7 @@ export default async function EventPage({ params }: any) {
                 event.location?.address?.formatted!
               }
             </p>
-            {event.detailedDescription! !== '' ? (
+            {event.detailedDescription! !== '<p></p>' ? (
               <>
                 <h2 className="mt-7">ABOUT THE EVENT</h2>
                 <div
