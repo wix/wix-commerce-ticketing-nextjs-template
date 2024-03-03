@@ -54,14 +54,14 @@ export function Price({
   const tax = Number(
     (defaultPrice *
       Number.parseFloat(
-        event.registration?.ticketing?.config?.taxConfig?.rate || '0'
+        event.registration?.tickets?.taxSettings?.rate || '0'
       )) /
       100 || 0
   );
 
   const defaultPriceWithTax =
     defaultPrice +
-    ((event.registration?.ticketing?.config?.taxConfig?.type ===
+    ((event.registration?.tickets?.taxSettings?.type ===
     wixEvents.TaxType.ADDED_AT_CHECKOUT
       ? tax
       : 0) || 0);
@@ -161,12 +161,11 @@ export function Price({
         </span>
       )}
       <span className="text-base">{price}</span>
-      {event.registration?.ticketing?.config?.taxConfig?.type ===
+      {event.registration?.tickets?.taxSettings?.type ===
         wixEvents.TaxType.ADDED_AT_CHECKOUT &&
         !ticket.free &&
         (ticket.pricing?.pricingType === api.Type.STANDARD ||
-          event.registration?.ticketing?.config.taxConfig
-            .appliesToDonations) && (
+          event.registration?.tickets?.taxSettings?.appliedToDonations) && (
           <>
             <br />
             <span className="text-xs text-black">
@@ -174,8 +173,8 @@ export function Price({
               +
               {tax
                 ? formatCurrency(tax, ticket.price?.currency)
-                : `${event.registration?.ticketing?.config?.taxConfig.rate}%`}{' '}
-              {event.registration?.ticketing?.config?.taxConfig?.name}
+                : `${event.registration?.tickets?.taxSettings?.rate}%`}{' '}
+              {event.registration?.tickets?.taxSettings?.name}
             </span>
           </>
         )}
