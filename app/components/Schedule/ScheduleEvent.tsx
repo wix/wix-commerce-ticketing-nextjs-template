@@ -15,8 +15,9 @@ export function ScheduleEvent({
     <div className="max-w-4xl mx-auto px-8 sm:px-14 pt-4 sm:pt-16">
       <div className="flex flex-col-reverse sm:flex-col">
         <p className="font-helvetica text-xs sm:text-base">
-          {event.title} | {event.dateAndTimeSettings?.formatted},{' '}
-          {event.location!.address}
+          {`${event.title} | ${event.dateAndTimeSettings?.formatted}, ${
+            event.location!.address
+          }`}
         </p>
         <h1 className="text-2xl sm:text-5xl mb-4 sm:mb-12 sm:mt-4">Schedule</h1>
       </div>
