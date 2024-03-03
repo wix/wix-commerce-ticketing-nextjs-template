@@ -157,7 +157,7 @@ export default async function EventPage({ params }: any) {
             ].includes(event.registration?.status!) && (
               <div className="my-4 sm:my-10">
                 <h2 className="mt-7">TICKETS</h2>
-                {/*<TicketsTable tickets={tickets!} event={event} />*/}
+                <TicketsTable tickets={tickets!} event={event} />
               </div>
             )}
             <div className="my-4">
