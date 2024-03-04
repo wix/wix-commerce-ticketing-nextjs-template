@@ -44,24 +44,24 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
                   <div className="flex gap-4 items-center absolute bottom-2 left-2 sm:bottom-auto sm:left-auto sm:relative">
                     <span className="text-4xl">
                       {getDatePart(
-                        new Date(event.scheduling?.config?.startDate!),
+                        new Date(event.dateAndTimeSettings?.startDate!),
                         'day',
-                        event!.scheduling!.config!.timeZoneId!
+                        event!.dateAndTimeSettings?.timeZoneId!
                       )}
                     </span>
                     <div className="flex flex-col text-xs">
                       <span className="text-white sm:text-gray-600">
                         {getDatePart(
-                          new Date(event.scheduling?.config?.startDate!),
+                          new Date(event.dateAndTimeSettings?.startDate!),
                           'weekday',
-                          event!.scheduling!.config!.timeZoneId!
+                          event!.dateAndTimeSettings?.timeZoneId!
                         )}
                       </span>
                       <span>
                         {getDatePart(
-                          new Date(event.scheduling?.config?.startDate!),
+                          new Date(event.dateAndTimeSettings?.startDate!),
                           'month',
-                          event!.scheduling!.config!.timeZoneId!
+                          event!.dateAndTimeSettings?.timeZoneId!
                         )}
                       </span>
                     </div>
@@ -105,11 +105,15 @@ export const Events = ({ events }: { events: wixEvents.Event[] }) => {
                       : 'opacity-0 h-0'
                   }`}
                 >
-                  <p>{event!.scheduling?.formatted}</p>
+                  <p>{event!.dateAndTimeSettings?.formatted?.dateAndTime}</p>
                   <p>
-                    {event!.title}, {event!.location!.address}
+                    {event!.title},{' '}
+                    {
+                      // @ts-ignore
+                      event!.location!.address?.formatted!
+                    }
                   </p>
-                  <p className="mt-3">{event.description}</p>
+                  <p className="mt-3">{event.shortDescription}</p>
                 </div>
               </div>
             </div>

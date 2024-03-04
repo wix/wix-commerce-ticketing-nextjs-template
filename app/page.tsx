@@ -31,17 +31,14 @@ export default async function Home() {
   let events: wixEvents.Event[] = [];
   try {
     events = (
-      await wixClient.wixEvents.queryEventsV2({
-        fieldset: [
-          wixEvents.EventFieldset.FULL,
-          wixEvents.EventFieldset.DETAILS,
-        ],
-        query: {
-          paging: { limit: 10, offset: 0 },
-          sort: [{ fieldName: 'start', order: wixEvents.SortOrder.ASC }],
-        },
-      })
-    ).events!;
+      await wixClient.wixEvents
+        .queryEvents({
+          fields: [wixEvents.RequestedFields.DETAILS],
+        })
+        .limit(10)
+        .ascending('dateAndTimeSettings.startDate')
+        .find()
+    ).items;
   } catch (e) {}
   return (
     <HomeScreen events={events} productsForCategories={productsForCategories} />

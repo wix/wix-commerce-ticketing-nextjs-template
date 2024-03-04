@@ -12,18 +12,18 @@ export default async function EventPage({ params }: any) {
     return;
   }
   const wixClient = await getWixClient();
-  const { events } = await wixClient.wixEvents.queryEventsV2({
-    fieldset: [
-      wixEvents.EventFieldset.FULL,
-      wixEvents.EventFieldset.DETAILS,
-      wixEvents.EventFieldset.TEXTS,
-      wixEvents.EventFieldset.REGISTRATION,
-    ],
-    query: {
-      filter: { slug: decodeURIComponent(params.slug) },
-      paging: { limit: 1, offset: 0 },
-    },
-  });
+  const { items: events } = await wixClient.wixEvents
+    .queryEvents({
+      fields: [
+        wixEvents.RequestedFields.DETAILS,
+        wixEvents.RequestedFields.TEXTS,
+        wixEvents.RequestedFields.REGISTRATION,
+        wixEvents.RequestedFields.AGENDA,
+      ],
+    })
+    .limit(1)
+    .eq('slug', decodeURIComponent(params.slug))
+    .find();
   const event = events?.length ? events![0] : null;
 
   const tickets =
@@ -69,9 +69,9 @@ export default async function EventPage({ params }: any) {
             <div className="basis-1/2 text-left px-5 pb-4">
               <span>
                 {formatDate(
-                  new Date(event.scheduling?.config?.startDate!),
-                  event!.scheduling!.config!.timeZoneId!
-                ) || event.scheduling?.formatted}{' '}
+                  new Date(event.dateAndTimeSettings?.startDate!),
+                  event!.dateAndTimeSettings?.timeZoneId!
+                ) || event.dateAndTimeSettings?.formatted?.startDate}{' '}
                 | {event.location?.name}
               </span>
               <h1
@@ -80,9 +80,9 @@ export default async function EventPage({ params }: any) {
               >
                 {event.title}
               </h1>
-              <h3 className="my-4 sm:my-6">{event.description}</h3>
+              <h3 className="my-4 sm:my-6">{event.shortDescription}</h3>
               {event.registration?.status ===
-                wixEvents.RegistrationStatus.OPEN_TICKETS && (
+                wixEvents.RegistrationStatusStatus.OPEN_TICKETS && (
                 <a
                   className="btn-main inline-block w-full sm:w-auto text-center"
                   href={`/events/${event.slug}#tickets`}
@@ -91,17 +91,17 @@ export default async function EventPage({ params }: any) {
                 </a>
               )}
               {event.registration?.status ===
-                wixEvents.RegistrationStatus.OPEN_EXTERNAL && (
+                wixEvents.RegistrationStatusStatus.OPEN_EXTERNAL && (
                 <a
                   className="btn-main inline-block w-full sm:w-auto text-center"
-                  href={event.registration.external!.registration}
+                  href={event.registration.external!.url!}
                 >
                   Buy Tickets
                 </a>
               )}
               {[
-                wixEvents.RegistrationStatus.CLOSED_MANUALLY,
-                wixEvents.RegistrationStatus.CLOSED,
+                wixEvents.RegistrationStatusStatus.CLOSED_MANUALLY,
+                wixEvents.RegistrationStatusStatus.CLOSED_AUTOMATICALLY,
               ].includes(event.registration?.status!) && (
                 <div>
                   <p className="border-2 inline-block p-3">
@@ -117,14 +117,23 @@ export default async function EventPage({ params }: any) {
           </div>
           <div className="max-w-3xl mx-auto text-[14px] sm:text-base px-3 sm:px-0">
             <h2 className="mt-7">TIME & LOCATION</h2>
-            <p className="font-helvetica">{event.scheduling?.formatted}</p>
-            <p className="font-helvetica">{event.location?.address}</p>
-            {event.about !== '<p></p>' ? (
+            <p className="font-helvetica">
+              {event.dateAndTimeSettings?.formatted?.dateAndTime}
+            </p>
+            <p className="font-helvetica">
+              {
+                // @ts-ignore
+                event.location?.address?.formatted!
+              }
+            </p>
+            {event.detailedDescription! !== '<p></p>' ? (
               <>
                 <h2 className="mt-7">ABOUT THE EVENT</h2>
                 <div
                   className="font-helvetica"
-                  dangerouslySetInnerHTML={{ __html: event.about ?? '' }}
+                  dangerouslySetInnerHTML={{
+                    __html: event.detailedDescription! ?? '',
+                  }}
                 />
               </>
             ) : null}
@@ -137,14 +146,14 @@ export default async function EventPage({ params }: any) {
             {event.registration?.external && (
               <a
                 className="btn-main my-10 inline-block"
-                href={event.registration?.external.registration}
+                href={event.registration?.external.url!}
               >
                 Buy Tickets
               </a>
             )}
             {[
-              wixEvents.RegistrationStatus.CLOSED_MANUALLY,
-              wixEvents.RegistrationStatus.OPEN_TICKETS,
+              wixEvents.RegistrationStatusStatus.CLOSED_MANUALLY,
+              wixEvents.RegistrationStatusStatus.OPEN_TICKETS,
             ].includes(event.registration?.status!) && (
               <div className="my-4 sm:my-10">
                 <h2 className="mt-7">TICKETS</h2>
@@ -221,14 +230,11 @@ export default async function EventPage({ params }: any) {
 export async function generateStaticParams(): Promise<{ slug?: string }[]> {
   const wixClient = await getWixClient();
   return wixClient.wixEvents
-    .queryEventsV2({
-      fieldset: [wixEvents.EventFieldset.FULL],
-      query: {
-        paging: { limit: 10, offset: 0 },
-        sort: [{ fieldName: 'start', order: wixEvents.SortOrder.ASC }],
-      },
-    })
-    .then(({ events }) => {
+    .queryEvents({})
+    .limit(10)
+    .ascending('dateAndTimeSettings.startDate')
+    .find()
+    .then(({ items: events }) => {
       return events!.map((event) => ({
         slug: event.slug,
       }));

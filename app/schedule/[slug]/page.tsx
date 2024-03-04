@@ -1,11 +1,21 @@
 import { getWixClient } from '@app/hooks/useWixClientServer';
 import { ScheduleEvent } from '@app/components/Schedule/ScheduleEvent';
+import { wixEvents } from '@wix/events';
 
 export default async function SchedulePage({ params }: any) {
   const wixClient = await getWixClient();
-  const { events } = await wixClient.wixEvents.queryEventsV2({
-    query: { filter: { slug: params.slug }, paging: { limit: 1, offset: 0 } },
-  });
+  const { items: events } = await wixClient.wixEvents
+    .queryEvents({
+      fields: [
+        wixEvents.RequestedFields.DETAILS,
+        wixEvents.RequestedFields.TEXTS,
+        wixEvents.RequestedFields.REGISTRATION,
+        wixEvents.RequestedFields.AGENDA,
+      ],
+    })
+    .eq('slug', params.slug)
+    .limit(1)
+    .find();
   const event = events?.length ? events![0] : null;
   const { items } = await wixClient.schedule.listScheduleItems({
     eventId: [event!._id!],

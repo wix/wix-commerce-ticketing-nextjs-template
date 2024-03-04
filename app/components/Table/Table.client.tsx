@@ -87,7 +87,7 @@ export function TicketsTable({
         const tax =
           (Number.parseFloat(option?.price?.value || ticket?.price?.value!) *
             Number.parseFloat(
-              event.registration?.ticketing?.config?.taxConfig?.rate || '0'
+              event.registration?.tickets?.taxSettings?.rate || '0'
             )) /
           100;
         const price = selectedTickets[key].price + tax;
@@ -108,7 +108,7 @@ export function TicketsTable({
     );
 
     if (
-      event.registration?.ticketing?.config?.taxConfig?.type ===
+      event.registration?.tickets?.taxSettings?.type ===
       wixEvents.TaxType.ADDED_AT_CHECKOUT
     ) {
       setTax(
@@ -118,7 +118,7 @@ export function TicketsTable({
             (selectedTickets[key].quantity *
               selectedTickets[key].price *
               Number.parseFloat(
-                event.registration?.ticketing?.config?.taxConfig?.rate!
+                event.registration?.tickets?.taxSettings?.rate!
               )) /
               100,
           0
@@ -126,8 +126,8 @@ export function TicketsTable({
       );
     }
   }, [
-    event.registration?.ticketing?.config?.taxConfig?.rate,
-    event.registration?.ticketing?.config?.taxConfig?.type,
+    event.registration?.tickets?.taxSettings?.rate,
+    event.registration?.tickets?.taxSettings?.type,
     findTicketAndMaybeOption,
     selectedTickets,
   ]);
@@ -233,7 +233,7 @@ export function TicketsTable({
                     <p>
                       {formatDateWithTime(
                         new Date(ticket.salePeriod.endDate!),
-                        event.scheduling?.config?.timeZoneId!
+                        event.dateAndTimeSettings?.timeZoneId!
                       )}
                     </p>
                   </div>
@@ -272,7 +272,7 @@ export function TicketsTable({
                   event={event}
                   disabled={
                     event.registration?.status !==
-                    wixEvents.RegistrationStatus.OPEN_TICKETS
+                    wixEvents.RegistrationStatusStatus.OPEN_TICKETS
                   }
                 />
                 {ticket.salePeriod &&
@@ -282,7 +282,7 @@ export function TicketsTable({
                       <span>
                         {formatDateWithTime(
                           new Date(ticket.salePeriod.startDate!),
-                          event.scheduling?.config?.timeZoneId!
+                          event.dateAndTimeSettings?.timeZoneId!
                         )}
                       </span>
                     </div>
@@ -346,7 +346,7 @@ export function TicketsTable({
                           option={option}
                           disabled={
                             event.registration?.status !==
-                            wixEvents.RegistrationStatus.OPEN_TICKETS
+                            wixEvents.RegistrationStatusStatus.OPEN_TICKETS
                           }
                         />
                       </span>
@@ -413,7 +413,7 @@ export function TicketsTable({
         ) : null}
         {tax ? (
           <div className="flex mt-2" key="tax">
-            <div>{event.registration?.ticketing?.config?.taxConfig?.name}</div>
+            <div>{event.registration?.tickets?.taxSettings?.name}</div>
             <div className="text-right ml-auto">
               {formatCurrency(tax, tickets[0]!.price!.currency)}
             </div>
@@ -442,7 +442,7 @@ export function TicketsTable({
                     selectedTickets[key].quantity * selectedTickets[key].price,
                   0
                 ),
-              event.registration?.ticketing?.currency!
+              event.registration?.tickets?.currency!
             )}
           </span>
         </div>
