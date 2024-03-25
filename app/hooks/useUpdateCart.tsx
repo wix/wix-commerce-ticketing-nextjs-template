@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { currentCart } from '@wix/ecom';
+import { currentCart } from '@wix/ecom-poc';
 import { WixClient } from '@app/components/Provider/ClientProvider';
 import { useWixClient } from './useWixClient';
 

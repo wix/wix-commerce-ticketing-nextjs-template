@@ -1,6 +1,6 @@
 import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
-import { orders, currentCart, checkout as ecomCheckout } from '@wix/ecom';
+import { orders, currentCart, checkout as ecomCheckout } from '@wix/ecom-poc';
 import { redirects } from '@wix/redirects';
 import {
   wixEventsV2 as wixEvents,
