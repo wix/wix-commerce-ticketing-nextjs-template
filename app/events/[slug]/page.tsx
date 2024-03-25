@@ -2,7 +2,7 @@ import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import { formatDate } from '@app/utils/date-formatter';
 import { TicketsTable } from '@app/components/Table/Table.client';
 import { getWixClient } from '@app/hooks/useWixClientServer';
-import { wixEvents } from '@wix/events';
+import { wixEventsV2 as wixEvents } from '@wix/events';
 import { Schedule } from '@app/components/Schedule/Schedule';
 import { TicketDefinitionExtended } from '@app/types/ticket';
 import testIds from '@app/utils/test-ids';
@@ -29,7 +29,7 @@ export default async function EventPage({ params }: any) {
   const tickets =
     event &&
     ((
-      await wixClient.checkout.queryAvailableTickets({
+      await wixClient.eventOrders.queryAvailableTickets({
         filter: { eventId: event._id },
         offset: 0,
         limit: 100,
