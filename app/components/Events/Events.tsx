@@ -1,11 +1,11 @@
 'use client';
 import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import { getDatePart } from '@app/utils/date-formatter';
-import { wixEvents } from '@wix/events';
+import { wixEventsV2 as wixEvents } from '@wix/events';
 import { useState } from 'react';
 import testIds from '@app/utils/test-ids';
 
-export const Events = ({ events }: { events: wixEvents.Event[] }) => {
+export const Events = ({ events }: { events: wixEvents.V3Event[] }) => {
   const [expendEventDescription, setExpendEventDescription] = useState(
     {} as Record<string, boolean>
   );

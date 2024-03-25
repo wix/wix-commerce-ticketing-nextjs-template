@@ -5,7 +5,7 @@ import { ManagedUIContext } from './context';
 import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
 import { currentCart, backInStockNotifications } from '@wix/ecom';
-import { wixEvents, checkout } from '@wix/events';
+import { wixEventsV2 as wixEvents, orders as checkout } from '@wix/events';
 import { redirects } from '@wix/redirects';
 import Cookies from 'js-cookie';
 import { WIX_REFRESH_TOKEN } from '@app/constants';

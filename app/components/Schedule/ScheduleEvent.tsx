@@ -1,4 +1,4 @@
-import { wixEvents, schedule } from '@wix/events';
+import { wixEventsV2 as wixEvents, schedule } from '@wix/events';
 import { formatDate } from '@app/utils/date-formatter';
 import { Schedule } from './Schedule';
 
@@ -7,7 +7,7 @@ export function ScheduleEvent({
   items,
   slug,
 }: {
-  event: wixEvents.Event;
+  event: wixEvents.V3Event;
   slug: string;
   items: schedule.ScheduleItem[] | undefined;
 }) {

@@ -1,5 +1,5 @@
 import { getWixClient } from '@app/hooks//useWixClientServer';
-import { wixEvents } from '@wix/events';
+import { wixEventsV2 as wixEvents } from '@wix/events';
 import { products } from '@wix/stores';
 import { HomeScreen } from '@app/components/HomeScreen/HomeScreen';
 
@@ -28,7 +28,7 @@ export default async function Home() {
     );
   } catch (e) {}
 
-  let events: wixEvents.Event[] = [];
+  let events: wixEvents.V3Event[] = [];
   try {
     events = (
       await wixClient.wixEvents

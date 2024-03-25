@@ -3,8 +3,7 @@ import { collections, products } from '@wix/stores';
 import { orders, currentCart, checkout as ecomCheckout } from '@wix/ecom';
 import { redirects } from '@wix/redirects';
 import {
-  wixEvents,
-  checkout,
+  wixEventsV2 as wixEvents,
   schedule,
   orders as eventOrders,
 } from '@wix/events';
@@ -24,7 +23,6 @@ export const getWixClient = async () => {
       products,
       collections,
       wixEvents,
-      checkout,
       ecomCheckout,
       schedule,
       orders,

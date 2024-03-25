@@ -6,8 +6,8 @@ import { Price } from '@app/components/Price/Price';
 import { formatCurrency } from '@app/utils/price-formatter';
 import { WIX_SERVICE_FEE } from '@app/constants';
 import {
-  checkout as checkoutApi,
-  wixEvents,
+  orders as checkoutApi,
+  wixEventsV2 as wixEvents,
   ticketDefinitions as api,
 } from '@wix/events';
 import { useWixClient } from '@app/hooks/useWixClient';
@@ -20,7 +20,7 @@ export function TicketsTable({
   event,
 }: {
   tickets: TicketDefinitionExtended[];
-  event: wixEvents.Event;
+  event: wixEvents.V3Event;
 }) {
   const wixClient = useWixClient();
   const [selectedTickets, setSelectedTickets] = useState<
