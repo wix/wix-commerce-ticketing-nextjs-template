@@ -5257,6 +5257,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright@npm:^1.0.0":
+  version: 1.42.1
+  resolution: "playwright@npm:1.42.1::__archiveUrl=https%3A%2F%2Fnpm.dev.wixpress.com%2Fapi%2Fnpm%2Fnpm-repos%2Fplaywright%2F-%2Fplaywright-1.42.1.tgz"
+  dependencies:
+    fsevents: 2.3.2
+    playwright-core: 1.42.1
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 06c16bcd07d03993126ee6c168bde28c59d3cab7f7d4721eaf57bd5c51e9c929e10a286758de062b5fc02874413ceae2684d14cbb7865c0a51fc8df6d9001ad1
+  languageName: node
+  linkType: hard
+
 "postcss-import@npm:^15.1.0":
   version: 15.1.0
   resolution: "postcss-import@npm:15.1.0"
@@ -6835,6 +6850,7 @@ __metadata:
     js-cookie: ^3.0.1
     jsurl: ^0.1.5
     next: ^13.4.9
+    playwright: ^1.0.0
     postcss: ^8.4.19
     prettier: ^2.8.0
     react: ^18.2.0
