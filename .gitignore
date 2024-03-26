@@ -39,7 +39,6 @@ next-env.d.ts
 
 # Yarn Berry
 .pnp.*
-.yarn/*
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
