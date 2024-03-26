@@ -1022,9 +1022,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/ecom-poc@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@wix/ecom-poc@npm:1.0.1::__archiveUrl=https%3A%2F%2Fnpm.dev.wixpress.com%2Fapi%2Fnpm%2Fnpm-repos%2F%40wix%2Fecom-poc%2F-%2F%40wix%2Fecom-poc-1.0.1.tgz"
+"@wix/ecom-poc@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@wix/ecom-poc@npm:1.0.3::__archiveUrl=https%3A%2F%2Fnpm.dev.wixpress.com%2Fapi%2Fnpm%2Fnpm-repos%2F%40wix%2Fecom-poc%2F-%2F%40wix%2Fecom-poc-1.0.3.tgz"
   dependencies:
     "@wix/ecom_abandoned-checkouts": 1.0.2
     "@wix/ecom_back-in-stock-notifications": 1.0.2
@@ -1041,7 +1041,7 @@ __metadata:
     "@wix/ecom_orders": 1.0.5
     "@wix/ecom_orders-settings": 1.0.2
     "@wix/ecom_recommendations": 1.0.2
-  checksum: c6efcbe18fa8346f1c19f7c205dee7e86df36bdfe676183acfd9bfff636004b9c57da801994380af8ffebcd8f8fd2bd2a28f441550653fbdda046aadcb787d13
+  checksum: 13b15328519829558902e30411c8f696b0af3b81cad8d35280b823feb7c24e3243d8edd56df3355a7935f0657ed646624cff40ac91ae8720c8fc18139e8498c0
   languageName: node
   linkType: hard
 
@@ -6817,7 +6817,7 @@ __metadata:
     "@types/node": 18.11.8
     "@types/react": 18.0.24
     "@types/react-dom": 18.0.8
-    "@wix/ecom-poc": ^1.0.1
+    "@wix/ecom-poc": ^1.0.3
     "@wix/events": ^1.0.159
     "@wix/redirects": ^1.0.13
     "@wix/sdk": ^1.5.0
