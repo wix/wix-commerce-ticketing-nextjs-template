@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getRequestUrl } from '@app/utils/server-utils';
 import { getWixClient } from '@app/hooks/useWixClientServer';
-import { checkout as checkoutTypes } from '@wix/ecom';
+import { checkout as checkoutTypes } from '@wix/ecom-poc';
 import { STORES_APP_ID } from '@app/constants';
 
 export async function GET(

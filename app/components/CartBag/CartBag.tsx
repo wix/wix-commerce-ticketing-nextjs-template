@@ -1,7 +1,7 @@
 'use client';
 import { useUI } from '@app/components/Provider/context';
 import { useCart } from '@app/hooks/useCart';
-import { cart } from '@wix/ecom';
+import { cart } from '@wix/ecom-poc';
 
 export const CartBag = () => {
   const { setSidebarView, toggleSidebar } = useUI();

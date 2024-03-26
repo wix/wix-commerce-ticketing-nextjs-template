@@ -2,7 +2,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { formatPrice } from '@app/utils/price-formatter';
-import { cart } from '@wix/ecom';
+import { cart } from '@wix/ecom-poc';
 import { useUI } from '@app/components/Provider/context';
 import { Quantity } from '@app/components/Quantity/Quantity';
 import { useUpdateCart } from '@app/hooks/useUpdateCart';

@@ -4,7 +4,7 @@ import { createContext, ReactNode } from 'react';
 import { ManagedUIContext } from './context';
 import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
-import { currentCart, backInStockNotifications } from '@wix/ecom';
+import { currentCart, backInStockNotifications } from '@wix/ecom-poc';
 import { wixEventsV2 as wixEvents, orders as checkout } from '@wix/events';
 import { redirects } from '@wix/redirects';
 import Cookies from 'js-cookie';

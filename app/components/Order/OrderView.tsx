@@ -1,4 +1,4 @@
-import { orders } from '@wix/ecom';
+import { orders } from '@wix/ecom-poc';
 import { CartItem } from '@app/components/CartItem/CartItem';
 
 export function OrderView({ order }: { order: orders.Order | undefined }) {

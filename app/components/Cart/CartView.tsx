@@ -6,7 +6,7 @@ import { useCart } from '@app/hooks/useCart';
 import { useUI } from '@app/components/Provider/context';
 import { useWixClient } from '@app/hooks/useWixClient';
 import { Spinner } from 'flowbite-react';
-import { currentCart } from '@wix/ecom';
+import { currentCart } from '@wix/ecom-poc';
 
 export const CartView = ({ layout = 'mini' }: { layout?: 'full' | 'mini' }) => {
   const wixClient = useWixClient();
