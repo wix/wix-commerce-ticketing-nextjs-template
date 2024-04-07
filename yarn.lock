@@ -28,12 +28,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.24.1":
-  version: 7.24.1
-  resolution: "@babel/runtime@npm:7.24.1"
+"@babel/runtime@npm:^7.24.4":
+  version: 7.24.4
+  resolution: "@babel/runtime@npm:7.24.4"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: 5c8f3b912ba949865f03b3cf8395c60e1f4ebd1033fbd835bdfe81b6cac8a87d85bc3c7aded5fcdf07be044c9ab8c818f467abe0deca50020c72496782639572
+  checksum: 2f27d4c0ffac7ae7999ac0385e1106f2a06992a8bdcbf3da06adcac7413863cd08c198c2e4e970041bbea849e17f02e1df18875539b6afba76c781b6b59a07c3
   languageName: node
   linkType: hard
 
@@ -806,13 +806,13 @@ __metadata:
   linkType: hard
 
 "@playwright/test@npm:^1.34.3":
-  version: 1.42.1
-  resolution: "@playwright/test@npm:1.42.1"
+  version: 1.43.0
+  resolution: "@playwright/test@npm:1.43.0"
   dependencies:
-    playwright: 1.42.1
+    playwright: 1.43.0
   bin:
     playwright: cli.js
-  checksum: a41505f02a4dac358e645452a190cac620b8d4eae79ab5d90ea1fb7ca06d86a9f5749b1a803dea789b662d1cbfd216380f722bed72093897e18b4238f4a07a4d
+  checksum: c7c0c6e8fde4e9dceea22d48384642b78c3d539fb0512edeaa581dc4dc07cedfd166dba92c5e9e69a378b7fd63362b142450dbdd5c9b65d76c4def162a5c470d
   languageName: node
   linkType: hard
 
@@ -1023,14 +1023,14 @@ __metadata:
   linkType: hard
 
 "@wix/ecom@npm:^1.0.474":
-  version: 1.0.515
-  resolution: "@wix/ecom@npm:1.0.515"
+  version: 1.0.521
+  resolution: "@wix/ecom@npm:1.0.521"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.7
-    "@wix/sdk-types": ^1.5.9
-  checksum: fe4a6fe586af52369164fa55bf19fe34905a3bb6e4d741f21707f1beca9a3fe4727083833c6a8f48dacf15577686a0a2c5aa9155f0aba5ab9a1815c085eaad5b
+    "@wix/sdk-types": ^1.5.11
+  checksum: 615a8dd67f1bd085e668f9799909896276be90d85cd28df37c77e8de5c8fea5bdbf8621e170113cbea6a7f3e469ed1d5ed4521f9d81a0dd9f0ad55a31347b0d5
   languageName: node
   linkType: hard
 
@@ -1069,13 +1069,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/image-kit@npm:^1.61.0":
-  version: 1.62.0
-  resolution: "@wix/image-kit@npm:1.62.0"
+"@wix/image-kit@npm:^1.62.0":
+  version: 1.63.0
+  resolution: "@wix/image-kit@npm:1.63.0"
   dependencies:
-    "@babel/runtime": ^7.24.1
+    "@babel/runtime": ^7.24.4
     tslib: ^2.6.2
-  checksum: 63d5db0ed57c89ac368e4ad5f626ab6af973c1b75f369bb74914e9095a2353c886878051b32d8d45103dff3a711e5f1b4081dbd9d0557f00f95910e041a84ea2
+  checksum: 06c63b0e92c8d1635b40c440b63e35f9538b5706c78cc7741ea73c8a1bf05fea301fd1531dba04048601078e85b1df37b287c1fe14ace54dce092becdb5b2ae8
   languageName: node
   linkType: hard
 
@@ -1182,7 +1182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/redirects@npm:^1.0.13, @wix/redirects@npm:^1.0.35":
+"@wix/redirects@npm:^1.0.13, @wix/redirects@npm:^1.0.36":
   version: 1.0.36
   resolution: "@wix/redirects@npm:1.0.36"
   dependencies:
@@ -1203,6 +1203,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wix/sdk-types@npm:^1.5.11":
+  version: 1.5.11
+  resolution: "@wix/sdk-types@npm:1.5.11"
+  checksum: 1aea97e9510b7996a6d2694f7865d42dffe69fb808efc9aac73eb0418b4f0a664665179aad185d4ebf6f8cf369d07bb5f3cd27b664222772f4110ef53528c316
+  languageName: node
+  linkType: hard
+
 "@wix/sdk-types@npm:^1.5.3, @wix/sdk-types@npm:^1.5.5":
   version: 1.5.6
   resolution: "@wix/sdk-types@npm:1.5.6"
@@ -1218,14 +1225,14 @@ __metadata:
   linkType: hard
 
 "@wix/sdk@npm:^1.5.0":
-  version: 1.7.12
-  resolution: "@wix/sdk@npm:1.7.12"
+  version: 1.7.14
+  resolution: "@wix/sdk@npm:1.7.14"
   dependencies:
     "@babel/runtime": ^7.23.2
     "@wix/identity": ^1.0.74
-    "@wix/image-kit": ^1.61.0
-    "@wix/redirects": ^1.0.35
-    "@wix/sdk-types": ^1.5.9
+    "@wix/image-kit": ^1.62.0
+    "@wix/redirects": ^1.0.36
+    "@wix/sdk-types": ^1.5.11
     crypto-js: ^4.2.0
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     jose: ^5.2.1
@@ -1235,7 +1242,7 @@ __metadata:
   dependenciesMeta:
     graphql:
       optional: true
-  checksum: 3b5e96cc6dd7d47cdd22a410327f6a99164c92a6a1ad6f7d2a2e4ff1f06c35481c8960ece8860f308cd395c8c71e9fa79033b90e4de45b27f21d5aefb9fcf4e3
+  checksum: 3863baddd4dcea11906e98d5e7b22dfc16bf22ea56b4b055b59f446aae8a4cd6ca278a01194c27377277314ab48b646e87f51395447fe92e4ff6edba7f363b72
   languageName: node
   linkType: hard
 
@@ -5051,27 +5058,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.42.1":
-  version: 1.42.1
-  resolution: "playwright-core@npm:1.42.1"
+"playwright-core@npm:1.43.0":
+  version: 1.43.0
+  resolution: "playwright-core@npm:1.43.0"
   bin:
     playwright-core: cli.js
-  checksum: e7081ff0f43b4b9053255109eb1d82164b7c6b55c7d022e25fca935d0f4fc547cb2e02a7b64f0c2a9462729be7bb45edb082f8b038306415944f1061d00d9c90
+  checksum: b35265d356d87eb4114997e6af985ee3cb5a473f15a465d6e02834288a55f0cae4233a18178658389ff443f92405e020815fc165274d2262c3ca1c2b5be948cf
   languageName: node
   linkType: hard
 
-"playwright@npm:1.42.1":
-  version: 1.42.1
-  resolution: "playwright@npm:1.42.1"
+"playwright@npm:1.43.0":
+  version: 1.43.0
+  resolution: "playwright@npm:1.43.0"
   dependencies:
     fsevents: 2.3.2
-    playwright-core: 1.42.1
+    playwright-core: 1.43.0
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 06c16bcd07d03993126ee6c168bde28c59d3cab7f7d4721eaf57bd5c51e9c929e10a286758de062b5fc02874413ceae2684d14cbb7865c0a51fc8df6d9001ad1
+  checksum: edd4ef9644398c197d20e957cf2a5e5a95d7e0144f3c971923e709247f5b48551bf6168c74b34909f263ab96fac6e49466b65a9cd1349ad400dabd4b8b364acf
   languageName: node
   linkType: hard
 
