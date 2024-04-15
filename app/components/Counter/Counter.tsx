@@ -16,7 +16,6 @@ export function Counter({
   limit: number;
 }) {
   const onSelect = (count: number) => {
-    if (count === 0) return;
     onChange({
       [`${ticketId}${optionId ? `|${optionId}` : ''}`]: {
         quantity: count,
