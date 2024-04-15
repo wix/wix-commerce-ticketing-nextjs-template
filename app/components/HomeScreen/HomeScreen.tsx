@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { wixEvents } from '@wix/events';
+import { wixEventsV2 as wixEvents } from '@wix/events';
 import { products } from '@wix/stores';
 import { Events } from '@app/components/Events/Events';
 import testIds from '@app/utils/test-ids';
@@ -9,7 +9,7 @@ export function HomeScreen({
   events,
   productsForCategories,
 }: {
-  events: wixEvents.Event[];
+  events: wixEvents.V3Event[];
   productsForCategories: { category: string; product: products.Product }[];
 }) {
   return (

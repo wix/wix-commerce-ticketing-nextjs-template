@@ -4,7 +4,7 @@ import React from 'react';
 import { WIX_SERVICE_FEE } from '@app/constants';
 import {
   ticketDefinitions as api,
-  wixEvents,
+  wixEventsV2 as wixEvents,
   ticketDefinitions,
 } from '@wix/events';
 import { TicketDefinitionExtended } from '@app/types/ticket';
@@ -19,7 +19,7 @@ export function Price({
 }: {
   ticket: TicketDefinitionExtended;
   setTickets: Function;
-  event: wixEvents.Event;
+  event: wixEvents.V3Event;
   disabled: boolean;
   option?: api.PricingOption;
   selectedTickets: Record<string, { quantity: number; price: number }>;
