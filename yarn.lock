@@ -1239,8 +1239,8 @@ __metadata:
   linkType: hard
 
 "@wix/events@npm:^1.0.159":
-  version: 1.0.189
-  resolution: "@wix/events@npm:1.0.189"
+  version: 1.0.190
+  resolution: "@wix/events@npm:1.0.190"
   dependencies:
     "@wix/events_categories": 1.0.17
     "@wix/events_forms": 1.0.18
@@ -1250,11 +1250,11 @@ __metadata:
     "@wix/events_rsvp": 1.0.15
     "@wix/events_schedule": 1.0.13
     "@wix/events_schedule-bookmarks": 1.0.13
-    "@wix/events_ticket-definitions": 1.0.20
+    "@wix/events_ticket-definitions": 1.0.21
     "@wix/events_ticket-definitions-v-2": 1.0.18
     "@wix/events_tickets": 1.0.15
     "@wix/events_wix-events-v-2": 1.0.16
-  checksum: 8480b0a1bbe24bd5e0a05b0e25013ff23baec0bc7e4003a247fa689d32223e2da89fc504680e658ff698a8360d78b12d3625a40ed387bdc67b63a9437fc6243e
+  checksum: b86841ee6255856c2193450432d53af1a80507731384a3d862bba639ddd807c62b0a688cc5fbc0597cfcc013872e74196570c726035ef2cf8700f29b7242a75d
   languageName: node
   linkType: hard
 
@@ -1366,15 +1366,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/events_ticket-definitions@npm:1.0.20":
-  version: 1.0.20
-  resolution: "@wix/events_ticket-definitions@npm:1.0.20"
+"@wix/events_ticket-definitions@npm:1.0.21":
+  version: 1.0.21
+  resolution: "@wix/events_ticket-definitions@npm:1.0.21"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.10
     "@wix/sdk-types": ^1.6.0
-  checksum: 0b4f4027c49111b5f3df6abe8d5ef4fa00fb29a0f841cf9a09cb62e9715bbc30e2dfc70bf504293b1942ebb7c309956f71f2c8049c8dffe89ca81028f0eac238
+  checksum: c2d1dd5be8387eef451398bb1696cca3abad43301bb11de2743d4b752054e8a66a37040a4972acb29619347c7a605216212c4c43e77b091002921efba3719f31
   languageName: node
   linkType: hard
 
