@@ -1023,8 +1023,8 @@ __metadata:
   linkType: hard
 
 "@wix/ecom@npm:^1.0.474":
-  version: 1.0.538
-  resolution: "@wix/ecom@npm:1.0.538"
+  version: 1.0.539
+  resolution: "@wix/ecom@npm:1.0.539"
   dependencies:
     "@wix/ecom_abandoned-checkouts": 1.0.19
     "@wix/ecom_back-in-stock-notifications": 1.0.22
@@ -1037,12 +1037,12 @@ __metadata:
     "@wix/ecom_current-cart": 1.0.24
     "@wix/ecom_discount-rules": 1.0.22
     "@wix/ecom_order-fulfillments": 1.0.20
-    "@wix/ecom_order-invoices": 1.0.16
+    "@wix/ecom_order-invoices": 1.0.17
     "@wix/ecom_order-transactions": 1.0.22
     "@wix/ecom_orders": 1.0.35
     "@wix/ecom_orders-settings": 1.0.20
     "@wix/ecom_recommendations": 1.0.20
-  checksum: b0876972f154747591a136c242fcea7aae1bd6f2f47de7344de0ac32f4d038104dc5d55ddc2a9790b4143fc7ac0be95f75513408dc4bff3aa3340b3d00b9c04b
+  checksum: a047036b9c4cc88badfadfd033a5b06c825125d86dd3baff49b3e7d15a4c541cf938b5d60e53be64170b92ad7664ea39f697a232ab70c2ac45b30f3e61b09f87
   languageName: node
   linkType: hard
 
@@ -1178,15 +1178,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/ecom_order-invoices@npm:1.0.16":
-  version: 1.0.16
-  resolution: "@wix/ecom_order-invoices@npm:1.0.16"
+"@wix/ecom_order-invoices@npm:1.0.17":
+  version: 1.0.17
+  resolution: "@wix/ecom_order-invoices@npm:1.0.17"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.10
     "@wix/sdk-types": ^1.6.0
-  checksum: 9fb223c558320d384b1ff19f0910641176d22fcbc905eb8c00dc08253382d3ce099513965b05dc9f06d96b6ab857ce79a8c919be66bf9dd0b220a32841b45df4
+  checksum: 3668592d094864438117077640d7cf19e31c835b9bf7edbfe49574e382984efbdff8eca4972bf46335325745f407741e302db98391690845bf87b58142fee71f
   languageName: node
   linkType: hard
 
