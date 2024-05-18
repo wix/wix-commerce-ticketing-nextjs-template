@@ -1653,15 +1653,15 @@ __metadata:
   linkType: hard
 
 "@wix/stores@npm:^1.0.71":
-  version: 1.0.144
-  resolution: "@wix/stores@npm:1.0.144"
+  version: 1.0.146
+  resolution: "@wix/stores@npm:1.0.146"
   dependencies:
     "@wix/stores_collections": 1.0.11
-    "@wix/stores_inventory": 1.0.13
-    "@wix/stores_products": 1.0.16
+    "@wix/stores_inventory": 1.0.14
+    "@wix/stores_products": 1.0.18
     "@wix/stores_subscription-options": 1.0.11
     "@wix/stores_wishlist": 1.0.11
-  checksum: 395e562630336971e34574cd283d586d719020e490b81acb66f9978eda794d4a77f450ba2afaecf3ef79513dd27d4f8dbc2e803a3486918e49e79ad57b89ae0d
+  checksum: 839d6f764a6f5b301f794e69ec28860b565a01336a98e4b42c82eac9d1e0e7a8cad0469584fe5258272fb5cdbf8054e2274739d1076a3ec98b62838057734d99
   languageName: node
   linkType: hard
 
@@ -1677,27 +1677,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/stores_inventory@npm:1.0.13":
-  version: 1.0.13
-  resolution: "@wix/stores_inventory@npm:1.0.13"
+"@wix/stores_inventory@npm:1.0.14":
+  version: 1.0.14
+  resolution: "@wix/stores_inventory@npm:1.0.14"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.10
     "@wix/sdk-types": ^1.6.2
-  checksum: b39323374924191dec98cb0d9bbb082ae2daf41e98ed6ad3744d0d3ffb1588dfb2c49c752a30ec8ac89dc40610a5bcf4af28965fbb31b1c830a2beabd752ee12
+  checksum: e7caf4d2bdbd8a706fd2168566f463aebe1884dd2838c99da059ced5f8e08016293e62ab4771b94cc72b7c279506f79555ad7e4a9315048e520f8055052b0ed6
   languageName: node
   linkType: hard
 
-"@wix/stores_products@npm:1.0.16":
-  version: 1.0.16
-  resolution: "@wix/stores_products@npm:1.0.16"
+"@wix/stores_products@npm:1.0.18":
+  version: 1.0.18
+  resolution: "@wix/stores_products@npm:1.0.18"
   dependencies:
     "@wix/metro-runtime": ^1.1528.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.10
     "@wix/sdk-types": ^1.6.2
-  checksum: dc84814dc6265b597ae1086c38f7abfd1fbc9f8e3915fb0c4032f5511c12152a6aa7193f559081cb3b18ebe7dda73b681e10b362fbdbd739f8afcbccd836ae4c
+  checksum: 979f74592a3b1cf161205c58e31d7179240ced1ae6367297a14a4faf5c01ed774b093b7b97a2b922923aaf1083f7408ef564210b39ad5019c8a1e852cc479ca0
   languageName: node
   linkType: hard
 
