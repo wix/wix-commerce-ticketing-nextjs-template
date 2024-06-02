@@ -1703,23 +1703,23 @@ __metadata:
   linkType: hard
 
 "@wix/redirects@npm:^1.0.13, @wix/redirects@npm:^1.0.41":
-  version: 1.0.46
-  resolution: "@wix/redirects@npm:1.0.46"
+  version: 1.0.47
+  resolution: "@wix/redirects@npm:1.0.47"
   dependencies:
-    "@wix/redirects_redirects": 1.0.16
-  checksum: ef5096e230ac044214769b9bbc814d912934e77f1f71908c9a533cfae37fcc84825a0b177327f43ad6827aa0da62542ef5d4e1a2aa27424fcf9ff79183d9c998
+    "@wix/redirects_redirects": 1.0.17
+  checksum: 3002b188f9cf9356137e332c8f7cc91b1b21fd7707d16defa293c0d40d13183da8d2253d32ca71c61fec6e7f306bc28ae4a522da153c6fbd202a964e3ca70411
   languageName: node
   linkType: hard
 
-"@wix/redirects_redirects@npm:1.0.16":
-  version: 1.0.16
-  resolution: "@wix/redirects_redirects@npm:1.0.16"
+"@wix/redirects_redirects@npm:1.0.17":
+  version: 1.0.17
+  resolution: "@wix/redirects_redirects@npm:1.0.17"
   dependencies:
-    "@wix/metro-runtime": ^1.1528.0
+    "@wix/metro-runtime": ^1.1696.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.10
     "@wix/sdk-types": ^1.6.2
-  checksum: 232647d323726f247832a41f8260e68e1bfd646bc07deaf2dba580456fc427a7c3b233c8f02f5b264d16bfef6c20ca2e5f12ce2acd881a0a0d08c50860a96463
+  checksum: 8e0c93522dee235f6866c1aac444778e9ab0a10da2d74832c7aa66edc16f8c8fb3890f33fb2bc5c7e41c67e75c621f72dcf98e3128e95ce63f7c43d86b66481b
   languageName: node
   linkType: hard
 
@@ -1762,7 +1762,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/sdk-types@npm:^1.7.1":
+"@wix/sdk-types@npm:^1.7.1, @wix/sdk-types@npm:^1.7.2":
   version: 1.7.2
   resolution: "@wix/sdk-types@npm:1.7.2"
   checksum: 87f1415cc37c645625ec8b1c1117b3b9ee7ce6b0012d6ca84107447e98a9db89aa99325f2a437cc02d9ea4320ce3988afb2ef6e86bc99352791875af47ff23d0
@@ -1770,14 +1770,14 @@ __metadata:
   linkType: hard
 
 "@wix/sdk@npm:^1.5.0":
-  version: 1.9.5
-  resolution: "@wix/sdk@npm:1.9.5"
+  version: 1.9.7
+  resolution: "@wix/sdk@npm:1.9.7"
   dependencies:
     "@babel/runtime": ^7.23.2
     "@wix/identity": ^1.0.78
     "@wix/image-kit": ^1.68.0
     "@wix/redirects": ^1.0.41
-    "@wix/sdk-types": ^1.7.0
+    "@wix/sdk-types": ^1.7.2
     crypto-js: ^4.2.0
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     jose: ^5.2.1
@@ -1787,7 +1787,7 @@ __metadata:
   dependenciesMeta:
     graphql:
       optional: true
-  checksum: 3e11443599cc56f4546146b86bd07a08d440d53599d2205550626111bd375c1815362ab7104c95923055c307897fc9a772d0f20df522d67423c2033c9d441302
+  checksum: b4e8ede23177076d8ce79d05b565c550c1d6aadb34f6f77641ff697158b99e9afe60715bfc9c52c86d1ddd8e83378b6b443f0943421acc6e17369b8fe76d6ca0
   languageName: node
   linkType: hard
 
