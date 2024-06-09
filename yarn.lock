@@ -1252,13 +1252,13 @@ __metadata:
   linkType: hard
 
 "@wix/events@npm:^1.0.159":
-  version: 1.0.213
-  resolution: "@wix/events@npm:1.0.213"
+  version: 1.0.215
+  resolution: "@wix/events@npm:1.0.215"
   dependencies:
     "@wix/events_categories": 1.0.26
     "@wix/events_forms": 1.0.26
-    "@wix/events_guests": 1.0.31
-    "@wix/events_notifications": 1.0.0
+    "@wix/events_guests": 1.0.32
+    "@wix/events_notifications": 1.0.2
     "@wix/events_orders": 1.0.26
     "@wix/events_policies": 1.0.26
     "@wix/events_rsvp": 1.0.23
@@ -1268,7 +1268,7 @@ __metadata:
     "@wix/events_ticket-definitions-v-2": 1.0.29
     "@wix/events_tickets": 1.0.23
     "@wix/events_wix-events-v-2": 1.0.29
-  checksum: 3ff313e39d9aff4aff434a6f792672cfc64ed28e6478c0fb0dbb621f94bf414cc6dfa833415005c7ca77388e10edb1d8a233c905959fb23b080a291d9349e8c3
+  checksum: 9d6b78f720cd3dad8ec8f5892a1f1747a0c8f47ad57913201f45f2f144668458b7ddb41bcb420dda31eae367b5e817e4bbd8d8c56ca5cd8749e8d1018f3f820f
   languageName: node
   linkType: hard
 
@@ -1296,27 +1296,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/events_guests@npm:1.0.31":
-  version: 1.0.31
-  resolution: "@wix/events_guests@npm:1.0.31"
+"@wix/events_guests@npm:1.0.32":
+  version: 1.0.32
+  resolution: "@wix/events_guests@npm:1.0.32"
   dependencies:
     "@wix/metro-runtime": ^1.1696.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.12
     "@wix/sdk-types": ^1.7.1
-  checksum: 99358d2d146b023ced2d08fbe392a97d75b0c4f93ab81ce43aca5b464280a71bbe2b0d8e9d2c39568bc7500b03ccb1830f3b514d27ec780e17482a2cc0105c48
+  checksum: c0494db743ad8d9b0693972e31ac1cb17c3a7baa575137dba3300d3cbaaa22ce575c9fcc10c43e9c4551956770fc18b0aaf0e685a3a826e4fda67662812b7e6c
   languageName: node
   linkType: hard
 
-"@wix/events_notifications@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@wix/events_notifications@npm:1.0.0"
+"@wix/events_notifications@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@wix/events_notifications@npm:1.0.2"
   dependencies:
     "@wix/metro-runtime": ^1.1696.0
     "@wix/motion-edm-autogen-query-wrapper": ^1.0.37
     "@wix/sdk-runtime": ^0.2.12
     "@wix/sdk-types": ^1.7.1
-  checksum: 86c4eaba1b281a14b80bd67af96544ba9cb45d665d60a4317d5b3b134c33d3ebe3d240b6d222d62c8143bd031c58f421d26aec5fda2c4bf4ade142de7469f11c
+  checksum: a3e9c812fc67b0276a0d9a2924029d4c125f377dc70d3ce497dc6454738d0ba7c7851d87728e32b366b60faa8bcfe658a7768fd79c69fb859359b3565bb0bc71
   languageName: node
   linkType: hard
 
