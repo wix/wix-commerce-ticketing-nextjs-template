@@ -1505,22 +1505,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/design-system-tokens@npm:^1.63.2":
-  version: 1.63.2
-  resolution: "@wix/design-system-tokens@npm:1.63.2"
-  checksum: 40f118545d663c305c1a032fb414fd39bb7df9cd456c33e9ec9a8e375c717fe962c20120a5c7ba737e102ebcfa7a01b9f305e80087b92dce33a6c4aea8eb44ba
+"@wix/design-system-tokens@npm:^1.69.0":
+  version: 1.69.0
+  resolution: "@wix/design-system-tokens@npm:1.69.0"
+  checksum: 3406b5de8c6fbae1c7c597d0e513c95e94856e23cd873891cf08ed57fcc2462177c4d25998ee3e02f0e8616e04bd803a62beb8585b5e2e35bd65ab33d4efa121
   languageName: node
   linkType: hard
 
-"@wix/design-system@npm:^1.135.0":
-  version: 1.149.2
-  resolution: "@wix/design-system@npm:1.149.2"
+"@wix/design-system@npm:^1.154.0":
+  version: 1.155.0
+  resolution: "@wix/design-system@npm:1.155.0"
   dependencies:
     "@babel/runtime": ^7.26.0
     "@floating-ui/react": ^0.27.0
     "@react-aria/focus": ^3.19.0
-    "@wix/design-system-tokens": ^1.63.2
-    "@wix/wix-ui-icons-common": ^3.59.0
+    "@wix/design-system-tokens": ^1.69.0
+    "@wix/wix-ui-icons-common": ^3.63.0
     "@wix/wix-ui-test-utils": ^1.1.16
     chart.js: ^2.9.4
     classnames: ^2.5.1
@@ -1580,7 +1580,7 @@ __metadata:
       optional: true
     puppeteer-core:
       optional: true
-  checksum: 9b4533610d63d2983f7418c15a6c1ea5ca753160cef8068f4d8931ef0813354152b38a5337b2a6df837042d57e47283662df5138db4176a11e3b86b9a2a03539
+  checksum: 17fdb0c1188a4ac0dcfe52396c416101a5b1dded41e1f170e0e1bac0395a2352dc85154f349d42d5a31b6a677315a2e784223d495762c8c6a3838a4e6f6e2620
   languageName: node
   linkType: hard
 
@@ -2478,8 +2478,8 @@ __metadata:
   linkType: hard
 
 "@wix/ricos@npm:^10.112.0":
-  version: 10.112.0
-  resolution: "@wix/ricos@npm:10.112.0"
+  version: 10.116.1
+  resolution: "@wix/ricos@npm:10.116.1"
   dependencies:
     "@floating-ui/react-dom": ^2.0.0
     "@loadable/component": ^5.14.1
@@ -2488,7 +2488,7 @@ __metadata:
     "@tiptap/pm": 2.8.0
     "@tiptap/react": 2.8.0
     "@tiptap/suggestion": 2.8.0
-    "@wix/design-system": ^1.135.0
+    "@wix/design-system": ^1.154.0
     "@wix/image": ^1.325.0
     "@wix/members": ^1.0.137
     "@wix/sdk": ^1.14.3
@@ -2506,6 +2506,7 @@ __metadata:
     focus-trap: ^7.6.2
     fp-ts: ^2.11.0
     fscreen: 1.0.2
+    fuse.js: ^7.0.0
     html-entities: ^2.3.6
     i18next: ^19.0.0
     id3js: 2.1.1
@@ -2522,10 +2523,10 @@ __metadata:
     omit-deep: 0.3.0
     parse5: ^6.0.0
     prismjs: ~1.16.0
-    pro-gallery: ^5.0.98
-    pro-gallery-lib: ^5.0.98
+    pro-gallery: ^5.0.112
+    pro-gallery-lib: ^5.0.112
     prop-types: ^15.0.0
-    prosemirror-dev-tools: ^4.0.0
+    prosemirror-dev-tools: ^4.2.0
     prosemirror-state: ^1.0.0
     prosemirror-transform: ^1.0.0
     prosemirror-utils: 0.9.6
@@ -2558,7 +2559,7 @@ __metadata:
     lodash: ^4.17.15
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
-  checksum: 24f318a56263e5ef2e4d6bd3be5a1f693f093a0349d6fc0ae9ff3f9858d33348021c73aafdbcbfac59097ef25e827105a2d60d0f78203e870b50c3a91f625d3a
+  checksum: e8587ba6961a2cb4aacc8f560e5af7d7cc6da37481a482763771f8a434e53dc15aebde158887b6277e7d5275f2b877ad4a4726da3d3afadf28c49bb6283ab595
   languageName: node
   linkType: hard
 
@@ -2826,13 +2827,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/wix-ui-icons-common@npm:^3.56.0, @wix/wix-ui-icons-common@npm:^3.59.0":
+"@wix/wix-ui-icons-common@npm:^3.56.0":
   version: 3.59.0
   resolution: "@wix/wix-ui-icons-common@npm:3.59.0"
   dependencies:
     "@babel/runtime": ^7.25.7
     tslib: ^2.8.0
   checksum: bb6d1a0da978c9e32e2530ec3c54966d14ce4ef816a3211c445d3068659db180d4f39ac673f911025a73e981abf6ad27d4a7fa3d4ea353dcc04765f33ef7a669
+  languageName: node
+  linkType: hard
+
+"@wix/wix-ui-icons-common@npm:^3.63.0":
+  version: 3.64.0
+  resolution: "@wix/wix-ui-icons-common@npm:3.64.0"
+  dependencies:
+    "@babel/runtime": ^7.25.7
+    tslib: ^2.8.0
+  checksum: 9aa3837640943ddb756e359acfe5e0b8c647a5c72533e33765978619953c113e1b9fd4dd32ba13b650d4e883267cc929643480d24b3426030c39ce9663d28a52
   languageName: node
   linkType: hard
 
@@ -5366,6 +5377,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fuse.js@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "fuse.js@npm:7.0.0"
+  checksum: d15750efec1808370c0cae92ec9473aa7261c59bca1f15f1cf60039ba6f804b8f95340b5cabd83a4ef55839c1034764856e0128e443921f072aa0d8a20e4cacf
+  languageName: node
+  linkType: hard
+
 "gauge@npm:^4.0.3":
   version: 4.0.4
   resolution: "gauge@npm:4.0.4"
@@ -7270,13 +7288,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^2.1.11":
-  version: 2.1.11
-  resolution: "nanoid@npm:2.1.11"
-  checksum: 18cd14386816873849787eb4e65667021bfdeb019a8f14c74287c23594c67b7c0e8f42c7d69f6aedf05cd3d100f1ddc41184f9f9b6b17fbaea1c3ee3f0704eec
-  languageName: node
-  linkType: hard
-
 "nanoid@npm:^3.3.6":
   version: 3.3.7
   resolution: "nanoid@npm:3.3.7"
@@ -8159,14 +8170,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pro-gallery-lib@npm:5.0.112, pro-gallery-lib@npm:^5.0.98":
+"pro-gallery-lib@npm:5.0.112, pro-gallery-lib@npm:^5.0.112":
   version: 5.0.112
   resolution: "pro-gallery-lib@npm:5.0.112"
   checksum: 50c87d20a77dd1b1af3f443f71c7c26a930549d8a51f00de93adc0905fd3560bfbfc657ce18e1abf08510d711ab6c42d8b5f7f85ee84f3a61ca2c5cab7d5183b
   languageName: node
   linkType: hard
 
-"pro-gallery@npm:^5.0.98":
+"pro-gallery@npm:^5.0.112":
   version: 5.0.112
   resolution: "pro-gallery@npm:5.0.112"
   dependencies:
@@ -8265,24 +8276,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-dev-tools@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "prosemirror-dev-tools@npm:4.1.0"
+"prosemirror-dev-tools@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "prosemirror-dev-tools@npm:4.2.0"
   dependencies:
     "@babel/runtime": ^7.18.6
     "@compiled/react": ^0.11.1
     html: ^1.0.0
     jotai: ^1.10.0
     jsondiffpatch: ^0.4.1
-    nanoid: ^2.1.11
+    nanoid: ^3.3.8
     prosemirror-model: ">=1.0.0"
     prosemirror-state: ">=1.0.0"
     react-dock: ^0.6.0
     react-json-tree: ^0.17.0
   peerDependencies:
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 7f74e3e1560b96d6e121d79467d8056bb936783dc0aee5a6d471b5228c094b52e16bead8487dbbad48cc527f17c24459c335cf92a91685afac5730023f97635e
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: a1db9fa1eb239cfd6f50ce7749a01a0ff6c160f9a8430e0d6ca61b724d2b6db0121411b2fe9a46d2c89b34cd751b11d984e2994ae7d573f031a4f0d824138242
   languageName: node
   linkType: hard
 
