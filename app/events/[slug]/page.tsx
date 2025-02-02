@@ -1,3 +1,4 @@
+import '@wix/ricos/css/all-plugins-viewer.css';
 import { WixMediaImage } from '@app/components/Image/WixMediaImage';
 import { formatDate } from '@app/utils/date-formatter';
 import { TicketsTable } from '@app/components/Table/Table.client';
@@ -6,11 +7,20 @@ import { wixEventsV2 as wixEvents } from '@wix/events';
 import { Schedule } from '@app/components/Schedule/Schedule';
 import { TicketDefinitionExtended } from '@app/types/ticket';
 import testIds from '@app/utils/test-ids';
+import { headers } from 'next/headers';
+import EventRichText from '../EventRichText';
 
 export default async function EventPage({ params }: any) {
   if (!params.slug) {
     return;
   }
+  const headersList = headers();
+  const host = headersList.get('host');
+  const proto = headersList.get('x-forwarded-proto') || 'http';
+  // You should probably just put your site domain and not use this generic implementation
+  const pageUrl = `${proto}://${host}/events/${params.slug}`;
+
+  const shareUrl = encodeURIComponent(pageUrl);
   const wixClient = await getWixClient();
   const { items: events } = await wixClient.wixEvents
     .queryEvents({
@@ -26,29 +36,35 @@ export default async function EventPage({ params }: any) {
     .find();
   const event = events?.length ? events![0] : null;
 
-  const tickets =
-    event &&
-    ((
-      await wixClient.eventOrders.queryAvailableTickets({
-        filter: { eventId: event._id },
-        offset: 0,
-        limit: 100,
-        sort: 'orderIndex:asc',
-      })
-    ).definitions?.map((ticket) => ({
-      ...ticket,
-      canPurchase:
-        ticket.limitPerCheckout! > 0 &&
-        (!ticket.salePeriod ||
-          (new Date(ticket.salePeriod.endDate!) > new Date() &&
-            new Date(ticket.salePeriod.startDate!) < new Date())),
-    })) as TicketDefinitionExtended[]);
-  const schedule =
-    event &&
-    (await wixClient.schedule.listScheduleItems({
-      eventId: [event._id!],
-      limit: 100,
-    }));
+  const [tickets, schedule, eventRichText] = event
+    ? await Promise.all([
+        (
+          await wixClient.eventOrders.queryAvailableTickets({
+            filter: { eventId: event._id },
+            offset: 0,
+            limit: 100,
+            sort: 'orderIndex:asc',
+          })
+        ).definitions?.map((ticket) => ({
+          ...ticket,
+          canPurchase:
+            ticket.limitPerCheckout! > 0 &&
+            (!ticket.salePeriod ||
+              (new Date(ticket.salePeriod.endDate!) > new Date() &&
+                new Date(ticket.salePeriod.startDate!) < new Date())),
+        })) as TicketDefinitionExtended[],
+        wixClient.schedule.listScheduleItems({
+          eventId: [event._id!],
+          limit: 100,
+        }),
+        wixClient.wixEventsRichText
+          .queryRichContent()
+          .limit(1)
+          .eq('eventId', event._id!)
+          .find()
+          .then((evRichTexts) => evRichTexts.items?.[0]),
+      ])
+    : [];
 
   return (
     <div className="mx-auto px-4 sm:px-14">
@@ -126,16 +142,11 @@ export default async function EventPage({ params }: any) {
                 event.location?.address?.formatted!
               }
             </p>
-            {event.detailedDescription! !== '<p></p>' ? (
-              <>
-                <h2 className="mt-7">ABOUT THE EVENT</h2>
-                <div
-                  className="font-helvetica"
-                  dangerouslySetInnerHTML={{
-                    __html: event.detailedDescription! ?? '',
-                  }}
-                />
-              </>
+            {eventRichText ? (
+              <EventRichText
+                richText={eventRichText}
+                title={<h2 className="mt-7">ABOUT THE EVENT</h2>}
+              />
             ) : null}
             {schedule?.items?.length ? (
               <div className="mb-4 sm:mb-14">
@@ -167,7 +178,7 @@ export default async function EventPage({ params }: any) {
                   className="border-2 inline-flex items-center mb-1 mr-1 transition p-1 rounded-full text-white border-neutral-600 bg-neutral-600 hover:bg-neutral-700 hover:border-neutral-700"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://facebook.com/sharer/sharer.php?u="
+                  href={`https://facebook.com/sharer/sharer.php?u=${shareUrl}`}
                   aria-label="Share on Facebook"
                 >
                   <svg
@@ -184,24 +195,24 @@ export default async function EventPage({ params }: any) {
                   className="border-2 inline-flex items-center mb-1 mr-1 transition p-1 rounded-full text-white border-neutral-600 bg-neutral-600 hover:bg-neutral-700 hover:border-neutral-700"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20event`}
-                  aria-label="Share on Twitter"
+                  href={`https://x.com/intent/post?url=${shareUrl}`}
+                  aria-label="Share on X"
                 >
                   <svg
                     aria-hidden="true"
                     fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
+                    viewBox="-100 0 1300 1300"
                     className="w-4 h-4"
                   >
-                    <path d="m459 152 1 13c0 139-106 299-299 299-59 0-115-17-161-47a217 217 0 0 0 156-44c-47-1-85-31-98-72l19 1c10 0 19-1 28-3-48-10-84-52-84-103v-2c14 8 30 13 47 14A105 105 0 0 1 36 67c51 64 129 106 216 110-2-8-2-16-2-24a105 105 0 0 1 181-72c24-4 47-13 67-25-8 24-25 45-46 58 21-3 41-8 60-17-14 21-32 40-53 55z"></path>
+                    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"></path>
                   </svg>
                 </a>
                 <a
                   className="border-2 inline-flex items-center mb-1 mr-1 transition p-1 rounded-full text-white border-neutral-600 bg-neutral-600 hover:bg-neutral-700 hover:border-neutral-700"
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;title=&amp;summary=&amp;source="
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&source=`}
                   aria-label="Share on Linkedin"
                 >
                   <svg

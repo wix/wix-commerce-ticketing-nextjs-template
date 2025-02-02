@@ -6,6 +6,7 @@ import {
   wixEventsV2 as wixEvents,
   schedule,
   orders as eventOrders,
+  ricos as wixEventsRichText,
 } from '@wix/events';
 import { cookies } from 'next/headers';
 import { WIX_REFRESH_TOKEN } from '@app/constants';
@@ -27,6 +28,7 @@ export const getWixClient = async () => {
       schedule,
       orders,
       eventOrders,
+      wixEventsRichText,
       currentCart,
       redirects,
     },
