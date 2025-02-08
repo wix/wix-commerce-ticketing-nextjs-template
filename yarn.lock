@@ -2489,8 +2489,8 @@ __metadata:
   linkType: hard
 
 "@wix/ricos@npm:^10.112.0":
-  version: 10.118.0
-  resolution: "@wix/ricos@npm:10.118.0"
+  version: 10.119.0
+  resolution: "@wix/ricos@npm:10.119.0"
   dependencies:
     "@floating-ui/react-dom": ^2.0.0
     "@loadable/component": ^5.14.1
@@ -2513,6 +2513,7 @@ __metadata:
     dataloader: ^2.2.2
     deep-freeze: ^0.0.1
     downshift: 3.2.12
+    effect: ^3.12.9
     emulate-tab: ^1.2.1
     focus-trap: ^7.6.2
     fp-ts: ^2.11.0
@@ -2570,7 +2571,7 @@ __metadata:
     lodash: ^4.17.15
     react: ^16.14.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
-  checksum: 54f1de4b35c02e35146ce3807bfe41c8102a4ac440e4355cb14e137f87ab807057b8b6b14ba49bfc014c4ed27bfef8850ea3dd75778c1bc6f6108533d8d4a6e6
+  checksum: 1fcacf3671e3e9b325b755bdc99c062e3101e96f33f56a3be9267cd637cf2b3e57335f2504a3016415aae111e9a471ba3fa86f3babd26848f49b28692d0a1736
   languageName: node
   linkType: hard
 
@@ -4447,6 +4448,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"effect@npm:^3.12.9":
+  version: 3.12.10
+  resolution: "effect@npm:3.12.10"
+  dependencies:
+    fast-check: ^3.23.1
+  checksum: 84c488eae67bcabf18c7bb2bded13d7632a172aafb5fac26c4f07b830e737ff28fc30bc94c22270802dcc1ec90e3ef72cf64957328fc8f88efafefb763b625c1
+  languageName: node
+  linkType: hard
+
 "electron-to-chromium@npm:^1.5.4":
   version: 1.5.4
   resolution: "electron-to-chromium@npm:1.5.4"
@@ -5017,6 +5027,15 @@ __metadata:
   version: 2.0.3
   resolution: "expand-template@npm:2.0.3"
   checksum: 588c19847216421ed92befb521767b7018dc88f88b0576df98cb242f20961425e96a92cbece525ef28cc5becceae5d544ae0f5b9b5e2aa05acb13716ca5b3099
+  languageName: node
+  linkType: hard
+
+"fast-check@npm:^3.23.1":
+  version: 3.23.2
+  resolution: "fast-check@npm:3.23.2"
+  dependencies:
+    pure-rand: ^6.1.0
+  checksum: b815bd1a2bda33b8e1927a732368f94c3919d5c3b626065479e2389739dfbc6de885fdf48b7a576505edff4f8931798dc737c7bc7039a58b3412746f0d2e9b86
   languageName: node
   linkType: hard
 
@@ -8505,6 +8524,13 @@ __metadata:
   version: 2.3.0
   resolution: "punycode@npm:2.3.0"
   checksum: 39f760e09a2a3bbfe8f5287cf733ecdad69d6af2fe6f97ca95f24b8921858b91e9ea3c9eeec6e08cede96181b3bb33f95c6ffd8c77e63986508aa2e8159fa200
+  languageName: node
+  linkType: hard
+
+"pure-rand@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "pure-rand@npm:6.1.0"
+  checksum: 8d53bc02bed99eca0b65b505090152ee7e9bd67dd74f8ff32ba1c883b87234067c5bf68d2614759fb217d82594d7a92919e6df80f97885e7b12b42af4bd3316a
   languageName: node
   linkType: hard
 
